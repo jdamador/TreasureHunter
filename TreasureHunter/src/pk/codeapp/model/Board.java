@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pk.codeapp.methods;
+package pk.codeapp.model;
 
 /**
  *
  * @author Jose Pablo Brenes
  */
-public class Controller {
+public class Board {
     
 }
