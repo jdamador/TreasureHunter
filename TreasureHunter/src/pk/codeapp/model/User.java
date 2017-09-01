@@ -18,7 +18,8 @@ public class User {
         this.userName=userName;
         this.email=email;
         this.password=password;
-        this.rol=rol; 
+        this.rol=rol;
+        sig=ant=null;
     }
 
     public String getName() {
