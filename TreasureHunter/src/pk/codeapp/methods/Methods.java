@@ -70,19 +70,17 @@ public class Methods {
             System.out.println(e.getMessage());
         }
     }
-    public User readUser(){
+    public User readUser(){ // Methods to read users in binaryfile and return object user
         String namefile = "/pk.codeapp.tools/users.dat";
         try {
-            FileInputStream ficheroEntrada = new FileInputStream(namefile);
-            ObjectInputStream objetoEntrada = new ObjectInputStream(ficheroEntrada);
-            User User;
+            FileInputStream inFile = new FileInputStream(namefile);
+            ObjectInputStream inObject = new ObjectInputStream(inFile);
             // se leen dos objetos de la clase Persona
-            return User readUser = (User)objetoEntrada.readObject();
+            User readUser = (User)inObject.readObject();
             // se cierra el flujo de objetos objetoEntrada
-            objetoEntrada.close();
-            System.out.println("DNI\t Nombre");
-            System.out.println(p1);
-            System.out.println(p2);
+            inObject.close();
+            System.out.println(readUser);
+            return readUser;
             } catch (FileNotFoundException e) {
             System.out.println("¡El fichero no existe!");
             } catch (IOException e) {
