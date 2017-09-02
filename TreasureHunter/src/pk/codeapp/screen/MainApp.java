@@ -7,14 +7,14 @@ package pk.codeapp.screen;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-
-
+import pk.codeapp.screen.Register;
+import pk.codeapp.methods.Methods;
 /**
  *
  * @author Jose Pablo Brenes
  */
 public class MainApp extends javax.swing.JFrame {
-
+    Methods methods= new Methods();
     /**
      * Creates new form TH_Main
      */
@@ -133,6 +133,13 @@ public class MainApp extends javax.swing.JFrame {
         btnRegister.setText("Register! ");
         btnRegister.setToolTipText("Click to Login");
         btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegister.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnRegisterActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 650, 250, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/treasurehunter.png"))); // NOI18N
@@ -143,6 +150,14 @@ public class MainApp extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRegisterActionPerformed
+    {//GEN-HEADEREND:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+         Register registerWindows = new Register();
+         registerWindows.openWindows(this, methods);
+         
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,21 +5,30 @@
  */
 package pk.codeapp.screen;
 
+import javax.swing.JFrame;
+import pk.codeapp.methods.Methods;
+
 /**
  *
  * @author Daniel Amador
  */
 public class Register extends javax.swing.JFrame
 {
-
+    Methods  methods;
     /**
      * Creates new form TH_register
      */
-    public Register()
+    public Register(){
+        
+    }
     {
         initComponents();
     }
-
+    public void openWindows(JFrame  frame, Methods methods){
+        this.methods = methods;
+        this.setVisible(true);
+        frame.setVisible(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,11 +45,11 @@ public class Register extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 413, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         pack();
