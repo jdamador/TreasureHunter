@@ -30,6 +30,7 @@ public class Methods {
                 writeUser(newUser); // add to BinaryFile
                 return true;
             }else{
+                if(readUser( userName)==null){
                 newUser.setSig(end);
                 end.setAnt(newUser);
                 root.setSig(newUser);
@@ -37,7 +38,7 @@ public class Methods {
                 end=newUser;
                 writeUser(newUser);
                 return true;
-            }
+            }}
         }
         return false;
     }
@@ -47,6 +48,7 @@ public class Methods {
            java.util.regex.Matcher m = p.matcher(email); // Check for that same pattern
            return m.matches();
     }
+   
     public  void writeUser(User newUser) // Methods to save users in binaryfile
     {
         String namefile = "/pk.codeapp.tools/users.dat";
@@ -54,7 +56,7 @@ public class Methods {
         {
             FileOutputStream outFile = new FileOutputStream(namefile);
             ObjectOutputStream objectOut = new ObjectOutputStream(outFile);
-            // se escriben dos objetos de la clase Persona
+        
             objectOut.writeObject(newUser);
             objectOut.close();
             System.out.println("Se ha agregado con exito");
@@ -70,17 +72,18 @@ public class Methods {
             System.out.println(e.getMessage());
         }
     }
-    public User readUser(){ // Methods to read users in binaryfile and return object user
+    public User readUser(String userName){ // Methods to read users in binaryfile and return object user
         String namefile = "/pk.codeapp.tools/users.dat";
         try {
             FileInputStream inFile = new FileInputStream(namefile);
             ObjectInputStream inObject = new ObjectInputStream(inFile);
-            // se leen dos objetos de la clase Persona
+            
             User readUser = (User)inObject.readObject();
-            // se cierra el flujo de objetos objetoEntrada
+            if(readUser.getUserName()!=userName){
             inObject.close();
             System.out.println(readUser);
-            return readUser;
+            return readUser;}
+            inObject.close();
             } catch (FileNotFoundException e) {
             System.out.println("¡El fichero no existe!");
             } catch (IOException e) {

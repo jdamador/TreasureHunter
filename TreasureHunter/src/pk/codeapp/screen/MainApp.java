@@ -5,11 +5,9 @@
  */
 package pk.codeapp.screen;
 
-import java.awt.Image;
-import java.awt.Toolkit;
-import javax.swing.JFrame;
-import pk.codeapp.screen.Register;
+import javax.swing.JOptionPane;
 import pk.codeapp.methods.Methods;
+import pk.codeapp.model.User;
 /**
  *
  * @author Jose Pablo Brenes
@@ -33,8 +31,7 @@ public class MainApp extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -43,7 +40,7 @@ public class MainApp extends javax.swing.JFrame {
         txtUserName = new javax.swing.JTextField();
         labelPassword = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtPassword = new javax.swing.JPasswordField();
         btnRegister = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -84,10 +81,15 @@ public class MainApp extends javax.swing.JFrame {
         btnLogin.setToolTipText("Click to Login");
         btnLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
-        jPasswordField1.setBackground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setBackground(new java.awt.Color(0, 0, 0));
+        txtPassword.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,7 +98,7 @@ public class MainApp extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPasswordField1)
+                    .addComponent(txtPassword)
                     .addComponent(labelPassword)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
@@ -121,7 +123,7 @@ public class MainApp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(labelPassword)
                 .addGap(35, 35, 35)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(215, Short.MAX_VALUE))
@@ -135,10 +137,8 @@ public class MainApp extends javax.swing.JFrame {
         btnRegister.setText("Register! ");
         btnRegister.setToolTipText("Click to Login");
         btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegister.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
             }
         });
@@ -163,6 +163,23 @@ public class MainApp extends javax.swing.JFrame {
          
     }//GEN-LAST:event_btnRegisterActionPerformed
 
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String userName = txtUserName.getText();
+        String password = txtPassword.getText();
+        if(checkLogin(userName,password)){
+            JOptionPane.showMessageDialog(rootPane, "Ingresado");
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "denegado");
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+    private boolean checkLogin(String userName,String password){
+        User recoUser = methods.readUser(userName);
+        while(recoUser!=null){
+            if(recoUser.getUserName().equals(userName) && recoUser.getPassword().equals(password))
+                return true;
+        }
+        return false;
+    }
     /**
      * @param args the command line arguments
      */
@@ -206,10 +223,10 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel labelLog;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelUserName;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
