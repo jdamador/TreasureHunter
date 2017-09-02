@@ -4,7 +4,7 @@ package pk.codeapp.model;
  *
  * @author Jose Pablo Brenes
  */
-public class User {
+public class User implements java.io.Serializable{
     private String name;
     private String userName;
     private String email;
