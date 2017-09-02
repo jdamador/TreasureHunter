@@ -7,12 +7,14 @@ package pk.codeapp.screen;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JFrame;
 import pk.codeapp.screen.Register;
 import pk.codeapp.methods.Methods;
 /**
  *
  * @author Jose Pablo Brenes
  */
+
 public class MainApp extends javax.swing.JFrame {
     Methods methods= new Methods();
     /**
@@ -153,8 +155,10 @@ public class MainApp extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRegisterActionPerformed
     {//GEN-HEADEREND:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
-         Register registerWindows = new Register();
+       
+        //Create the conection with  Register class 
+         Register registerWindows = new Register(); 
+       // Call the method that open the new windows and close this 
          registerWindows.openWindows(this, methods);
          
     }//GEN-LAST:event_btnRegisterActionPerformed
@@ -194,6 +198,7 @@ public class MainApp extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
