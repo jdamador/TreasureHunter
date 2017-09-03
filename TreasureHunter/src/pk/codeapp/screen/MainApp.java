@@ -174,7 +174,7 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
     private boolean checkLogin(String userName,String password){
         User recoUser = methods.readUser(userName);
-        System.out.println(recoUser);
+
         while(recoUser!=null){
             if(recoUser.getUserName().equals(userName) && recoUser.getPassword().equals(password))
                 return true;

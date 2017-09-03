@@ -227,10 +227,15 @@ public class Register extends javax.swing.JFrame
            }
            
            
-            methods.add_User(name, userName, email, password, rol);
+            if(methods.add_User(name, userName, email, password, rol)){
              JOptionPane.showMessageDialog(rootPane,"Register was successful","Warning",INFORMATION_MESSAGE  );
              afterWindows.setVisible(true);
-            dispose();
+            dispose();}
+            else{
+                 JOptionPane.showMessageDialog(rootPane,"User name exist!!","Warning",INFORMATION_MESSAGE  );
+                afterWindows.setVisible(true);
+                dispose();
+            }
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 

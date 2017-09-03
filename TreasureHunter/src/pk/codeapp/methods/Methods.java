@@ -8,6 +8,7 @@ package pk.codeapp.methods;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -22,7 +23,7 @@ public class Methods
 
     private User root, end;
     private User newUser;
-
+    private String namefile = "users.dat";
     public boolean add_User(String name, String userName, String email, String password, String rol)
     { //Cheack border sig
         if (isValidEmailAddress(email) == true) {
@@ -38,6 +39,7 @@ public class Methods
                     root.setSig(newUser);
                     newUser.setAnt(root);
                     end = newUser;
+                
                     writeUser(newUser);
                     return true;
                 }
@@ -54,59 +56,78 @@ public class Methods
         return m.matches();
     }
 
-    public void writeUser(User newUser) // Methods to save users in binaryfile
+    public boolean writeUser(User newUser) // Methods to save users in binaryfile
     {
-        String namefile = "users.dat";
-        try {
-            FileOutputStream outFile = new FileOutputStream(namefile);
-            ObjectOutputStream objectOut = new ObjectOutputStream(outFile);
-            if (readUser(newUser.getUserName()) == null) {
-                objectOut.writeObject(newUser);
-                objectOut.writeObject(null);
-                objectOut.close();
-                System.out.println("Se ha agregado con exito");
-            } else {
-                objectOut.close();
+        try 
+        {
+            FileOutputStream fileOut = new FileOutputStream(namefile);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            if(readUser(newUser.getUserName())==null){
+            if(newUser.getUserName() !=null){
+            objectOut.writeObject(newUser);
+            objectOut.close();
+            System.out.println("finalizado");
+            
             }
-        } catch (FileNotFoundException e) {
+            }
+        }
+        
+        catch (FileNotFoundException e) 
+        {
             System.out.println("¡El fichero no existe!");
-        } catch (IOException e) {
-            System.out.println("entro1");
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println("entro2");
+        } catch (IOException e) 
+        {
+            System.out.println("Exepcion 1");
+            return true;
+        } catch (Exception e) 
+        {
+            System.out.println("Exepcion 2");
             System.out.println(e.getMessage());
         }
+        return false;
     }
+
 
     public User readUser(String userName)
     { // Methods to read users in binaryfile and return object user
-        String namefile = "users.dat";
-
+       User aux;
         try {
             FileInputStream inFile = new FileInputStream(namefile);
             ObjectInputStream inObject = new ObjectInputStream(inFile);
-            User readUser = (User) inObject.readObject();
             
-            while (readUser != null) {
-                System.out.println("Estuve aqui!");
-                if (readUser.getUserName().equalsIgnoreCase(userName)) {
+            aux = (User)inObject.readObject();
+            boolean reco=true;
+            while(reco){
+                if(aux.getUserName()==null){
+                    System.out.println("No existe");
+                    reco=false;
+                }else{
+                if(aux.getUserName().equals(userName)){
                     inObject.close();
-                    return readUser;
-                } else {
-                    readUser = (User) inObject.readObject();
-                   
+                   System.out.println("Son iguales");
+                    return aux;
+                }else{
+                    System.out.println("Recorriendo");
+                    System.out.println("Nombre de usuario: "+userName);
+                    System.out.println(aux.getUserName());
+                    aux = aux.getAnt();
                 }
-            }
+            }}
+            // se leen dos objetos de la clase Persona
+//            Persona p1 = (Persona)objetoEntrada.readObject();
+//            Persona p2 = (Persona)objetoEntrada.readObject();
+            // se cierra el flujo de objetos objetoEntrada
             inObject.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("¡El fichero no existe!");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        };
 
+            } catch (FileNotFoundException e) {
+            System.out.println("¡El fichero no existe!");
+            } catch (IOException e) {
+                System.out.println("Exepcion 1");
+                
+            } catch (Exception e) {
+            System.out.println("Exepcion 2");
+   
+            };
         return null;
     }
 

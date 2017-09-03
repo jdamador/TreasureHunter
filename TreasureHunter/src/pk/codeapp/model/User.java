@@ -86,9 +86,5 @@ public class User implements java.io.Serializable{
         this.rol = rol;
     }
 
-    public String getNameUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
 }
