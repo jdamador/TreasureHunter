@@ -18,78 +18,90 @@ import pk.codeapp.model.User;
  * @author Jose Pablo Brenes
  */
 public class Methods {
-    private User root,end;
+
+    private User root, end;
     private User newUser;
-   
-    
-    public boolean add_User(String name,String userName,String email,String password,String rol){ //Cheack border sig
-        if(isValidEmailAddress(email)==true){
-            newUser=new User(name, userName, email, password, rol);
-            if(root==null){
-                root =end= newUser;
+
+    public boolean add_User(String name, String userName, String email, String password, String rol) { //Cheack border sig
+        if (isValidEmailAddress(email) == true) {
+            newUser = new User(name, userName, email, password, rol);
+            if (root == null) {
+                root = end = newUser;
                 writeUser(newUser); // add to BinaryFile
                 return true;
-            }else{
-                newUser.setSig(end);
-                end.setAnt(newUser);
-                root.setSig(newUser);
-                newUser.setAnt(root);
-                end=newUser;
-                writeUser(newUser);
-                return true;
+            } else {
+                if (readUser(userName) == null) {
+                    newUser.setSig(end);
+                    end.setAnt(newUser);
+                    root.setSig(newUser);
+                    newUser.setAnt(root);
+                    end = newUser;
+                    writeUser(newUser);
+                    return true;
+                }
             }
         }
         return false;
     }
+
     public boolean isValidEmailAddress(String email) {
-           String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"; // Email Pattern 
-           java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern); // Compile Email
-           java.util.regex.Matcher m = p.matcher(email); // Check for that same pattern
-           return m.matches();
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"; // Email Pattern 
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern); // Compile Email
+        java.util.regex.Matcher m = p.matcher(email); // Check for that same pattern
+        return m.matches();
     }
-    public  void writeUser(User newUser) // Methods to save users in binaryfile
+
+    public void writeUser(User newUser) // Methods to save users in binaryfile
     {
-        String namefile = "/pk.codeapp.tools/users.dat";
-        try 
-        {
+        String namefile = "users.dat";
+        try {
             FileOutputStream outFile = new FileOutputStream(namefile);
             ObjectOutputStream objectOut = new ObjectOutputStream(outFile);
-            // se escriben dos objetos de la clase Persona
-            objectOut.writeObject(newUser);
-            objectOut.close();
-            System.out.println("Se ha agregado con exito");
-        }
-        catch (FileNotFoundException e) 
-        {
+            if (readUser(newUser.getNameUser()) == null) {
+                objectOut.writeObject(newUser);
+                objectOut.close();
+                System.out.println("Se ha agregado con exito");
+            } else {
+                objectOut.close();
+            }
+        } catch (FileNotFoundException e) {
             System.out.println("¡El fichero no existe!");
-        } catch (IOException e) 
-        {
+        } catch (IOException e) {
+            System.out.println("entro1");
             System.out.println(e.getMessage());
-        } catch (Exception e) 
-        {
+        } catch (Exception e) {
+             System.out.println("entro2");
             System.out.println(e.getMessage());
         }
     }
-    public User readUser(){ // Methods to read users in binaryfile and return object user
-        String namefile = "/pk.codeapp.tools/users.dat";
+
+    public User readUser(String userName) { // Methods to read users in binaryfile and return object user
+        String namefile = "users.dat";
+
         try {
             FileInputStream inFile = new FileInputStream(namefile);
             ObjectInputStream inObject = new ObjectInputStream(inFile);
-            // se leen dos objetos de la clase Persona
-            User readUser = (User)inObject.readObject();
-            // se cierra el flujo de objetos objetoEntrada
+
+            User readUser = (User) inObject.readObject();
+            while (readUser != null) {
+                if (readUser.getUserName() == userName) {
+                    System.out.println("Nombre de usuario es ");
+                   inObject.close();
+                    return readUser;
+                } else {
+                    readUser = (User) inObject.readObject();
+                }
+            }
             inObject.close();
-            System.out.println(readUser);
-            return readUser;
-            } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("¡El fichero no existe!");
-            } catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
-            } catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-            };
+        };
+       
         return null;
     }
-    
-    
+
 }
