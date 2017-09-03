@@ -15,6 +15,7 @@ import pk.codeapp.model.User;
 
 public class MainApp extends javax.swing.JFrame {
     Methods methods= new Methods();
+    static User actualUser;
     /**
      * Creates new form TH_Main
      */
@@ -167,7 +168,10 @@ public class MainApp extends javax.swing.JFrame {
         String userName = txtUserName.getText();
         String password = txtPassword.getText();
         if(checkLogin(userName,password)){
-            JOptionPane.showMessageDialog(rootPane, "Ingresado");
+            if(actualUser.getRol().equals("GameMaster")){
+                GameMasterInterface gmInterface= new GameMasterInterface();
+                gmInterface.openWindows(this, methods);
+            }
         }else{
             JOptionPane.showMessageDialog(rootPane, "denegado");
         }
@@ -177,6 +181,7 @@ public class MainApp extends javax.swing.JFrame {
 
         while(recoUser!=null){
             if(recoUser.getUserName().equals(userName) && recoUser.getPassword().equals(password))
+                actualUser=recoUser;//set actual user for check privilages
                 return true;
         }
         return false;
