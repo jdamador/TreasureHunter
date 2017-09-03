@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
 import pk.codeapp.model.User;
 
 /**
@@ -45,7 +46,12 @@ public class Methods
                 }
             }
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Format wrong mail format!!!");
+            return false;
+        }
         return false;
+       
     }
 
     public boolean isValidEmailAddress(String email)

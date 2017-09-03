@@ -69,63 +69,85 @@ public class Register extends javax.swing.JFrame
         jLabel6 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         rbnAdministrador = new javax.swing.JRadioButton();
         rbnPlayer = new javax.swing.JRadioButton();
         btnRegister = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 202, 40));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 145, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel1.setText("Welcome to TreasureHunter!!!");
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Welcome to ");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, -1, 20));
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("UserName:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, -1, 20));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Password:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, 20));
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Rol:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, -1, 20));
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("E-Mail");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, -1, 20));
 
-        txtUserName.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        txtUserName.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(0, 0, 0));
+        txtUserName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 170, 20));
 
-        txtNombre.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 170, 20));
 
-        txtPassword.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
-
-        txtEmail.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmail.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 170, 20));
 
         btnGrup.add(rbnAdministrador);
-        rbnAdministrador.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        rbnAdministrador.setForeground(new java.awt.Color(255, 255, 255));
+        rbnAdministrador.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        rbnAdministrador.setForeground(new java.awt.Color(0, 0, 0));
         rbnAdministrador.setText("Game Master");
+        jPanel2.add(rbnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, 20));
 
         btnGrup.add(rbnPlayer);
-        rbnPlayer.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        rbnPlayer.setForeground(new java.awt.Color(255, 255, 255));
+        rbnPlayer.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        rbnPlayer.setForeground(new java.awt.Color(0, 0, 0));
         rbnPlayer.setText("Player");
+        jPanel2.add(rbnPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 470, -1, 20));
 
+        btnRegister.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(0, 0, 0));
         btnRegister.setText("Register");
+        btnRegister.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRegister.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -133,70 +155,41 @@ public class Register extends javax.swing.JFrame
                 btnRegisterActionPerformed(evt);
             }
         });
+        jPanel2.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, 160, 30));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtNombre))
-                                .addGap(91, 91, 91)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(rbnPlayer)
-                            .addComponent(rbnAdministrador)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addComponent(btnRegister)))
-                .addContainerGap(77, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(61, 61, 61)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbnAdministrador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbnPlayer)
-                .addGap(48, 48, 48)
-                .addComponent(btnRegister)
-                .addContainerGap(163, Short.MAX_VALUE))
-        );
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 48)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Treasure");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 340, 50));
+
+        jLabel9.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText(" Hunter!!!");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, -1, -1));
+
+        txtPassword.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtPassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 299, 170, 20));
+
+        jButton1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Back");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 100, 30));
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/T (6).png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 600));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 600));
 
@@ -208,8 +201,9 @@ public class Register extends javax.swing.JFrame
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRegisterActionPerformed
     {//GEN-HEADEREND:event_btnRegisterActionPerformed
         // TODO add your handling code here:
+          // TODO add your handling code here:
         if (txtEmail.getText().isEmpty()|| txtNombre.getText().isEmpty()|| 
-                txtPassword.getText().isEmpty()|| txtUserName.getText().isEmpty()){
+                txtPassword.getText().isEmpty()|| txtUserName.getText().isEmpty()||(rbnAdministrador.isSelected()==false&&rbnPlayer.isSelected()==false)){
             JOptionPane.showMessageDialog(rootPane,"Don't leave spaces in blank","Warning",WARNING_MESSAGE );
       
         }
@@ -219,6 +213,7 @@ public class Register extends javax.swing.JFrame
            String email = txtEmail.getText();
            String password = txtPassword.getText();
             String rol="";
+            
            if(rbnAdministrador.isSelected()){
               rol="GameMaster";
            }
@@ -232,12 +227,18 @@ public class Register extends javax.swing.JFrame
              afterWindows.setVisible(true);
             dispose();}
             else{
-                 JOptionPane.showMessageDialog(rootPane,"User name exist!!","Warning",INFORMATION_MESSAGE  );
-                afterWindows.setVisible(true);
-                dispose();
+                 JOptionPane.showMessageDialog(rootPane,"Error adding user","Warning",INFORMATION_MESSAGE  );
+                
             }
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        afterWindows.setVisible(true);
+            dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,18 +282,22 @@ public class Register extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGrup;
     private javax.swing.JButton btnRegister;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton rbnAdministrador;
     private javax.swing.JRadioButton rbnPlayer;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
