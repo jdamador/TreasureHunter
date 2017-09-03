@@ -53,7 +53,10 @@ public class GameMasterInterface extends javax.swing.JFrame
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Game Master");
         setIconImage(getIconImage());
+        setResizable(false);
+        setSize(new java.awt.Dimension(1360, 694));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Game Master");

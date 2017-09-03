@@ -7,7 +7,10 @@ package pk.codeapp.screen;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.User;
 /**
@@ -18,6 +21,7 @@ import pk.codeapp.model.User;
 public class MainApp extends javax.swing.JFrame {
     Methods methods= new Methods();
     static User actualUser;
+    ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
     /**
      * Creates new form TH_Main
      */
@@ -53,6 +57,7 @@ public class MainApp extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Welcome to Treasure Hunter");
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
@@ -185,7 +190,8 @@ public class MainApp extends javax.swing.JFrame {
                 gmInterface.openWindows(this, methods);
             }
         }else{
-            JOptionPane.showMessageDialog(rootPane, "denegado");
+            JOptionPane.showMessageDialog(rootPane, "Failed to login\n"
+                    + "The user or password is invalid.....  ","Warning",INFORMATION_MESSAGE, this.icon);
         }
     }//GEN-LAST:event_btnLoginActionPerformed
     private boolean checkLogin(String userName,String password){
