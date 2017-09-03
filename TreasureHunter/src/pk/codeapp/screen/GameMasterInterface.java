@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import pk.codeapp.methods.Methods;
 
@@ -22,6 +24,10 @@ public class GameMasterInterface extends javax.swing.JFrame
     public GameMasterInterface()
     {
         initComponents();
+    }
+     public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
+        return retValue;
     }
     public void openWindows(JFrame afterWindows, Methods methods)
     {
@@ -47,6 +53,7 @@ public class GameMasterInterface extends javax.swing.JFrame
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Game Master");
@@ -69,6 +76,7 @@ public class GameMasterInterface extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnBackActionPerformed
         // TODO add your handling code here:
          // TODO add your handling code here:
+        
         afterWindows.setVisible(true);
             dispose();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -110,6 +118,7 @@ public class GameMasterInterface extends javax.swing.JFrame
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

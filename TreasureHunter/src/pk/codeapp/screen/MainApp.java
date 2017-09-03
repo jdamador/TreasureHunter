@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.User;
@@ -23,7 +25,11 @@ public class MainApp extends javax.swing.JFrame {
         initComponents();
        
     }
-  
+    @Override
+  public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
+        return retValue;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,7 +38,8 @@ public class MainApp extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -82,8 +89,10 @@ public class MainApp extends javax.swing.JFrame {
         btnLogin.setToolTipText("Click to Login");
         btnLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnLogin.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnLoginActionPerformed(evt);
             }
         });
@@ -138,8 +147,10 @@ public class MainApp extends javax.swing.JFrame {
         btnRegister.setText("Register! ");
         btnRegister.setToolTipText("Click to Login");
         btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRegister.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnRegisterActionPerformed(evt);
             }
         });
@@ -169,6 +180,7 @@ public class MainApp extends javax.swing.JFrame {
         String password = txtPassword.getText();
         if(checkLogin(userName,password)){
             if(actualUser.getRol().equals("GameMaster")){
+                cleanLogin();
                 GameMasterInterface gmInterface= new GameMasterInterface();
                 gmInterface.openWindows(this, methods);
             }
@@ -221,7 +233,10 @@ public class MainApp extends javax.swing.JFrame {
             }
         });
     }
-    
+     public void cleanLogin(){
+          txtUserName.setText("");
+        txtPassword.setText("");
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
