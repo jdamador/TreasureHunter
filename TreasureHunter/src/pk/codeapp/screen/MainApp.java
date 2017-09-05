@@ -233,11 +233,16 @@ public class MainApp extends javax.swing.JFrame {
         User recoUser = methods.readUser(userName);
 
         while(recoUser!=null){
-            if(recoUser.getUserName().equals(userName) && recoUser.getPassword().equals(password))
+            if(recoUser.getUserName().equals(userName) && recoUser.getPassword().equals(password)){
                 actualUser=recoUser;//set actual user for check privilages
                 return true;
+            }
+            else{
+                    return false;
+            }
+                
         }
-        return false;
+      return false;
     }
     /**
      * @param args the command line arguments

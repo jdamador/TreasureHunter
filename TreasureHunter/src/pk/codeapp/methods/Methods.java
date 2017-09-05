@@ -103,7 +103,7 @@ public class Methods
     }
 
 public User readUser(String userName){
-    User  reco=null;
+    User  user=null,reco=null;
     try{
             
             FileInputStream saveFile = new FileInputStream(namefile);
@@ -115,7 +115,8 @@ public User readUser(String userName){
                     System.out.println("Aqui");
                     if(reco.getUserName().equalsIgnoreCase(userName)){
                         System.out.println(reco.getUserName());
-                        return reco;
+                        user=reco;
+                        return user;
                     }
                    
                     
@@ -128,6 +129,6 @@ public User readUser(String userName){
         }catch(Exception exc){
            
         }
-      return reco;
+      return user ;
 }
 }
