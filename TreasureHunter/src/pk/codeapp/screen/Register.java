@@ -7,6 +7,7 @@ package pk.codeapp.screen;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -22,13 +23,13 @@ public class Register extends javax.swing.JFrame
 
     Methods methods;
     JFrame afterWindows;
-
+      ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
     /**
      * Creates new form TH_register
      */
     public Register()
     {
-
+          
     }
 
     {
@@ -212,7 +213,7 @@ public class Register extends javax.swing.JFrame
           // TODO add your handling code here:
         if (txtEmail.getText().isEmpty()|| txtNombre.getText().isEmpty()|| 
                 txtPassword.getText().isEmpty()|| txtUserName.getText().isEmpty()||(rbnAdministrador.isSelected()==false&&rbnPlayer.isSelected()==false)){
-            JOptionPane.showMessageDialog(rootPane,"Don't leave spaces in blank","Warning",WARNING_MESSAGE );
+            JOptionPane.showMessageDialog(rootPane,"Don't leave spaces in blank","Warning",WARNING_MESSAGE,this.icon );
       
         }
         else{
@@ -235,7 +236,7 @@ public class Register extends javax.swing.JFrame
              afterWindows.setVisible(true);
             dispose();}
             else{
-                 JOptionPane.showMessageDialog(rootPane,"Error adding user","Warning",INFORMATION_MESSAGE  );
+                 JOptionPane.showMessageDialog(rootPane,"Error adding user","Warning",WARNING_MESSAGE,this.icon  );
                 
             }
         }

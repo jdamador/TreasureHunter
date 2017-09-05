@@ -7,6 +7,7 @@ package pk.codeapp.screen;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -60,6 +61,7 @@ public class MainApp extends javax.swing.JFrame {
         setTitle("Welcome to Treasure Hunter");
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -82,6 +84,13 @@ public class MainApp extends javax.swing.JFrame {
         txtUserName.setForeground(new java.awt.Color(255, 255, 255));
         txtUserName.setToolTipText("Write your User Name here!");
         txtUserName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        txtUserName.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                txtUserNameKeyPressed(evt);
+            }
+        });
 
         labelPassword.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         labelPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,10 +110,24 @@ public class MainApp extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                btnLoginKeyPressed(evt);
+            }
+        });
 
         txtPassword.setBackground(new java.awt.Color(0, 0, 0));
         txtPassword.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                txtPasswordKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -181,19 +204,32 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String userName = txtUserName.getText();
-        String password = txtPassword.getText();
-        if(checkLogin(userName,password)){
-            if(actualUser.getRol().equals("GameMaster")){
-                cleanLogin();
-                GameMasterInterface gmInterface= new GameMasterInterface();
-                gmInterface.openWindows(this, methods);
-            }
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Failed to login\n"
-                    + "The user or password is invalid.....  ","Warning",INFORMATION_MESSAGE, this.icon);
-        }
+        verifyLogin();
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtUserNameKeyPressed
+    {//GEN-HEADEREND:event_txtUserNameKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+            verifyLogin();
+        }
+    }//GEN-LAST:event_txtUserNameKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtPasswordKeyPressed
+    {//GEN-HEADEREND:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+            verifyLogin();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void btnLoginKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnLoginKeyPressed
+    {//GEN-HEADEREND:event_btnLoginKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+            verifyLogin();
+        }
+    }//GEN-LAST:event_btnLoginKeyPressed
     private boolean checkLogin(String userName,String password){
         User recoUser = methods.readUser(userName);
 
@@ -242,6 +278,24 @@ public class MainApp extends javax.swing.JFrame {
      public void cleanLogin(){
           txtUserName.setText("");
         txtPassword.setText("");
+     }
+     public void verifyLogin(){
+     String userName = txtUserName.getText();
+        String password = txtPassword.getText();
+        if(checkLogin(userName,password)){
+            if(actualUser.getRol().equals("GameMaster")){
+                cleanLogin();
+                GameMasterInterface gmInterface= new GameMasterInterface();
+                gmInterface.openWindows(this, methods);
+            }
+            else{
+                UserInterface userInterface = new UserInterface();
+                userInterface.openWindows(this, methods,actualUser);
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Failed to login\n"
+                    + "The user or password is invalid.....  ","Warning",INFORMATION_MESSAGE, this.icon);
+        }
      }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
