@@ -169,7 +169,7 @@ public class UserInterface extends javax.swing.JFrame
         afterWindows.setVisible(false);
         this.setLocationRelativeTo(afterWindows);
         this.actualUser=actualUser;
-        
+        chargeData();
          
 
     }

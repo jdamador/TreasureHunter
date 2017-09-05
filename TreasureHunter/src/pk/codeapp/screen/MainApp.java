@@ -11,7 +11,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.User;
 /**

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -69,12 +70,12 @@ public class Methods
             FileOutputStream fileOut = new FileOutputStream(namefile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             if(readUser(newUser.getUserName())==null){
-            if(newUser.getUserName() !=null){
+  
             objectOut.writeObject(newUser);
             objectOut.close();
             System.out.println("finalizado");
             
-            }
+            
             }
         }
         
@@ -93,21 +94,20 @@ public class Methods
         return false;
     }
 
-
-    public User readUser(String userName)
+public User readUser(String userName)
     { // Methods to read users in binaryfile and return object user
-       User aux;
+       User aux,running;
         try {
             FileInputStream inFile = new FileInputStream(namefile);
             ObjectInputStream inObject = new ObjectInputStream(inFile);
             
             aux = (User)inObject.readObject();
+            running = aux;
             boolean reco=true;
             while(reco){
-                if(aux.getUserName()==null){
-                    System.out.println("No existe");
-                    reco=false;
-                }else{
+                System.out.println("Nombre del running "+running.getUserName());
+                do{
+                    
                 if(aux.getUserName().equals(userName)){
                     inObject.close();
                    System.out.println("Son iguales");
@@ -115,16 +115,12 @@ public class Methods
                 }else{
                     System.out.println("Recorriendo");
                     System.out.println("Nombre de usuario: "+userName);
-                    System.out.println(aux.getUserName());
+                    System.out.println("Usuario Actual"+aux.getUserName());
                     aux = aux.getAnt();
                 }
-            }}
-            // se leen dos objetos de la clase Persona
-//            Persona p1 = (Persona)objetoEntrada.readObject();
-//            Persona p2 = (Persona)objetoEntrada.readObject();
-            // se cierra el flujo de objetos objetoEntrada
-            inObject.close();
-
+            }while(aux!=running);reco=false;}
+            
+             inObject.close();
             } catch (FileNotFoundException e) {
             System.out.println("¡El fichero no existe!");
             } catch (IOException e) {
@@ -136,4 +132,5 @@ public class Methods
             };
         return null;
     }
+
 }
