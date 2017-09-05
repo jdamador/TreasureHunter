@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,6 +5,7 @@
  */
 package pk.codeapp.methods;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import pk.codeapp.model.User;
 
@@ -25,7 +26,9 @@ public class Methods
 
     private User root, end;
     private User newUser;
-    private String namefile = "users.dat";
+    private String namefile = "user.ser";
+    ArrayList<User> array= new ArrayList();
+
     public boolean add_User(String name, String userName, String email, String password, String rol)
     { //Cheack border sig
         if (isValidEmailAddress(email) == true) {
@@ -65,72 +68,66 @@ public class Methods
 
     public boolean writeUser(User newUser) // Methods to save users in binaryfile
     {
-        try 
-        {
-            FileOutputStream fileOut = new FileOutputStream(namefile);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            if(readUser(newUser.getUserName())==null){
-  
-            objectOut.writeObject(newUser);
-            objectOut.close();
-            System.out.println("finalizado");
-            
-            
-            }
-        }
+           FileOutputStream file= null;
+           ObjectOutputStream output =null;
+           try{
+               file = new FileOutputStream(namefile,true);
+               output = new ObjectOutputStream(file);
+               output.writeObject(newUser);
+               System.out.println("Done");
+               return true;
+           }
+           catch(Exception ex){
+               ex.printStackTrace();
+           }finally{
+               if(file!=null){
+                   try {
+                       file.close();
+                   } catch (IOException e) {
+                       e.printStackTrace();
+                   }
+               }
+               if(output !=null){
+                   try {
+                      file.close();
+                   } catch (IOException e) {
+                       e.printStackTrace();
+                   }
+                   
+                   
+               }
+           }
         
-        catch (FileNotFoundException e) 
-        {
-            System.out.println("¡El fichero no existe!");
-        } catch (IOException e) 
-        {
-            System.out.println("Exepcion 1");
-            return true;
-        } catch (Exception e) 
-        {
-            System.out.println("Exepcion 2");
-            System.out.println(e.getMessage());
-        }
+        
         return false;
     }
 
-public User readUser(String userName)
-    { // Methods to read users in binaryfile and return object user
-       User aux,running;
-        try {
-            FileInputStream inFile = new FileInputStream(namefile);
-            ObjectInputStream inObject = new ObjectInputStream(inFile);
+public User readUser(String userName){
+    User  reco=null;
+    try{
             
-            aux = (User)inObject.readObject();
-            running = aux;
-            boolean reco=true;
-            while(reco){
-                System.out.println("Nombre del running "+running.getUserName());
-                do{
+            FileInputStream saveFile = new FileInputStream(namefile);
+            ObjectInputStream save;
+            try{
+                while(true){
+                    save = new ObjectInputStream(saveFile);
+                    reco = (User) save.readObject();
+                    System.out.println("Aqui");
+                    if(reco.getUserName().equalsIgnoreCase(userName)){
+                        System.out.println(reco.getUserName());
+                        return reco;
+                    }
+                   
                     
-                if(aux.getUserName().equals(userName)){
-                    inObject.close();
-                   System.out.println("Son iguales");
-                    return aux;
-                }else{
-                    System.out.println("Recorriendo");
-                    System.out.println("Nombre de usuario: "+userName);
-                    System.out.println("Usuario Actual"+aux.getUserName());
-                    aux = aux.getAnt();
                 }
-            }while(aux!=running);reco=false;}
-            
-             inObject.close();
-            } catch (FileNotFoundException e) {
-            System.out.println("¡El fichero no existe!");
-            } catch (IOException e) {
-                System.out.println("Exepcion 1");
-                
-            } catch (Exception e) {
-            System.out.println("Exepcion 2");
-   
-            };
-        return null;
-    }
+            }catch(EOFException e){
+                //e.printStackTrace();
+            }
+            saveFile.close(); 
 
+        }catch(Exception exc){
+           
+        }
+      return reco;
+}
 }
