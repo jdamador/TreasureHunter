@@ -50,11 +50,11 @@ public class UserInterface extends javax.swing.JFrame
         lblName = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        btnPlay = new javax.swing.JToggleButton();
+        btnCreateWorld = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -113,6 +113,12 @@ public class UserInterface extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, -1, -1));
+
+        btnPlay.setText("Play");
+        getContentPane().add(btnPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 250, 60));
+
+        btnCreateWorld.setText("Create Board");
+        getContentPane().add(btnCreateWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 250, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -200,6 +206,8 @@ public class UserInterface extends javax.swing.JFrame
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> Games;
+    private javax.swing.JButton btnCreateWorld;
+    private javax.swing.JToggleButton btnPlay;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
