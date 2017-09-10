@@ -8,9 +8,6 @@ package pk.codeapp.methods;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 
 import java.io.FileOutputStream;
 
@@ -18,8 +15,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-=======
->>>>>>> Stashed changes
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -27,10 +23,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-<<<<<<< Updated upstream
-=======
->>>>>>> parent of 62cd275... Add create table
->>>>>>> Stashed changes
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import pk.codeapp.model.User;
@@ -44,16 +37,10 @@ public class Methods
 
     private User root, end;
     private User newUser;
-<<<<<<< HEAD
+
     private User actualUser;
     
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
-=======
-    private String namefile = "user.ser";
-<<<<<<< Updated upstream
-=======
->>>>>>> parent of 62cd275... Add create table
->>>>>>> Stashed changes
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
 
@@ -186,9 +173,7 @@ public class Methods
             return null;
         }
     }
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
     public void updateUser(String name, String Username, String Password, String email){
       actualUser.setEmail(email);
       actualUser.setName(name);
@@ -201,9 +186,6 @@ public class Methods
     {
         return actualUser;
     }
-=======
->>>>>>> parent of 62cd275... Add create table
->>>>>>> Stashed changes
 
     public void setActualUser(User actualUser)
     {
