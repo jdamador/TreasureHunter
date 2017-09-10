@@ -28,8 +28,8 @@ public class Methods
 
     private User root, end;
     private User newUser;
-    private Function rootFunction;
-
+    private Function rootFunction=null;
+    
     private User actualUser;
 
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
@@ -187,25 +187,15 @@ public class Methods
 
     public boolean addFunction(String name, String color)
     {
-
-        Function newFunction = new Function(name, color);
-
+        Function  newFunction = new Function(name, color);
         if (rootFunction == null) {
-
             rootFunction = newFunction;
-
             return true;
-
         } else {
-
             newFunction.setSig(rootFunction);
-
             rootFunction = newFunction;
-
             return true;
-
         }
-
+        
     }
-
 }

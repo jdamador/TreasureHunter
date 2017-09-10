@@ -161,9 +161,10 @@ public class GameMasterInterface extends javax.swing.JFrame
             JOptionPane.showMessageDialog(rootPane, "Do not leave blanks !!! ");
         }else{
             String name = txtFunction.getText();
-            if(methods.addFunction(name, colorFunction))
+            cmbColor.setSelectedItem("");
+            if(methods.addFunction(name, colorFunction)){
                  JOptionPane.showMessageDialog(rootPane, "Be added successfully ");
-            else{
+            }else{
                  JOptionPane.showMessageDialog(rootPane, "Error !!! ");
             }
         }
