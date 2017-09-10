@@ -16,6 +16,7 @@ import java.io.ObjectOutputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import pk.codeapp.model.Function;
 import pk.codeapp.model.User;
 
 /**
@@ -27,10 +28,10 @@ public class Methods
 
     private User root, end;
     private User newUser;
+    private Function rootFunction;
 
     private User actualUser;
-   
- 
+
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
@@ -66,8 +67,8 @@ public class Methods
     public boolean isValidEmailAddress(String email)  // email format checker
     {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"; // Email Pattern 
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern); 
-        java.util.regex.Matcher m = p.matcher(email); 
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
         return m.matches();
     }
 
@@ -165,14 +166,15 @@ public class Methods
         }
     }
 
-    public void updateUser(String name, String Username, String Password, String email){
-      actualUser.setEmail(email);
-      actualUser.setName(name);
-      actualUser.setPassword(Password);
-      actualUser.setUserName(Username);
-      
+    public void updateUser(String name, String Username, String Password, String email)
+    {
+        actualUser.setEmail(email);
+        actualUser.setName(name);
+        actualUser.setPassword(Password);
+        actualUser.setUserName(Username);
+
     }
-    
+
     public User getActualUser()
     {
         return actualUser;
@@ -182,6 +184,28 @@ public class Methods
     {
         this.actualUser = actualUser;
     }
-    
-    
+
+    public boolean addFunction(String name, String color)
+    {
+
+        Function newFunction = new Function(name, color);
+
+        if (rootFunction == null) {
+
+            rootFunction = newFunction;
+
+            return true;
+
+        } else {
+
+            newFunction.setSig(rootFunction);
+
+            rootFunction = newFunction;
+
+            return true;
+
+        }
+
+    }
+
 }
