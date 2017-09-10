@@ -5,25 +5,40 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.User;
+
 /**
  *
  * @author Jose Pablo Brenes
  */
+public class MainApp extends javax.swing.JFrame
+{
 
-public class MainApp extends javax.swing.JFrame {
-    Methods methods= new Methods();
-    static User actualUser;
+    Methods methods = new Methods();
+
     /**
      * Creates new form TH_Main
      */
-    public MainApp() {
+    public MainApp()
+    {
         initComponents();
        
+
     }
-  
+
+    @Override
+    public Image getIconImage()
+    {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
+        return retValue;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,7 +47,8 @@ public class MainApp extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -46,8 +62,10 @@ public class MainApp extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Welcome to Treasure Hunter");
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -70,6 +88,13 @@ public class MainApp extends javax.swing.JFrame {
         txtUserName.setForeground(new java.awt.Color(255, 255, 255));
         txtUserName.setToolTipText("Write your User Name here!");
         txtUserName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        txtUserName.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                txtUserNameKeyPressed(evt);
+            }
+        });
 
         labelPassword.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         labelPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -82,15 +107,31 @@ public class MainApp extends javax.swing.JFrame {
         btnLogin.setToolTipText("Click to Login");
         btnLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnLogin.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnLoginActionPerformed(evt);
+            }
+        });
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                btnLoginKeyPressed(evt);
             }
         });
 
         txtPassword.setBackground(new java.awt.Color(0, 0, 0));
         txtPassword.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                txtPasswordKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -138,15 +179,17 @@ public class MainApp extends javax.swing.JFrame {
         btnRegister.setText("Register! ");
         btnRegister.setToolTipText("Click to Login");
         btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRegister.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnRegisterActionPerformed(evt);
             }
         });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 650, 250, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/treasurehunter.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 810, 710));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -156,40 +199,47 @@ public class MainApp extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRegisterActionPerformed
     {//GEN-HEADEREND:event_btnRegisterActionPerformed
-       
+
         //Create the conection with  Register class 
-         Register registerWindows = new Register(); 
-       // Call the method that open the new windows and close this 
-         registerWindows.openWindows(this, methods);
-         
+        Register registerWindows = new Register();
+        // Call the method that open the new windows and close this 
+        registerWindows.openWindows(this, methods);
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String userName = txtUserName.getText();
-        String password = txtPassword.getText();
-        if(checkLogin(userName,password)){
-            if(actualUser.getRol().equals("GameMaster")){
-                GameMasterInterface gmInterface= new GameMasterInterface();
-                gmInterface.openWindows(this, methods);
-            }
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "denegado");
-        }
+        login();
     }//GEN-LAST:event_btnLoginActionPerformed
-    private boolean checkLogin(String userName,String password){
-        User recoUser = methods.readUser(userName);
 
-        while(recoUser!=null){
-            if(recoUser.getUserName().equals(userName) && recoUser.getPassword().equals(password))
-                actualUser=recoUser;//set actual user for check privilages
-                return true;
+    private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtUserNameKeyPressed
+    {//GEN-HEADEREND:event_txtUserNameKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
         }
-        return false;
-    }
+    }//GEN-LAST:event_txtUserNameKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtPasswordKeyPressed
+    {//GEN-HEADEREND:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void btnLoginKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnLoginKeyPressed
+    {//GEN-HEADEREND:event_btnLoginKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_btnLoginKeyPressed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -215,13 +265,15 @@ public class MainApp extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new MainApp().setVisible(true);
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
@@ -235,4 +287,27 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+public void login()
+    {
+         methods.chargeUsers();
+         methods.writeUser();
+        String userName = txtUserName.getText();
+        User askUser = methods.searchUser(userName);
+        if (askUser != null) {
+            String password = txtPassword.getText();
+            if (askUser.getPassword().equals(password)) {
+                    if(askUser.getRol().equals("GameMaster")){
+                        GameMasterInterface gm = new GameMasterInterface();
+                        gm.openWindows(this, methods);
+                    }else{
+                        UserInterface ui= new UserInterface();
+                        ui.openWindows(this, methods, askUser);
+                    }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Password invalid!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+        }
+    }
 }

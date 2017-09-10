@@ -5,6 +5,7 @@
  */
 package pk.codeapp.methods;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,6 +13,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import pk.codeapp.model.User;
 
@@ -24,34 +27,36 @@ public class Methods
 
     private User root, end;
     private User newUser;
-    private String namefile = "users.dat";
+    private String namefile = "user.ser";
+
+    ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
+
     public boolean add_User(String name, String userName, String email, String password, String rol)
     { //Cheack border sig
         if (isValidEmailAddress(email) == true) {
             newUser = new User(name, userName, email, password, rol);
-            if (root == null) {
+            if (end == null) {
                 root = end = newUser;
-                writeUser(newUser); // add to BinaryFile
+                end.setSig(newUser);
+                root.setAnt(end);
+                
                 return true;
             } else {
-                if (readUser(userName) == null) {
-                    newUser.setSig(end);
-                    end.setAnt(newUser);
-                    root.setSig(newUser);
-                    newUser.setAnt(root);
-                    end = newUser;
-                
-                    writeUser(newUser);
+                if(searchUser(userName)!=null){
+                     end.setSig(newUser);
+                    newUser.setAnt(end);
+                    end=newUser;
+                    root.setAnt(end);
+                    end.setSig(root);
                     return true;
                 }
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Format wrong mail format!!!");
             return false;
         }
         return false;
-       
+
     }
 
     public boolean isValidEmailAddress(String email)
@@ -62,79 +67,96 @@ public class Methods
         return m.matches();
     }
 
-    public boolean writeUser(User newUser) // Methods to save users in binaryfile
+    public void writeUser() // Methods to save users in binaryfile
     {
-        try 
-        {
-            FileOutputStream fileOut = new FileOutputStream(namefile);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            if(readUser(newUser.getUserName())==null){
-            if(newUser.getUserName() !=null){
-            objectOut.writeObject(newUser);
-            objectOut.close();
-            System.out.println("finalizado");
-            
+        User reco = root;
+        FileOutputStream file = null;
+        ObjectOutputStream output = null;
+        do {
+            try {
+                file = new FileOutputStream(namefile, true);
+                output = new ObjectOutputStream(file);
+                output.writeObject(reco);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            } finally {
+                if (file != null) {
+                    try {
+                        file.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (output != null) {
+                    try {
+                        file.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
             }
-            }
-        }
+          reco=reco.getSig();
+        }while(reco!=root);
         
-        catch (FileNotFoundException e) 
-        {
-            System.out.println("¡El fichero no existe!");
-        } catch (IOException e) 
-        {
-            System.out.println("Exepcion 1");
-            return true;
-        } catch (Exception e) 
-        {
-            System.out.println("Exepcion 2");
-            System.out.println(e.getMessage());
-        }
-        return false;
+    
+    
+}
+
+//<editor-fold desc="getter and setter" defaultstate="collapsed">
+public ImageIcon getIcon()
+    {
+        return icon;
     }
 
+    public void setIcon(ImageIcon icon)
+    {
+        this.icon = icon;
+    }
+//</editor-fold>
 
-    public User readUser(String userName)
-    { // Methods to read users in binaryfile and return object user
-       User aux;
+    public void chargeUsers()
+    {
         try {
-            FileInputStream inFile = new FileInputStream(namefile);
-            ObjectInputStream inObject = new ObjectInputStream(inFile);
-            
-            aux = (User)inObject.readObject();
-            boolean reco=true;
-            while(reco){
-                if(aux.getUserName()==null){
-                    System.out.println("No existe");
-                    reco=false;
-                }else{
-                if(aux.getUserName().equals(userName)){
-                    inObject.close();
-                   System.out.println("Son iguales");
-                    return aux;
-                }else{
-                    System.out.println("Recorriendo");
-                    System.out.println("Nombre de usuario: "+userName);
-                    System.out.println(aux.getUserName());
-                    aux = aux.getAnt();
-                }
-            }}
-            // se leen dos objetos de la clase Persona
-//            Persona p1 = (Persona)objetoEntrada.readObject();
-//            Persona p2 = (Persona)objetoEntrada.readObject();
-            // se cierra el flujo de objetos objetoEntrada
-            inObject.close();
+            FileInputStream saveFile = new FileInputStream(namefile);
+            ObjectInputStream save;
+            try {
+                save = new ObjectInputStream(saveFile);
+                end = (User) save.readObject();
+            } catch (EOFException e) {
+                //e.printStackTrace();
+            }
+            saveFile.close();
+        } catch (Exception exc) {
+        }
+        //
 
-            } catch (FileNotFoundException e) {
-            System.out.println("¡El fichero no existe!");
-            } catch (IOException e) {
-                System.out.println("Exepcion 1");
-                
-            } catch (Exception e) {
-            System.out.println("Exepcion 2");
-   
-            };
-        return null;
+        if (end != null) {
+            User reco = end;
+            do{
+                 reco = reco.getAnt();
+            }
+            while (reco!= end) ;
+               
+            
+            root = reco;
+        }
+    }
+
+    public User searchUser(String userName)
+    {
+        if(end==null){
+            return null;
+        }else{
+            User searchUser=end;
+            do{
+                if(searchUser.getUserName().equals(userName)){
+                    return searchUser;
+                }
+                searchUser= searchUser.getAnt();
+            }while(searchUser!=end);
+            return null;
+        }
     }
 
 }

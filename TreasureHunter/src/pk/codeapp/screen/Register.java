@@ -5,6 +5,9 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -20,19 +23,22 @@ public class Register extends javax.swing.JFrame
 
     Methods methods;
     JFrame afterWindows;
-
+      ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
     /**
      * Creates new form TH_register
      */
     public Register()
     {
-
+          
     }
 
     {
         initComponents();
     }
-
+ public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
+        return retValue;
+    }
     /**
      * Receives the previous window and the method object that is filled
      *
@@ -80,7 +86,9 @@ public class Register extends javax.swing.JFrame
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Register");
         setBackground(new java.awt.Color(255, 202, 40));
+        setIconImage(getIconImage());
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -205,7 +213,7 @@ public class Register extends javax.swing.JFrame
           // TODO add your handling code here:
         if (txtEmail.getText().isEmpty()|| txtNombre.getText().isEmpty()|| 
                 txtPassword.getText().isEmpty()|| txtUserName.getText().isEmpty()||(rbnAdministrador.isSelected()==false&&rbnPlayer.isSelected()==false)){
-            JOptionPane.showMessageDialog(rootPane,"Don't leave spaces in blank","Warning",WARNING_MESSAGE );
+            JOptionPane.showMessageDialog(rootPane,"Don't leave spaces in blank","Warning",WARNING_MESSAGE,this.icon );
       
         }
         else{
@@ -228,7 +236,7 @@ public class Register extends javax.swing.JFrame
              afterWindows.setVisible(true);
             dispose();}
             else{
-                 JOptionPane.showMessageDialog(rootPane,"Error adding user","Warning",INFORMATION_MESSAGE  );
+                 JOptionPane.showMessageDialog(rootPane,"Error adding user","Warning",WARNING_MESSAGE,this.icon  );
                 
             }
         }
