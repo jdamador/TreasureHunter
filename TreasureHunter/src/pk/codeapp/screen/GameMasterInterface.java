@@ -8,6 +8,7 @@ package pk.codeapp.screen;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import pk.codeapp.methods.Methods;
 
 /**
@@ -46,8 +47,7 @@ public class GameMasterInterface extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -56,6 +56,12 @@ public class GameMasterInterface extends javax.swing.JFrame
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtFunction = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        cmbColor = new javax.swing.JComboBox<>();
+        btnAddFunction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Game Master");
@@ -65,10 +71,8 @@ public class GameMasterInterface extends javax.swing.JFrame
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
@@ -85,10 +89,8 @@ public class GameMasterInterface extends javax.swing.JFrame
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 520, -1, -1));
 
         jButton3.setText(">>");
-        jButton3.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
@@ -96,6 +98,42 @@ public class GameMasterInterface extends javax.swing.JFrame
 
         jButton4.setText("End");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 520, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Color:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Create function");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
+
+        txtFunction.setBackground(new java.awt.Color(0, 0, 0));
+        txtFunction.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtFunction.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtFunction, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 270, 50));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Function:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        cmbColor.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        cmbColor.setForeground(new java.awt.Color(255, 255, 255));
+        cmbColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "blue", "red", "green", "yellow", "orange", "pink", "magenta", "cyan" }));
+        getContentPane().add(cmbColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 250, 40));
+
+        btnAddFunction.setBackground(new java.awt.Color(0, 0, 0));
+        btnAddFunction.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnAddFunction.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddFunction.setText("Add Function");
+        btnAddFunction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddFunctionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAddFunction, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,6 +152,22 @@ public class GameMasterInterface extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void btnAddFunctionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFunctionActionPerformed
+        addFunction();
+    }//GEN-LAST:event_btnAddFunctionActionPerformed
+    private void addFunction(){
+        String colorFunction = (String)cmbColor.getSelectedItem();
+        if(txtFunction.getText().isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "Do not leave blanks !!! ");
+        }else{
+            String name = txtFunction.getText();
+            if(methods.addFunction(name, colorFunction))
+                 JOptionPane.showMessageDialog(rootPane, "Be added successfully ");
+            else{
+                 JOptionPane.showMessageDialog(rootPane, "Error !!! ");
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -155,11 +209,17 @@ public class GameMasterInterface extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> Users;
+    private javax.swing.JButton btnAddFunction;
     private javax.swing.JButton btnBack;
+    private javax.swing.JComboBox<String> cmbColor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtFunction;
     // End of variables declaration//GEN-END:variables
 }

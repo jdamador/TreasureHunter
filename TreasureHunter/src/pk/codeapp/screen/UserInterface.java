@@ -36,8 +36,7 @@ public class UserInterface extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Games = new javax.swing.JList<>();
@@ -66,10 +65,8 @@ public class UserInterface extends javax.swing.JFrame
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 650, 107, -1));
 
         jButton2.setText("Play");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
@@ -83,10 +80,8 @@ public class UserInterface extends javax.swing.JFrame
 
         jButton4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jButton4.setText("Editar Perfil");
-        jButton4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
@@ -105,10 +100,8 @@ public class UserInterface extends javax.swing.JFrame
         getContentPane().add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jButton5.setText("Back");
-        jButton5.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
@@ -118,6 +111,11 @@ public class UserInterface extends javax.swing.JFrame
         getContentPane().add(btnPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 250, 60));
 
         btnCreateWorld.setText("Create Board");
+        btnCreateWorld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateWorldActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCreateWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 250, 60));
 
         pack();
@@ -143,6 +141,10 @@ public class UserInterface extends javax.swing.JFrame
         // TODO add your handling code here:
         goBack();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnCreateWorldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWorldActionPerformed
+        
+    }//GEN-LAST:event_btnCreateWorldActionPerformed
 
     /**
      * @param args the command line arguments
