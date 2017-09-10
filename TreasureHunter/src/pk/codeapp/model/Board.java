@@ -12,7 +12,6 @@ package pk.codeapp.model;
 public class Board {
     private int posX;
     private int posY;
-    private Function fuction;
     // missing functions
     private Board sig, ant;
     
@@ -53,14 +52,5 @@ public class Board {
     public void setAnt(Board ant) {
         this.ant = ant;
     }
-
-    public Function getFuction() {
-        return fuction;
-    }
-
-    public void setFuction(Function fuction) {
-        this.fuction = fuction;
-    }
-    
     
 }

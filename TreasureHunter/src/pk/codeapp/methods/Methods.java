@@ -7,13 +7,15 @@ package pk.codeapp.methods;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import pk.codeapp.model.Function;
 import pk.codeapp.model.User;
 
 /**
@@ -26,7 +28,7 @@ public class Methods
     private User root, end;
     private User newUser;
     private String namefile = "user.ser";
-    private Function rootFunction;
+
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
 
     public boolean add_User(String name, String userName, String email, String password, String rol)
@@ -154,17 +156,6 @@ public ImageIcon getIcon()
                 searchUser= searchUser.getAnt();
             }while(searchUser!=end);
             return null;
-        }
-    }
-    public boolean addFunction(String name,String color){
-        Function newFunction = new Function(name,color);
-        if(rootFunction==null){
-            rootFunction = newFunction;
-            return true;
-        }else{
-            newFunction.setSig(rootFunction);
-            rootFunction = newFunction;
-            return true;
         }
     }
 
