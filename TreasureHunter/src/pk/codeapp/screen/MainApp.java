@@ -8,8 +8,6 @@ package pk.codeapp.screen;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -31,16 +29,7 @@ public class MainApp extends javax.swing.JFrame
     public MainApp()
     {
         initComponents();
-        methods.chargeUsers();
-        this.addWindowListener(new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent evt)
-            {
-                
-                methods.writeUser();
-                System.exit(0);
-            }
-        });
+       
 
     }
 
@@ -300,20 +289,20 @@ public class MainApp extends javax.swing.JFrame
     // End of variables declaration//GEN-END:variables
 public void login()
     {
-        
+         methods.chargeUsers();
+         methods.writeUser();
         String userName = txtUserName.getText();
         User askUser = methods.searchUser(userName);
         if (askUser != null) {
             String password = txtPassword.getText();
             if (askUser.getPassword().equals(password)) {
-                methods.setActualUser(askUser);
-                if (askUser.getRol().equals("GameMaster")) {
-                    GameMasterInterface gm = new GameMasterInterface();
-                    gm.openWindows(this, methods);
-                } else {
-                    UserInterface ui = new UserInterface();
-                    ui.openWindows(this, methods);
-                }
+                    if(askUser.getRol().equals("GameMaster")){
+                        GameMasterInterface gm = new GameMasterInterface();
+                        gm.openWindows(this, methods);
+                    }else{
+                        UserInterface ui= new UserInterface();
+                        ui.openWindows(this, methods, askUser);
+                    }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Password invalid!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
             }

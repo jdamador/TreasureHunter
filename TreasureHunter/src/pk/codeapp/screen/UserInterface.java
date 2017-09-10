@@ -5,8 +5,6 @@
  */
 package pk.codeapp.screen;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.User;
@@ -19,7 +17,7 @@ public class UserInterface extends javax.swing.JFrame
 {
         Methods methods;
         JFrame afterWindows;
-     
+        User actualUser;
     /**
      * Creates new form UserInterface
      */
@@ -27,15 +25,6 @@ public class UserInterface extends javax.swing.JFrame
     {
         initComponents();
         this.setLocationRelativeTo(null);
-         this.addWindowListener(new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent evt)
-            {
-                
-                methods.writeUser();
-                System.exit(0);
-            }
-        });
         
        
     }
@@ -144,7 +133,7 @@ public class UserInterface extends javax.swing.JFrame
         // TODO add your handling code here:
         EditUser editUser = new EditUser();
         
-        editUser.openWindows(this, methods);
+        editUser.openWindows(this, actualUser, methods);
     
         
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -198,22 +187,22 @@ public class UserInterface extends javax.swing.JFrame
          afterWindows.setVisible(true);
             dispose();
     }
-     public void openWindows(JFrame afterWindows, Methods methods)
+     public void openWindows(JFrame afterWindows, Methods methods, User actualUser)
     {
         this.methods = methods;
         this.setVisible(true);
         this.afterWindows=afterWindows;
         afterWindows.setVisible(false);
         this.setLocationRelativeTo(afterWindows);
-
+        this.actualUser=actualUser;
         chargeData();
          
 
     }
     public void chargeData(){
-        this.lblEmail.setText("Email: "+methods.getActualUser().getEmail());
-         this.lblUsername.setText("Username: "+methods.getActualUser().getUserName());
-        this. lblName.setText("Name: "+methods.getActualUser().getName());
+        this.lblEmail.setText("Email: "+actualUser.getEmail());
+         this.lblUsername.setText("Username: "+actualUser.getUserName());
+        this. lblName.setText("Name: "+actualUser.getName());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> Games;
