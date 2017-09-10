@@ -6,7 +6,20 @@
 package pk.codeapp.methods;
 
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+import java.io.FileOutputStream;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+=======
+>>>>>>> Stashed changes
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -14,6 +27,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+<<<<<<< Updated upstream
+=======
+>>>>>>> parent of 62cd275... Add create table
+>>>>>>> Stashed changes
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import pk.codeapp.model.User;
@@ -27,7 +44,16 @@ public class Methods
 
     private User root, end;
     private User newUser;
+<<<<<<< HEAD
+    private User actualUser;
+    
+    private File userFile = new File("src/pk/codeapp/tools/user.ser");
+=======
     private String namefile = "user.ser";
+<<<<<<< Updated upstream
+=======
+>>>>>>> parent of 62cd275... Add create table
+>>>>>>> Stashed changes
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
 
@@ -39,13 +65,13 @@ public class Methods
                 root = end = newUser;
                 end.setSig(newUser);
                 root.setAnt(end);
-                
+
                 return true;
             } else {
-                if(searchUser(userName)!=null){
-                     end.setSig(newUser);
+                if (searchUser(userName) == null) {
+                    end.setSig(newUser);
                     newUser.setAnt(end);
-                    end=newUser;
+                    end = newUser;
                     root.setAnt(end);
                     end.setSig(root);
                     return true;
@@ -59,22 +85,27 @@ public class Methods
 
     }
 
-    public boolean isValidEmailAddress(String email)
+    public boolean isValidEmailAddress(String email)  // email format checker
     {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"; // Email Pattern 
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern); // Compile Email
-        java.util.regex.Matcher m = p.matcher(email); // Check for that same pattern
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern); 
+        java.util.regex.Matcher m = p.matcher(email); 
         return m.matches();
     }
 
     public void writeUser() // Methods to save users in binaryfile
     {
+        if (userFile.exists()) {
+            userFile.delete();
+            System.out.println("Deleted");
+        }
+
         User reco = root;
         FileOutputStream file = null;
         ObjectOutputStream output = null;
         do {
             try {
-                file = new FileOutputStream(namefile, true);
+                file = new FileOutputStream(userFile, true);
                 output = new ObjectOutputStream(file);
                 output.writeObject(reco);
             } catch (Exception ex) {
@@ -96,15 +127,13 @@ public class Methods
 
                 }
             }
-          reco=reco.getSig();
-        }while(reco!=root);
-        
-    
-    
-}
+            reco = reco.getSig();
+        } while (reco != root);
+
+    }
 
 //<editor-fold desc="getter and setter" defaultstate="collapsed">
-public ImageIcon getIcon()
+    public ImageIcon getIcon()
     {
         return icon;
     }
@@ -115,10 +144,11 @@ public ImageIcon getIcon()
     }
 //</editor-fold>
 
-    public void chargeUsers()
+    public void chargeUsers() // method that chage user from binary file
     {
+
         try {
-            FileInputStream saveFile = new FileInputStream(namefile);
+            FileInputStream saveFile = new FileInputStream(userFile);
             ObjectInputStream save;
             try {
                 save = new ObjectInputStream(saveFile);
@@ -133,30 +163,52 @@ public ImageIcon getIcon()
 
         if (end != null) {
             User reco = end;
-            do{
-                 reco = reco.getAnt();
-            }
-            while (reco!= end) ;
-               
-            
+            do {
+                reco = reco.getAnt();
+            } while (reco != end);
+
             root = reco;
         }
     }
 
     public User searchUser(String userName)
     {
-        if(end==null){
+        if (end == null) {
             return null;
-        }else{
-            User searchUser=end;
-            do{
-                if(searchUser.getUserName().equals(userName)){
+        } else {
+            User searchUser = end;
+            do {
+                if (searchUser.getUserName().equals(userName)) {
                     return searchUser;
                 }
-                searchUser= searchUser.getAnt();
-            }while(searchUser!=end);
+                searchUser = searchUser.getAnt();
+            } while (searchUser != end);
             return null;
         }
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    public void updateUser(String name, String Username, String Password, String email){
+      actualUser.setEmail(email);
+      actualUser.setName(name);
+      actualUser.setPassword(Password);
+      actualUser.setUserName(Username);
+      
+    }
+    
+    public User getActualUser()
+    {
+        return actualUser;
+    }
+=======
+>>>>>>> parent of 62cd275... Add create table
+>>>>>>> Stashed changes
 
+    public void setActualUser(User actualUser)
+    {
+        this.actualUser = actualUser;
+    }
+    
+    
 }
