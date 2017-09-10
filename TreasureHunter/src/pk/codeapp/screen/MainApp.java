@@ -13,24 +13,29 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.User;
+
 /**
  *
  * @author Jose Pablo Brenes
  */
+public class MainApp extends javax.swing.JFrame
+{
 
-public class MainApp extends javax.swing.JFrame {
-    Methods methods= new Methods();
-    static User actualUser;
-    ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
+    Methods methods = new Methods();
+
     /**
      * Creates new form TH_Main
      */
-    public MainApp() {
+    public MainApp()
+    {
         initComponents();
        
+
     }
+
     @Override
-  public Image getIconImage() {
+    public Image getIconImage()
+    {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
         return retValue;
     }
@@ -184,7 +189,7 @@ public class MainApp extends javax.swing.JFrame {
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 650, 250, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/treasurehunter.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 810, 710));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -194,60 +199,47 @@ public class MainApp extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRegisterActionPerformed
     {//GEN-HEADEREND:event_btnRegisterActionPerformed
-       
+
         //Create the conection with  Register class 
-         Register registerWindows = new Register(); 
-       // Call the method that open the new windows and close this 
-         registerWindows.openWindows(this, methods);
-         
+        Register registerWindows = new Register();
+        // Call the method that open the new windows and close this 
+        registerWindows.openWindows(this, methods);
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        verifyLogin();
+        login();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtUserNameKeyPressed
     {//GEN-HEADEREND:event_txtUserNameKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-            verifyLogin();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
         }
     }//GEN-LAST:event_txtUserNameKeyPressed
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtPasswordKeyPressed
     {//GEN-HEADEREND:event_txtPasswordKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-            verifyLogin();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
         }
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     private void btnLoginKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnLoginKeyPressed
     {//GEN-HEADEREND:event_btnLoginKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-            verifyLogin();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
         }
     }//GEN-LAST:event_btnLoginKeyPressed
-    private boolean checkLogin(String userName,String password){
-        User recoUser = methods.readUser(userName);
 
-        while(recoUser!=null){
-            if(recoUser.getUserName().equals(userName) && recoUser.getPassword().equals(password)){
-                actualUser=recoUser;//set actual user for check privilages
-                return true;
-            }
-            else{
-                    return false;
-            }
-                
-        }
-      return false;
-    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -273,34 +265,15 @@ public class MainApp extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new MainApp().setVisible(true);
             }
         });
     }
-     public void cleanLogin(){
-          txtUserName.setText("");
-        txtPassword.setText("");
-     }
-     public void verifyLogin(){
-     String userName = txtUserName.getText();
-        String password = txtPassword.getText();
-        if(checkLogin(userName,password)){
-            if(actualUser.getRol().equals("GameMaster")){
-                cleanLogin();
-                GameMasterInterface gmInterface= new GameMasterInterface();
-                gmInterface.openWindows(this, methods);
-            }
-            else{
-                UserInterface userInterface = new UserInterface();
-                userInterface.openWindows(this, methods,actualUser);
-            }
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Failed to login\n"
-                    + "The user or password is invalid.....  ","Warning",INFORMATION_MESSAGE, this.icon);
-        }
-     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
@@ -314,4 +287,27 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+public void login()
+    {
+         methods.chargeUsers();
+         methods.writeUser();
+        String userName = txtUserName.getText();
+        User askUser = methods.searchUser(userName);
+        if (askUser != null) {
+            String password = txtPassword.getText();
+            if (askUser.getPassword().equals(password)) {
+                    if(askUser.getRol().equals("GameMaster")){
+                        GameMasterInterface gm = new GameMasterInterface();
+                        gm.openWindows(this, methods);
+                    }else{
+                        UserInterface ui= new UserInterface();
+                        ui.openWindows(this, methods, askUser);
+                    }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Password invalid!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+        }
+    }
 }
