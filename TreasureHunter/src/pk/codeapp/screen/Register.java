@@ -7,6 +7,8 @@ package pk.codeapp.screen;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,11 +31,16 @@ public class Register extends javax.swing.JFrame
      */
     public Register()
     {
-          
-    }
-
-    {
         initComponents();
+         this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent evt)
+            {
+                
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
     }
  public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));

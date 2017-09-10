@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.User;
@@ -15,26 +17,33 @@ import pk.codeapp.model.User;
  */
 public class EditUser extends javax.swing.JFrame
 {
-    private JFrame afterWindows ;
-    
+
+    private JFrame afterWindows;
+
     private Methods methods;
-    private User user;
+    
+
     /**
      * Creates new form EditUser
      */
     public EditUser()
     {
         initComponents();
+        this.setLocationRelativeTo(afterWindows);
+        
+
     }
-    public void openWindows(JFrame frame,User user,Methods methods){
-        this.afterWindows=frame;
-        this.methods=methods;
-        this.user= user;
-        txtEmail.setText(user.getEmail());
-        txtName.setText(user.getName());
-        txtUsename.setText(user.getUserName());
+
+    public void openWindows(JFrame frame,Methods methods)
+    {
+        this.afterWindows = frame;
+        this.methods = methods;
+        
+        txtEmail.setText(methods.getActualUser().getEmail());
+        txtName.setText(methods.getActualUser().getName());
+        txtUsename.setText(methods.getActualUser().getUserName());
         this.setVisible(true);
-       
+
     }
 
     /**
@@ -61,6 +70,7 @@ public class EditUser extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
+        setUndecorated(true);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Webp.net-resizeimage (1).png"))); // NOI18N
 
@@ -199,17 +209,17 @@ public class EditUser extends javax.swing.JFrame
             }
         });
     }
-    
-    public void goBack(){
+
+    public void goBack()
+    {
         afterWindows.setVisible(true);
-            dispose();
+        dispose();
     }
-    public void updateChanges(){
-      user.setEmail(txtEmail.getText());
-      user.setName(txtName.getText());
-      user.setUserName(txtUsename.getText());
-      user.setPassword(txtPassword.getText());
-      
+
+    public void updateChanges()
+    {
+        methods.updateUser(txtName.getText(),txtUsename.getText(),txtPassword.getText(),txtEmail.getText());
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
