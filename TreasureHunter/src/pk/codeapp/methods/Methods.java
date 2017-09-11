@@ -196,6 +196,10 @@ public class Methods
             rootFunction = newFunction;
             return true;
         }
-        
     }
+
+    public Function getRootFunction() {
+        return rootFunction;
+    }
+    
 }

@@ -7,10 +7,14 @@ package pk.codeapp.screen;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import pk.codeapp.methods.DrawSurface;
+import pk.codeapp.methods.Methods;
+import pk.codeapp.model.Board;
 
 /**
  *
@@ -31,11 +35,15 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
     private static int COLUMNS = 10, ROW = 10, SIDE = 80;
     private static int column;
     private static int row;
+    private static int columnAux=-1;
+    private static int rowAux=-1;
     private static boolean activateMouse;
-    private static String methods;
+    private static String nameMethod;
+    private static Methods met;
 
     public CreateGame(String nombre) {
         initComponents();
+        this.met = met;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(nombre);
         this.setResizable(false);
@@ -98,6 +106,11 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon("E:\\Segundo Semestre 2017\\Estructuras\\Treasure Hunter\\TreasureHunter\\TreasureHunter\\src\\pk\\codeapp\\tools\\Linkening.png")); // NOI18N
         jButton1.setToolTipText("Click first picture to start linking after click second picture to final linkening");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -169,8 +182,14 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
 
     private void btnDrawMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDrawMouseClicked
         activateMouse=true;
-        methods = "paint";
+        nameMethod = "paint";
+        
     }//GEN-LAST:event_btnDrawMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        activateMouse=true;
+        nameMethod = "linkening";
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -183,9 +202,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
             System.out.println("Entro en el mouse");
             if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) { // verify that the mouse is inside the superficie
                 System.out.println("Esta en el rango");
-                switch(methods){
-                    case("paint"):
-                        paintFrame();
+                switch(nameMethod){
+                    case("paint"):paintFrame();
+                   
+                        
                 }
                 
             }
@@ -209,12 +229,13 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        System.out.println("Salio");
+
     }
 
     public static void startGame() {
         xOffset = (widhtDS - (COLUMNS * SIDE)) / 2;
         yOffset = (heightSD - (ROW * SIDE)) / 2;
+        met = new Methods();
         iteratorLoop();
     }
 
@@ -236,9 +257,38 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
             if (column >= 0 && row >= 0) {
                 System.out.println("Columna: " + column);
                 System.out.println("Fila: " + row);
-                drawSurface.paintFrame(column, row);
+                jumpAuxConsult();
+                if(columnAux == -1){
+                if(met.addBoard(column, ROW, met.getPointerAux())){ 
+                    columnAux=column;
+                    rowAux=row;
+                    JOptionPane.showConfirmDialog(drawSurface, "Successful !!");
+                }
+            }else{
+                    if(checkPosition()){
+                        met.addBoard(column, ROW, met.getPointerAux());
+                        columnAux=column;
+                        rowAux=row;
+                        JOptionPane.showConfirmDialog(drawSurface, "Successful !!");}
+                    else{
+                        JOptionPane.showConfirmDialog(drawSurface,"can not link !!! ");
+                    }
+                }
+              Color color = met.getColor();
+              drawSurface.paintFrame(column, row,color);
             }
         }
+    }
+    private static boolean checkPosition(){
+        if(column+1 == columnAux || column-1 == columnAux && row+1 == rowAux || row-1 == rowAux)
+            return true;
+        else{
+        return false;}
+    }
+    private static void jumpAuxConsult(){
+        windowsAuxConsult auxConsult = new windowsAuxConsult();
+        auxConsult.setVisible(true);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

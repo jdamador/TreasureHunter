@@ -1,6 +1,7 @@
 package pk.codeapp.methods;
 
 import java.awt.Canvas;
+import java.awt.Color;
 
 import java.awt.Graphics;
 
@@ -47,7 +48,7 @@ public class DrawSurface extends Canvas
         g.dispose();
         buffer.show();
     }
-    public void paintFrame(int column,int row){
+    public void paintFrame(int column,int row,Color color){
         bufferPaint = getBufferStrategy();
         if (buffer == null) {
             createBufferStrategy(2);
@@ -55,14 +56,15 @@ public class DrawSurface extends Canvas
         }
 
         g = buffer.getDrawGraphics();
-        //Dibujar Aqui
-         picture.drawPeric(new Dupla(column,row),g);
+        //Dibujar Aquiw
+        Dupla newDupla= new Dupla(column,row);
+         picture.drawPeric(color,newDupla,g);
         
         g.dispose();
         buffer.show();
        
     }
-
+    
     public int getWidht() {
         return widht;
     }

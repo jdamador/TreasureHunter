@@ -33,8 +33,8 @@ public class Picture
         return new Dupla(x,y);
     }
     
-    public void drawPeric(Dupla pos, Graphics g){
-        g.setColor(Color.red);
+    public void drawPeric(Color color,Dupla pos,Graphics g){
+        g.setColor(color);
         g.fillRect((int)calculatePosition(pos).posX,(int)calculatePosition(pos).posY, size, size);    
     }
 }

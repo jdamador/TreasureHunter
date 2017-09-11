@@ -8,7 +8,6 @@ package pk.codeapp.screen;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
-import pk.codeapp.methods.ControlCreateTable;
 import pk.codeapp.methods.Methods;
 
 /**
@@ -159,13 +158,12 @@ public class UserInterface extends javax.swing.JFrame
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnCreateWorldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWorldActionPerformed
-
+        this.setVisible(false);
+        ControlCreateTable.main(new String[0]);
     }//GEN-LAST:event_btnCreateWorldActionPerformed
 
     private void btnCreateWorldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreateWorldMouseClicked
-       this.setVisible(false);
-        String[] args = {};
-        ControlCreateTable.main(args);
+       
     }//GEN-LAST:event_btnCreateWorldMouseClicked
 
     /**
