@@ -12,15 +12,25 @@ package pk.codeapp.model;
 public class Board {
     private int posX;
     private int posY;
+    private Function function;
     // missing functions
     private Board sig, ant;
     
-    public Board(int posX,int posY){
+    public Board(int posX,int posY,Function function){
         this.posX=posX;
         this.posY=posY;
+        this.function=function;
         sig=ant=null;
     }
 
+    public Function getFunction() {
+        return function;
+    }
+
+    public void setFunction(Function function) {
+        this.function = function;
+    }
+    
     public int getPosX() {
         return posX;
     }

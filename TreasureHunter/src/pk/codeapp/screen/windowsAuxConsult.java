@@ -121,14 +121,6 @@ public class windowsAuxConsult extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddFunctionActionPerformed
     private Color getColor(String color){
         switch(color){
-//            blue
-//red
-//green
-//yellow
-//orange
-//pink
-//magenta
-//cyan
             case "red": return Color.red;
             case "green":return Color.green;
             case "yellow":return Color.yellow;

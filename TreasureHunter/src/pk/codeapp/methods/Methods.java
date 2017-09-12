@@ -5,6 +5,7 @@
  */
 package pk.codeapp.methods;
 
+import java.awt.Color;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +17,7 @@ import java.io.ObjectOutputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import pk.codeapp.model.Board;
 import pk.codeapp.model.Function;
 import pk.codeapp.model.User;
 
@@ -27,11 +29,12 @@ public class Methods
 {
 
     private User root, end;
+    private Board rootBoard,endBoard;
     private User newUser;
     private Function rootFunction=null;
-    
+    private Function pointerAux;
     private User actualUser;
-
+    private Color color;
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
@@ -184,7 +187,18 @@ public class Methods
     {
         this.actualUser = actualUser;
     }
-
+    public boolean addBoard(int column,int row,Function function){
+        Board newFrame = new Board(column,row,function);
+        if(rootBoard==null){
+            rootBoard = endBoard=newFrame;
+            return true;
+        }else{
+            newFrame.setSig(rootBoard);
+            rootBoard.setAnt(newFrame);
+            rootBoard=newFrame;
+            return true;
+        }
+    }
     public boolean addFunction(String name, String color)
     {
         Function  newFunction = new Function(name, color);
@@ -200,6 +214,22 @@ public class Methods
 
     public Function getRootFunction() {
         return rootFunction;
+    }
+
+    public Function getPointerAux() {
+        return pointerAux;
+    }
+
+    public void setPointerAux(Function pointerAux) {
+        this.pointerAux = pointerAux;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
     
 }
