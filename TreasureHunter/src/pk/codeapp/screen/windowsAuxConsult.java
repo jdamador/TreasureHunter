@@ -6,6 +6,7 @@
 package pk.codeapp.screen;
 
 import java.awt.Color;
+import javax.swing.JFrame;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.Function;
 
@@ -18,19 +19,24 @@ public class windowsAuxConsult extends javax.swing.JFrame {
     /**
      * Creates new form windowsAuxConsult
      */
-    String nameFuction;
-    String color;
-    Function fuction = new Function();
-    Function aux;
-    Methods met;
-   
-    public windowsAuxConsult() {
+    private String nameFuction;
+    private String color;
+    private Function fuction = new Function();
+    private Function aux;
+    private Methods met;
+    private JFrame afterWindows; 
+    public windowsAuxConsult(Methods met,JFrame frame) {
+        this.afterWindows=frame;
         met = new Methods();
         initComponents();
         aux = met.getRootFunction();
         while(aux!=null){
             cmbFunctions.addItem(aux.getFuctions());
             aux= aux.getSig();}
+    }
+
+    private windowsAuxConsult() {
+        
     }
 
     /**
@@ -50,7 +56,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(92, 107, 192));
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,6 +123,8 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         this.color = color;
         Color colorFrame = getColor(color);
         met.setColor(colorFrame);
+        met.setActivePaint(true);
+        afterWindows.enable(true);
         dispose();
     }//GEN-LAST:event_btnAddFunctionActionPerformed
     private Color getColor(String color){

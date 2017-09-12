@@ -8,8 +8,11 @@ package pk.codeapp.screen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pk.codeapp.methods.DrawSurface;
@@ -20,11 +23,13 @@ import pk.codeapp.model.Board;
  *
  * @author Jose Pablo Brenes
  */
-public class CreateGame extends javax.swing.JFrame implements MouseListener {
+public class CreateGame extends javax.swing.JFrame implements MouseListener,Runnable{
 
     /**
      * Creates new form Pantalla
      */
+    private boolean running; 
+    private Thread thread;
     private static DrawSurface drawSurface;
     private static int posXMouse;
     private static int posYMouse;
@@ -35,27 +40,22 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
     private static int COLUMNS = 10, ROW = 10, SIDE = 80;
     private static int column;
     private static int row;
-    private static int columnAux=-1;
-    private static int rowAux=-1;
-    private static boolean activateMouse;
+    private  int columnAux=-1;
+    private  int rowAux=-1;
+    private  boolean activateMouse;
     private static String nameMethod;
-    private static Methods met;
+    private static Methods methods;
 
-    public CreateGame(String nombre) {
+    public CreateGame(String nombre,Methods methods) {
         initComponents();
-        this.met = met;
+        this.methods = methods;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(nombre);
         this.setResizable(false);
         this.setLayout(new BorderLayout());
-        drawSurface = new DrawSurface(widhtDS, heightSD);
-        this.drawSurface = drawSurface;
-        this.add(drawSurface);
-        drawSurface.addMouseListener(this);
-        addMouseListener(this);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        startGame();
+        start();
     }
     
     /**
@@ -231,26 +231,11 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
-
-    public static void startGame() {
-        xOffset = (widhtDS - (COLUMNS * SIDE)) / 2;
-        yOffset = (heightSD - (ROW * SIDE)) / 2;
-        met = new Methods();
-        iteratorLoop();
-    }
-
-    public static void iteratorLoop() {
-        while (true) {
-            update();
-           
-        }
-    }
-
-    public static void update() {
+    public  void update() {
         drawSurface.paint();
     }
 
-    public static void paintFrame() {
+    public  void paintFrame() {
         if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) {
             column = (posXMouse - xOffset) / SIDE;
             row = (posYMouse - yOffset) / SIDE;
@@ -258,15 +243,16 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
                 System.out.println("Columna: " + column);
                 System.out.println("Fila: " + row);
                 jumpAuxConsult();
+                if(methods.getActivePaint()){
                 if(columnAux == -1){
-                if(met.addBoard(column, ROW, met.getPointerAux())){ 
+                if(methods.addBoard(column, ROW, methods.getPointerAux())){ 
                     columnAux=column;
                     rowAux=row;
                     JOptionPane.showConfirmDialog(drawSurface, "Successful !!");
                 }
             }else{
                     if(checkPosition()){
-                        met.addBoard(column, ROW, met.getPointerAux());
+                        methods.addBoard(column, ROW, methods.getPointerAux());
                         columnAux=column;
                         rowAux=row;
                         JOptionPane.showConfirmDialog(drawSurface, "Successful !!");}
@@ -274,21 +260,23 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
                         JOptionPane.showConfirmDialog(drawSurface,"can not link !!! ");
                     }
                 }
-              Color color = met.getColor();
+              Color color = methods.getColor();
               drawSurface.paintFrame(column, row,color);
+            }
             }
         }
     }
-    private static boolean checkPosition(){
+    private  boolean checkPosition(){
         if(column+1 == columnAux || column-1 == columnAux && row+1 == rowAux || row-1 == rowAux)
             return true;
         else{
         return false;}
     }
-    private static void jumpAuxConsult(){
-        windowsAuxConsult auxConsult = new windowsAuxConsult();
+    private  void jumpAuxConsult(){
+       this.enable(false);
+        windowsAuxConsult auxConsult = new windowsAuxConsult(methods,this);
+        auxConsult.setLocationRelativeTo(null);
         auxConsult.setVisible(true);
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -301,4 +289,51 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+    private void init(){
+        drawSurface = new DrawSurface(widhtDS, heightSD);
+        this.drawSurface = drawSurface;
+        this.add(drawSurface);
+        drawSurface.addMouseListener(this);
+        addMouseListener(this);
+        xOffset = (widhtDS - (COLUMNS * SIDE)) / 2;
+        yOffset = (heightSD - (ROW * SIDE)) / 2;
+        methods = new Methods();
+    }
+    private void tick(){ // Variables
+        
+    }
+    private void render(){ // Graphics
+   
+        update();
+    }
+    @Override
+    public void run() {
+        
+        init();
+        while(running){
+         
+            tick();
+            render();
+        }
+        stop();
+    }
+    
+    public synchronized void start(){
+        System.out.println("Entro al start");
+        if(running)
+            return;
+        running = true;
+        thread = new Thread(this);
+        thread.start();
+    }
+    public synchronized void stop(){
+        if(!running)
+            return;
+        running = false;
+        try {
+            thread.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CreateGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

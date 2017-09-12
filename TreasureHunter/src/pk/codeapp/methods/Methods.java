@@ -36,6 +36,7 @@ public class Methods
     private User actualUser;
     private Color color;
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
+    private boolean activePaint;
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
 
@@ -125,7 +126,7 @@ public class Methods
         this.icon = icon;
     }
 //</editor-fold>
-
+    
     public void chargeUsers() // method that chage user from binary file
     {
 
@@ -230,6 +231,14 @@ public class Methods
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public boolean getActivePaint() {
+        return activePaint;
+    }
+
+    public void setActivePaint(boolean activePaint) {
+        this.activePaint = activePaint;
     }
     
 }

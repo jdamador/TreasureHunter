@@ -159,6 +159,8 @@ public class UserInterface extends javax.swing.JFrame
 
     private void btnCreateWorldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWorldActionPerformed
         this.setVisible(false);
+        ControlCreateTable aux = new ControlCreateTable();
+        aux.addMethod(methods);
         ControlCreateTable.main(new String[0]);
     }//GEN-LAST:event_btnCreateWorldActionPerformed
 

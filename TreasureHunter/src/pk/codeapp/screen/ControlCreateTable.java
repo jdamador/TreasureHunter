@@ -4,11 +4,13 @@ import pk.codeapp.methods.Methods;
 
 public class ControlCreateTable 
 {
-    static Methods met = new Methods();
+    private static Methods methods;
     private static CreateGame window;
-
+    public void addMethod(Methods met){
+        this.methods=met;
+    }
     public  static void main(String args[])
     {
-        window= new CreateGame("Create Map");
+        window= new CreateGame("Create Map",methods);
     }
 }
