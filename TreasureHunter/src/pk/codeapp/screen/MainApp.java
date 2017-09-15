@@ -23,14 +23,18 @@ import pk.codeapp.model.User;
 public class MainApp extends javax.swing.JFrame
 {
 
-    Methods methods = new Methods();
+   static  Methods methods = new Methods();
 
+   
     /**
      * Creates new form TH_Main
      */
     public MainApp()
     {
         initComponents();
+        methods.addFunction("Start","cyan");
+        methods.addFunction("End","magenta");
+        methods.addFunction("Empty","green");
         methods.chargeUsers();
         this.addWindowListener(new WindowAdapter()
         {
@@ -321,4 +325,5 @@ public void login()
             JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
         }
     }
+    
 }

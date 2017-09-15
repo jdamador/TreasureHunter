@@ -12,13 +12,15 @@ package pk.codeapp.model;
 public class Board {
     private int posX;
     private int posY;
+    private int numPosicion;
     private Function function;
     // missing functions
     private Board sig, ant;
     
-    public Board(int posX,int posY,Function function){
+    public Board(int posX,int posY,int numPosicion,Function function){
         this.posX=posX;
         this.posY=posY;
+        this.numPosicion=numPosicion;
         this.function=function;
         sig=ant=null;
     }
@@ -61,6 +63,14 @@ public class Board {
 
     public void setAnt(Board ant) {
         this.ant = ant;
+    }
+
+    public int getNumPosicion() {
+        return numPosicion;
+    }
+
+    public void setNumPosicion(int numPosicion) {
+        this.numPosicion = numPosicion;
     }
     
 }

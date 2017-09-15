@@ -17,7 +17,7 @@ import pk.codeapp.methods.Methods;
  */
 public class GameMasterInterface extends javax.swing.JFrame
 {
-    private Methods methods;
+    private Methods methods = MainApp.methods;
     private JFrame afterWindows;
     /**
      * Creates new form GameMasterInterface
@@ -25,6 +25,8 @@ public class GameMasterInterface extends javax.swing.JFrame
     public GameMasterInterface()
     {
         initComponents();
+       
+
     }
      public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
@@ -32,7 +34,7 @@ public class GameMasterInterface extends javax.swing.JFrame
     }
     public void openWindows(JFrame afterWindows, Methods methods)
     {
-        this.methods = methods;
+ 
         this.setVisible(true);
         this.afterWindows=afterWindows;
         afterWindows.setVisible(false);
@@ -161,7 +163,8 @@ public class GameMasterInterface extends javax.swing.JFrame
             JOptionPane.showMessageDialog(rootPane, "Do not leave blanks !!! ");
         }else{
             String name = txtFunction.getText();
-            cmbColor.setSelectedItem("");
+            System.out.println(name);
+            System.out.println(colorFunction);
             if(methods.addFunction(name, colorFunction)){
                  JOptionPane.showMessageDialog(rootPane, "Be added successfully ");
             }else{

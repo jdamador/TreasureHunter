@@ -5,7 +5,6 @@
  */
 package pk.codeapp.screen;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
@@ -23,41 +22,42 @@ import pk.codeapp.model.Board;
  *
  * @author Jose Pablo Brenes
  */
-public class CreateGame extends javax.swing.JFrame implements MouseListener,Runnable{
+public class CreateGame extends javax.swing.JFrame implements MouseListener, Runnable {
 
     /**
      * Creates new form Pantalla
      */
-    private boolean running; 
+    private boolean running;
     private Thread thread;
-    private static DrawSurface drawSurface;
-    private static int posXMouse;
-    private static int posYMouse;
-    private static int xOffset;
-    private static int yOffset;
-    private static int widhtDS = 800;
-    private static int heightSD = 800;
-    private static int COLUMNS = 10, ROW = 10, SIDE = 80;
-    private static int column;
-    private static int row;
-    private  int columnAux=-1;
-    private  int rowAux=-1;
-    private  boolean activateMouse;
-    private static String nameMethod;
-    private static Methods methods;
-
-    public CreateGame(String nombre,Methods methods) {
+    private  DrawSurface drawSurface;
+    private  int posXMouse;
+    private  int posYMouse;
+    private  int xOffset;
+    private  int yOffset;
+    private  int widhtDS = 800;
+    private  int heightSD = 800;
+    private  int COLUMNS = 10, ROW = 10, SIDE = 80;
+    private  int column;
+    private  int row;
+    private int columnAux = -1;
+    private int rowAux = -1;
+    private boolean activateMouse;
+    private  String nameMethod;
+    private Methods methods = MainApp.methods;
+    private int numPosition=0;
+    public CreateGame(String nombre, Methods methods) {
         initComponents();
-        this.methods = methods;
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(nombre);
+        this.getContentPane().setBackground(new Color(207, 216, 220));
         this.setResizable(false);
         this.setLayout(new BorderLayout());
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         start();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,10 +71,8 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener,Runn
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnDraw = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnDeleteFrame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1280, 800));
@@ -99,47 +97,34 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener,Runn
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Linking Pictures");
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon("E:\\Segundo Semestre 2017\\Estructuras\\Treasure Hunter\\TreasureHunter\\TreasureHunter\\src\\pk\\codeapp\\tools\\Linkening.png")); // NOI18N
-        jButton1.setToolTipText("Click first picture to start linking after click second picture to final linkening");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Delete Picture");
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon("E:\\Segundo Semestre 2017\\Estructuras\\Treasure Hunter\\TreasureHunter\\TreasureHunter\\src\\pk\\codeapp\\tools\\delete.png")); // NOI18N
+        btnDeleteFrame.setBackground(new java.awt.Color(0, 0, 0));
+        btnDeleteFrame.setIcon(new javax.swing.ImageIcon("E:\\Segundo Semestre 2017\\Estructuras\\Treasure Hunter\\TreasureHunter\\TreasureHunter\\src\\pk\\codeapp\\tools\\delete.png")); // NOI18N
+        btnDeleteFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteFrameMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
                             .addComponent(btnDraw, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel4)))
-                        .addGap(116, 116, 116))
+                            .addComponent(btnDeleteFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(126, 126, 126))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(152, 152, 152))))
@@ -153,15 +138,11 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener,Runn
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDraw, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(jLabel3)
-                .addGap(37, 37, 37)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel4)
                 .addGap(26, 26, 26)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(btnDeleteFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,27 +150,27 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener,Runn
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 835, Short.MAX_VALUE)
+                .addGap(0, 808, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDrawMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDrawMouseClicked
-        activateMouse=true;
+        activateMouse = true;
         nameMethod = "paint";
-        
+
     }//GEN-LAST:event_btnDrawMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        activateMouse=true;
-        nameMethod = "linkening";
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void btnDeleteFrameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteFrameMouseClicked
+        activateMouse = true;
+        nameMethod = "delete";
+    }//GEN-LAST:event_btnDeleteFrameMouseClicked
 
     /**
      * @param args the command line arguments
@@ -202,12 +183,11 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener,Runn
             System.out.println("Entro en el mouse");
             if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) { // verify that the mouse is inside the superficie
                 System.out.println("Esta en el rango");
-                switch(nameMethod){
-                    case("paint"):paintFrame();
-                   
-                        
+                if (nameMethod.equals("paint")) {
+                    paintFrame();
+                }else if(nameMethod.equals("delete")){
+                    deleteFrame();
                 }
-                
             }
         }
     }
@@ -231,11 +211,12 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener,Runn
     public void mouseExited(MouseEvent e) {
 
     }
-    public  void update() {
+
+    public void update() {
         drawSurface.paint();
     }
 
-    public  void paintFrame() {
+    public void paintFrame() {
         if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) {
             column = (posXMouse - xOffset) / SIDE;
             row = (posYMouse - yOffset) / SIDE;
@@ -243,53 +224,94 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener,Runn
                 System.out.println("Columna: " + column);
                 System.out.println("Fila: " + row);
                 jumpAuxConsult();
-                if(methods.getActivePaint()){
-                if(columnAux == -1){
-                if(methods.addBoard(column, ROW, methods.getPointerAux())){ 
-                    columnAux=column;
-                    rowAux=row;
-                    JOptionPane.showConfirmDialog(drawSurface, "Successful !!");
-                }
-            }else{
-                    if(checkPosition()){
-                        methods.addBoard(column, ROW, methods.getPointerAux());
-                        columnAux=column;
-                        rowAux=row;
-                        JOptionPane.showConfirmDialog(drawSurface, "Successful !!");}
-                    else{
-                        JOptionPane.showConfirmDialog(drawSurface,"can not link !!! ");
-                    }
-                }
-              Color color = methods.getColor();
-              drawSurface.paintFrame(column, row,color);
-            }
             }
         }
     }
-    private  boolean checkPosition(){
-        if(column+1 == columnAux || column-1 == columnAux && row+1 == rowAux || row-1 == rowAux)
-            return true;
-        else{
-        return false;}
+    public void deleteFrame(){
+         if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) {
+            column = (posXMouse - xOffset) / SIDE;
+            row = (posYMouse - yOffset) / SIDE;
+            if (column >= 0 && row >= 0) {
+                  deletePaintFrame(column,row);
+            }
+         }
     }
-    private  void jumpAuxConsult(){
-       this.enable(false);
-        windowsAuxConsult auxConsult = new windowsAuxConsult(methods,this);
+    public void deletePaintFrame(int column,int row){
+       drawSurface.deleteFrame(column, row);
+       deleteLinkening(column,row);
+    }
+    private void deleteLinkening(int column,int row){
+        Board reco = MainApp.methods.getRootBoard();
+        Board end = MainApp.methods.getEndBoard();
+        Board aux = reco.getSig();
+        if(reco.getPosX()==column && reco.getPosY()==row){ // Check the first position
+            MainApp.methods.setRootBoard(reco.getSig());
+            reco.setSig(null);
+            reco.setAnt(null);
+        }
+        if(end.getPosX()==column && end.getPosY()==row){// Check the last position
+            MainApp.methods.setEndBoard(end.getAnt());
+            end.setAnt(null);
+            end.setSig(null);            
+        }
+        while(reco!=end){    
+            if(reco.getPosX()==column && reco.getPosY()==row){
+                reco.getAnt().setSig(aux);
+                aux.setAnt(reco.getAnt());
+                reco.setAnt(null);
+                reco.setSig(null);
+            }
+            reco = reco.getSig();
+            aux = aux.getSig();
+        }
+    }
+    public void UpdatePaintFrame() {
+        if (MainApp.methods.getActivePaint()) {
+            System.out.println("Ejecutar Codigo");
+            paintSpecialFunction();
+            
+            if( paintSpecialFunction()==false){
+                numPosition+=1;
+                MainApp.methods.addBoard(column, ROW,numPosition, methods.getPointerAux());
+                columnAux = column;
+                rowAux = row;
+                Color color = MainApp.methods.getColor();
+                drawSurface.paintFrame(column, row, color,numPosition);
+                MainApp.methods.setActivePaint(false);
+            }
+        }MainApp.methods.setSpecialFunction("");
+    }
+    private boolean paintSpecialFunction(){
+        switch(MainApp.methods.getSpecialFunction()){
+            case "Start": MainApp.methods.addBoard(column, ROW,-1, methods.getPointerAux()); UpdateSpecialFrame(-1);return true;
+            case "End": MainApp.methods.addBoard(column, ROW,-2, methods.getPointerAux());UpdateSpecialFrame(-2); return true;
+        }return false;
+    }
+    private void UpdateSpecialFrame(int num){
+        columnAux = column;
+        rowAux = row;
+        Color color = MainApp.methods.getColor();
+        drawSurface.paintFrame(column, row, color,num);
+         
+         MainApp.methods.setActivePaint(false);
+    }
+    private void jumpAuxConsult() {
+        this.enable(false);
+        windowsAuxConsult auxConsult = new windowsAuxConsult();
+        auxConsult.addMethods(methods, this);
         auxConsult.setLocationRelativeTo(null);
         auxConsult.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDeleteFrame;
     private javax.swing.JButton btnDraw;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-    private void init(){
+    private void init() {
         drawSurface = new DrawSurface(widhtDS, heightSD);
         this.drawSurface = drawSurface;
         this.add(drawSurface);
@@ -299,36 +321,43 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener,Runn
         yOffset = (heightSD - (ROW * SIDE)) / 2;
         methods = new Methods();
     }
-    private void tick(){ // Variables
-        
+
+    private void tick() { // Variables
+
     }
-    private void render(){ // Graphics
-   
+
+    private void render() { // Graphics
+
         update();
+        UpdatePaintFrame();
     }
+
     @Override
     public void run() {
-        
+
         init();
-        while(running){
-         
+        while (running) {
+
             tick();
             render();
         }
         stop();
     }
-    
-    public synchronized void start(){
+
+    public synchronized void start() {
         System.out.println("Entro al start");
-        if(running)
+        if (running) {
             return;
+        }
         running = true;
         thread = new Thread(this);
         thread.start();
     }
-    public synchronized void stop(){
-        if(!running)
+
+    public synchronized void stop() {
+        if (!running) {
             return;
+        }
         running = false;
         try {
             thread.join();

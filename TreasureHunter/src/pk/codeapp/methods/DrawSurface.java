@@ -7,9 +7,7 @@ import java.awt.Graphics;
 
 import java.awt.image.BufferStrategy;
 
-
-public class DrawSurface extends Canvas
-{
+public class DrawSurface extends Canvas {
 
     private BufferStrategy buffer;
     private BufferStrategy bufferPaint;
@@ -17,23 +15,22 @@ public class DrawSurface extends Canvas
     private Graphics graphics;
     private int widht;
     private int height;
-    Picture picture;
-    Table table;
-  
 
-    public DrawSurface(int widht, int height)
-    {
-        this.widht=widht;
-        this.height=height;
+    Picture picture;
+    Picture auxPicture;
+    Table table;
+
+    public DrawSurface(int widht, int height) {
+        this.widht = widht;
+        this.height = height;
         this.setSize(widht, height);
         this.setLocation(0, 0);
         table = new Table(this);
         picture = new Picture(this);
-        
+
     }
 
-    public void paint()
-    {
+    public void paint() {
         buffer = getBufferStrategy();
 
         if (buffer == null) {
@@ -44,11 +41,12 @@ public class DrawSurface extends Canvas
         g = buffer.getDrawGraphics();
         //Dibujar Aqui
         table.paint(g);
-        
+
         g.dispose();
         buffer.show();
     }
-    public void paintFrame(int column,int row,Color color){
+
+    public void paintFrame(int column, int row, Color color, int numPosition) {
         bufferPaint = getBufferStrategy();
         if (buffer == null) {
             createBufferStrategy(2);
@@ -57,14 +55,29 @@ public class DrawSurface extends Canvas
 
         g = buffer.getDrawGraphics();
         //Dibujar Aquiw
-        Dupla newDupla= new Dupla(column,row);
-         picture.drawPeric(color,newDupla,g);
-        
+        Dupla newDupla = new Dupla(column, row);
+        picture.drawPeric(numPosition, color, newDupla, g);
+
         g.dispose();
         buffer.show();
-       
+
     }
-    
+
+    public void deleteFrame(int column, int row) {
+        bufferPaint = getBufferStrategy();
+        if (buffer == null) {
+            createBufferStrategy(2);
+            return;
+        }
+
+        g = buffer.getDrawGraphics();
+        //Dibujar Aquiw
+        Dupla newDupla = new Dupla(column, row);
+        picture.deletePeric(newDupla, g);
+        g.dispose();
+        buffer.show();
+    }
+
     public int getWidht() {
         return widht;
     }
@@ -72,8 +85,5 @@ public class DrawSurface extends Canvas
     public int getHeight() {
         return height;
     }
-    
-  
-    
 
 }

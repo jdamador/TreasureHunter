@@ -6,6 +6,7 @@
 package pk.codeapp.screen;
 
 import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.Function;
@@ -19,25 +20,20 @@ public class windowsAuxConsult extends javax.swing.JFrame {
     /**
      * Creates new form windowsAuxConsult
      */
+    DefaultComboBoxModel<String> cmbModel= new DefaultComboBoxModel();
     private String nameFuction;
     private String color;
-    private Function fuction = new Function();
     private Function aux;
-    private Methods met;
-    private JFrame afterWindows; 
-    public windowsAuxConsult(Methods met,JFrame frame) {
-        this.afterWindows=frame;
-        met = new Methods();
+    private JFrame afterWindows;
+    private boolean printSpecialFunction=true;
+    public windowsAuxConsult() {
+        System.out.println("Entro al constructor");
+        
         initComponents();
-        aux = met.getRootFunction();
-        while(aux!=null){
-            cmbFunctions.addItem(aux.getFuctions());
-            aux= aux.getSig();}
+        loadFunctions(); 
     }
 
-    private windowsAuxConsult() {
-        
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,6 +48,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cmbFunctions = new javax.swing.JComboBox<>();
         btnAddFunction = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -75,6 +72,15 @@ public class windowsAuxConsult extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("X");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -89,11 +95,15 @@ public class windowsAuxConsult extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAddFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(144, 144, 144))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addComponent(jButton1)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbFunctions, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -120,15 +130,36 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         nameFuction = (String) cmbFunctions.getSelectedItem();
         String color = getColorFuctions(nameFuction);
         this.nameFuction = nameFuction;
+        checkNameFunction(); // For special Function
         this.color = color;
+        System.out.println("El color es: "+color);
         Color colorFrame = getColor(color);
-        met.setColor(colorFrame);
-        met.setActivePaint(true);
+        MainApp.methods.setColor(colorFrame);
+        MainApp.methods.setActivePaint(true);
         afterWindows.enable(true);
         dispose();
     }//GEN-LAST:event_btnAddFunctionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        afterWindows.enable(true); 
+        dispose();
+         
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void loadFunctions(){
+        
+        System.out.println("Entro en el cargar");
+        aux = MainApp.methods.getRootFunction();
+        while(aux!=null){
+            System.out.println("Entro en el cmd para agregar");
+            System.out.println(aux.getFuction());
+            cmbModel.addElement(aux.getFuction());
+            aux= aux.getSig();
+            
+        }cmbFunctions.setModel(cmbModel);
+    }
     private Color getColor(String color){
         switch(color){
+            case "blue":return Color.blue;
             case "red": return Color.red;
             case "green":return Color.green;
             case "yellow":return Color.yellow;
@@ -139,18 +170,26 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         }return null;
     }
     private String getColorFuctions(String nameFuction){
-        aux = met.getRootFunction();
+        aux = MainApp.methods.getRootFunction();
+        System.out.println("x");
+        System.out.println(aux.getColor());
+        
         while(aux!=null){
-            if(aux.getFuctions().equals(nameFuction)){
-                met.setPointerAux(aux);
+            if(aux.getFuction().equals(nameFuction)){
+                System.out.println("El nombre es igual");
+                MainApp.methods.setPointerAux(aux);
                 return aux.getColor();}
             else{
                 aux = aux.getSig();
             }
         }   return "";
     }
-
-  
+    private void checkNameFunction(){
+        switch(nameFuction){
+            case "Start": MainApp.methods.setSpecialFunction(nameFuction);
+            case "End": MainApp.methods.setSpecialFunction(nameFuction);
+        }
+    }
    
     
     public String getNameFuction() {
@@ -160,7 +199,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
     public String getColor() {
         return color;
     }
-    
+   
     /**
      * @param args the command line arguments
      */
@@ -191,6 +230,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                 
                 new windowsAuxConsult().setVisible(true);
             }
         });
@@ -199,7 +239,12 @@ public class windowsAuxConsult extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddFunction;
     private javax.swing.JComboBox<String> cmbFunctions;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    public void addMethods(Methods met,JFrame frame) {
+        this.afterWindows=frame;
+    }
 }

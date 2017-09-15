@@ -31,14 +31,19 @@ public class Methods
     private User root, end;
     private Board rootBoard,endBoard;
     private User newUser;
-    private Function rootFunction=null;
+    private Function rootFunction;
     private Function pointerAux;
     private User actualUser;
     private Color color;
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
     private boolean activePaint;
+    private  String specialFunction = "";
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
+    
+    public Methods() {
+        rootFunction=null;
+    }
 
     public boolean add_User(String name, String userName, String email, String password, String rol)
     { //Cheack border sig
@@ -188,8 +193,8 @@ public class Methods
     {
         this.actualUser = actualUser;
     }
-    public boolean addBoard(int column,int row,Function function){
-        Board newFrame = new Board(column,row,function);
+    public boolean addBoard(int column,int row,int numPosition,Function function){
+        Board newFrame = new Board(column,row,numPosition,function);
         if(rootBoard==null){
             rootBoard = endBoard=newFrame;
             return true;
@@ -205,6 +210,7 @@ public class Methods
         Function  newFunction = new Function(name, color);
         if (rootFunction == null) {
             rootFunction = newFunction;
+            System.out.println("rootFunction=" + rootFunction.getColor());
             return true;
         } else {
             newFunction.setSig(rootFunction);
@@ -240,5 +246,30 @@ public class Methods
     public void setActivePaint(boolean activePaint) {
         this.activePaint = activePaint;
     }
+
+    public Board getRootBoard() {
+        return rootBoard;
+    }
+
+    public void setRootBoard(Board rootBoard) {
+        this.rootBoard = rootBoard;
+    }
+
+    public String getSpecialFunction() {
+        return specialFunction;
+    }
+
+    public void setSpecialFunction(String specialFunction) {
+        this.specialFunction = specialFunction;
+    }
+
+    public Board getEndBoard() {
+        return endBoard;
+    }
+
+    public void setEndBoard(Board endBoard) {
+        this.endBoard = endBoard;
+    }
     
+
 }
