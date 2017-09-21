@@ -46,12 +46,13 @@ public class Picture
         g.drawRect((int)calculatePosition(pos).posX,(int)calculatePosition(pos).posY, size, size);
         g.setFont(new Font("Vendara",Font.PLAIN,15));
         g.drawString(stringPosition+"",(int)calculatePosition(pos).posX+3,(int)calculatePosition(pos).posY+12);
+     
     }
 
     void deletePeric(Dupla pos, Graphics g) {
-        Color newColor = new Color(207, 216, 220);
-        g.setColor(newColor);
-        g.fillRect((int)calculatePosition(pos).posX,(int)calculatePosition(pos).posY, size, size);
+//        Color newColor = new Color(207, 216, 220);
+//        g.setColor(newColor);
+        g.clearRect((int)calculatePosition(pos).posX,(int)calculatePosition(pos).posY, size, size);
     }
  
 }

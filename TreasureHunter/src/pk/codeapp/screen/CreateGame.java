@@ -27,20 +27,20 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     /**
      * Creates new form Pantalla
      */
-    private boolean running;
-    private Thread thread;
+    private boolean running; 
+    private Thread thread; 
     private  DrawSurface drawSurface;
-    private  int posXMouse;
-    private  int posYMouse;
-    private  int xOffset;
-    private  int yOffset;
-    private  int widhtDS = 800;
-    private  int heightSD = 800;
+    private  int posXMouse; // Position to mouse in x
+    private  int posYMouse; // Position to mouse in y
+    private  int xOffset; // Size to out DS in x
+    private  int yOffset; // Size to out DS in x
+    private  int widhtDS = 800; // Widht draw surface
+    private  int heightSD = 800; // Height draw surface
     private  int COLUMNS = 10, ROW = 10, SIDE = 80;
     private  int column;
     private  int row;
-    private int columnAux = -1;
-    private int rowAux = -1;
+    private int columnAux = -1;// Before Column
+    private int rowAux = -1; //  Before Row
     private boolean activateMouse;
     private  String nameMethod;
     private Methods methods = MainApp.methods;
@@ -176,7 +176,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
      * @param args the command line arguments
      */
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) { 
         if (activateMouse) {
             this.posXMouse = e.getX();
             this.posYMouse = e.getY();
@@ -184,7 +184,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
             if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) { // verify that the mouse is inside the superficie
                 System.out.println("Esta en el rango");
                 if (nameMethod.equals("paint")) {
-                    paintFrame();
+                    paintFrame(); 
                 }else if(nameMethod.equals("delete")){
                     deleteFrame();
                 }
@@ -212,18 +212,16 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
 
     }
 
-    public void update() {
+    public void update() { // Update to paint 
         drawSurface.paint();
     }
 
     public void paintFrame() {
-        if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) {
+        if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) { //Check that the mouse is in the range to DS
             column = (posXMouse - xOffset) / SIDE;
             row = (posYMouse - yOffset) / SIDE;
             if (column >= 0 && row >= 0) {
-                System.out.println("Columna: " + column);
-                System.out.println("Fila: " + row);
-                jumpAuxConsult();
+                jumpAuxConsult(); 
             }
         }
     }

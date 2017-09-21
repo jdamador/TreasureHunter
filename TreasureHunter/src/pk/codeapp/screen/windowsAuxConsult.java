@@ -30,7 +30,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         System.out.println("Entro al constructor");
         
         initComponents();
-        loadFunctions(); 
+        loadFunctions(); // Load All fuctions before to start windows
     }
 
 
@@ -48,7 +48,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cmbFunctions = new javax.swing.JComboBox<>();
         btnAddFunction = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -72,12 +72,12 @@ public class windowsAuxConsult extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("X");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setBackground(new java.awt.Color(0, 0, 0));
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
+        btnExit.setText("X");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
 
@@ -97,12 +97,12 @@ public class windowsAuxConsult extends javax.swing.JFrame {
                 .addGap(144, 144, 144))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(btnExit)
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbFunctions, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,7 +127,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddFunctionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFunctionActionPerformed
-        nameFuction = (String) cmbFunctions.getSelectedItem();
+        nameFuction = (String) cmbFunctions.getSelectedItem(); // Get item to combobox selected
         String color = getColorFuctions(nameFuction);
         this.nameFuction = nameFuction;
         checkNameFunction(); // For special Function
@@ -135,29 +135,25 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         System.out.println("El color es: "+color);
         Color colorFrame = getColor(color);
         MainApp.methods.setColor(colorFrame);
-        MainApp.methods.setActivePaint(true);
-        afterWindows.enable(true);
-        dispose();
+        MainApp.methods.setActivePaint(true); // Active boolean to paint methods
+        afterWindows.enable(true);  
+        dispose(); // Delete windows
     }//GEN-LAST:event_btnAddFunctionActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         afterWindows.enable(true); 
         dispose();
          
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
     private void loadFunctions(){
-        
-        System.out.println("Entro en el cargar");
         aux = MainApp.methods.getRootFunction();
         while(aux!=null){
-            System.out.println("Entro en el cmd para agregar");
             System.out.println(aux.getFuction());
             cmbModel.addElement(aux.getFuction());
-            aux= aux.getSig();
-            
+            aux= aux.getSig();   
         }cmbFunctions.setModel(cmbModel);
     }
-    private Color getColor(String color){
+    private Color getColor(String color){ // Methods to get Color through String 
         switch(color){
             case "blue":return Color.blue;
             case "red": return Color.red;
@@ -169,14 +165,10 @@ public class windowsAuxConsult extends javax.swing.JFrame {
             case "cyan":return Color.cyan;
         }return null;
     }
-    private String getColorFuctions(String nameFuction){
-        aux = MainApp.methods.getRootFunction();
-        System.out.println("x");
-        System.out.println(aux.getColor());
-        
+    private String getColorFuctions(String nameFuction){ 
+        aux = MainApp.methods.getRootFunction(); // Pointer to Fuctions       
         while(aux!=null){
             if(aux.getFuction().equals(nameFuction)){
-                System.out.println("El nombre es igual");
                 MainApp.methods.setPointerAux(aux);
                 return aux.getColor();}
             else{
@@ -184,9 +176,9 @@ public class windowsAuxConsult extends javax.swing.JFrame {
             }
         }   return "";
     }
-    private void checkNameFunction(){
+    private void checkNameFunction(){ 
         switch(nameFuction){
-            case "Start": MainApp.methods.setSpecialFunction(nameFuction);
+            case "Start": MainApp.methods.setSpecialFunction(nameFuction); // Change name in methods of SpecialFunction
             case "End": MainApp.methods.setSpecialFunction(nameFuction);
         }
     }
@@ -238,8 +230,8 @@ public class windowsAuxConsult extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddFunction;
+    private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> cmbFunctions;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
