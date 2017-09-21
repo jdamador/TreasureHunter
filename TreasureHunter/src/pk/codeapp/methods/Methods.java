@@ -29,7 +29,6 @@ public class Methods
 {
 
     private User root, end;
-    private Board rootBoard,endBoard;
     private User newUser;
     private Function rootFunction;
     private Function pointerAux;
@@ -194,14 +193,14 @@ public class Methods
         this.actualUser = actualUser;
     }
     public boolean addBoard(int column,int row,int numPosition,Function function){
-        Board newFrame = new Board(column,row,numPosition,function);
-        if(rootBoard==null){
-            rootBoard = endBoard=newFrame;
-            return true;
+        Board newblock = new Board(column,row,numPosition,function);
+        if(actualUser.getGameSig()==null){
+            actualUser.setGameSig(newblock);
+             return true;
         }else{
-            newFrame.setSig(rootBoard);
-            rootBoard.setAnt(newFrame);
-            rootBoard=newFrame;
+            newblock.setSig(actualUser.getGameSig());
+            actualUser.getGameSig().setAnt(newblock);
+            actualUser.setGameSig(newblock);
             return true;
         }
     }
