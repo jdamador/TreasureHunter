@@ -69,8 +69,7 @@ public class Register extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         btnGrup = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
@@ -78,13 +77,10 @@ public class Register extends javax.swing.JFrame
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        rbnAdministrador = new javax.swing.JRadioButton();
-        rbnPlayer = new javax.swing.JRadioButton();
         btnRegister = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -108,66 +104,47 @@ public class Register extends javax.swing.JFrame
         jLabel1.setText("Welcome to ");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, -1, 20));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, -1, 20));
 
-        jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("UserName:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, -1, 20));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, -1, 20));
 
-        jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Password:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, 20));
 
-        jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Rol:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, -1, 20));
-
-        jLabel6.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("E-Mail");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, -1, 20));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, -1, 20));
 
         txtUserName.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         txtUserName.setForeground(new java.awt.Color(0, 0, 0));
         txtUserName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 170, 20));
+        jPanel2.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 220, 30));
 
         txtNombre.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         txtNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 170, 20));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 220, 30));
 
         txtEmail.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(0, 0, 0));
         txtEmail.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 170, 20));
-
-        btnGrup.add(rbnAdministrador);
-        rbnAdministrador.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
-        rbnAdministrador.setForeground(new java.awt.Color(0, 0, 0));
-        rbnAdministrador.setText("Game Master");
-        jPanel2.add(rbnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, 20));
-
-        btnGrup.add(rbnPlayer);
-        rbnPlayer.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
-        rbnPlayer.setForeground(new java.awt.Color(0, 0, 0));
-        rbnPlayer.setText("Player");
-        jPanel2.add(rbnPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 470, -1, 20));
+        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, 220, 30));
 
         btnRegister.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(0, 0, 0));
         btnRegister.setText("Register");
         btnRegister.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnRegister.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
             }
         });
@@ -187,16 +164,14 @@ public class Register extends javax.swing.JFrame
         txtPassword.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(0, 0, 0));
         txtPassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 299, 170, 20));
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 220, 30));
 
         jButton1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Back");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -205,7 +180,7 @@ public class Register extends javax.swing.JFrame
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/T (6).png"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 600));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 780, 600));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 600));
 
@@ -219,7 +194,7 @@ public class Register extends javax.swing.JFrame
         // TODO add your handling code here:
           // TODO add your handling code here:
         if (txtEmail.getText().isEmpty()|| txtNombre.getText().isEmpty()|| 
-                txtPassword.getText().isEmpty()|| txtUserName.getText().isEmpty()||(rbnAdministrador.isSelected()==false&&rbnPlayer.isSelected()==false)){
+                txtPassword.getText().isEmpty()|| txtUserName.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane,"Don't leave spaces in blank","Warning",WARNING_MESSAGE,this.icon );
       
         }
@@ -228,14 +203,9 @@ public class Register extends javax.swing.JFrame
            String userName = txtUserName.getText();
            String email = txtEmail.getText();
            String password = txtPassword.getText();
-            String rol="";
+            String rol="Player";
             
-           if(rbnAdministrador.isSelected()){
-              rol="GameMaster";
-           }
-           if(rbnPlayer.isSelected()){
-              rol="Player";
-           }
+          
            
            
             if(methods.add_User(name, userName, email, password, rol)){
@@ -303,14 +273,11 @@ public class Register extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton rbnAdministrador;
-    private javax.swing.JRadioButton rbnPlayer;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPassword;
