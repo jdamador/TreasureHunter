@@ -245,15 +245,6 @@ public class Methods
     public void setActivePaint(boolean activePaint) {
         this.activePaint = activePaint;
     }
-
-    public Board getRootBoard() {
-        return rootBoard;
-    }
-
-    public void setRootBoard(Board rootBoard) {
-        this.rootBoard = rootBoard;
-    }
-
     public String getSpecialFunction() {
         return specialFunction;
     }
@@ -261,14 +252,10 @@ public class Methods
     public void setSpecialFunction(String specialFunction) {
         this.specialFunction = specialFunction;
     }
-
-    public Board getEndBoard() {
-        return endBoard;
+    public Board getRootBoard(){
+        return actualUser.getGameSig();
     }
-
-    public void setEndBoard(Board endBoard) {
-        this.endBoard = endBoard;
+    public Board setRootBoard(Board newRootBoard){
+        actualUser.setGameSig(newRootBoard);
     }
-    
-
 }
