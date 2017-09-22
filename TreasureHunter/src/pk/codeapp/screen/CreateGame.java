@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
 import pk.codeapp.methods.DrawSurface;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.Board;
+import static pk.codeapp.screen.MainApp.methods;
 
 /**
  *
@@ -47,6 +50,15 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     private int numPosition=0;
     public CreateGame(String nombre, Methods methods) {
         initComponents();
+         this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent evt)
+            {
+                
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(nombre);

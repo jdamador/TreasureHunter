@@ -7,9 +7,12 @@ package pk.codeapp.screen;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pk.codeapp.methods.Methods;
+
 
 /**
  *
@@ -25,7 +28,15 @@ public class GameMasterInterface extends javax.swing.JFrame
     public GameMasterInterface()
     {
         initComponents();
-       
+        this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent evt)
+            {
+                
+                methods.writeUser();
+                System.exit(0);
+            }
+        });
 
     }
      public Image getIconImage() {
@@ -64,6 +75,7 @@ public class GameMasterInterface extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         cmbColor = new javax.swing.JComboBox<>();
         btnAddFunction = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Game Master");
@@ -136,6 +148,9 @@ public class GameMasterInterface extends javax.swing.JFrame
             }
         });
         getContentPane().add(btnAddFunction, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/GameBackGround.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -223,6 +238,7 @@ public class GameMasterInterface extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtFunction;
     // End of variables declaration//GEN-END:variables

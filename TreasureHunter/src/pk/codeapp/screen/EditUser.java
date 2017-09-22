@@ -53,8 +53,7 @@ public class EditUser extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -102,10 +101,8 @@ public class EditUser extends javax.swing.JFrame
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cancel");
         jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -126,10 +123,8 @@ public class EditUser extends javax.swing.JFrame
         btnMakeChanges.setForeground(new java.awt.Color(255, 255, 255));
         btnMakeChanges.setText("make changes");
         btnMakeChanges.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        btnMakeChanges.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnMakeChanges.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMakeChangesActionPerformed(evt);
             }
         });
