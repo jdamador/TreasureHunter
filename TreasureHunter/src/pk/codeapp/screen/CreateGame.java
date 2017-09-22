@@ -51,24 +51,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     private JFrame afterWindows;
     public CreateGame(String nombre,JFrame afterWindows) {
         initComponents();
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-         this.addWindowListener(new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent evt)
-            {
-                
-                methods.writeUser();
-                System.exit(0);
-            }
-        });
-=======
-         
->>>>>>> master
 
-=======
-        this.afterWindows= afterWindows;
->>>>>>> Stashed changes
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(nombre);
         this.getContentPane().setBackground(new Color(207, 216, 220));
