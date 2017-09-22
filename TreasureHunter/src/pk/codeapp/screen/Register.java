@@ -208,7 +208,7 @@ public class Register extends javax.swing.JFrame
           
            
            
-            if(methods.add_User(name, userName, email, password, rol)){
+            if(methods.addUser(name, userName, email, password, rol)){
              JOptionPane.showMessageDialog(rootPane,"Register was successful","Warning",INFORMATION_MESSAGE  );
              afterWindows.setVisible(true);
             dispose();}

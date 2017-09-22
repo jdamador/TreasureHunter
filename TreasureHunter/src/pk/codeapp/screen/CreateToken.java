@@ -5,18 +5,26 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 /**
  *
  * @author amador
  */
-public class CreateToken extends javax.swing.JFrame {
-        JFrame frame;
+public class CreateToken extends javax.swing.JFrame
+{
+
+    JFrame frame;
+
     /**
      * Creates new form CreateToken
      */
-    public CreateToken() {
+    public CreateToken()
+    {
         initComponents();
         this.setLocationRelativeTo(this);
     }
@@ -28,124 +36,134 @@ public class CreateToken extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        rbnRed = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         rbnBlue = new javax.swing.JRadioButton();
         rbnGreen = new javax.swing.JRadioButton();
         rbnYellow = new javax.swing.JRadioButton();
+        rbnRed = new javax.swing.JRadioButton();
         chkCrown = new javax.swing.JCheckBox();
         chkHeart = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        rbnRed.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroup1.add(rbnRed);
-        rbnRed.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        rbnRed.setForeground(new java.awt.Color(255, 255, 255));
-        rbnRed.setText("Red");
+        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(0, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Add Token");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Select the color and ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         rbnBlue.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(rbnBlue);
         rbnBlue.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         rbnBlue.setForeground(new java.awt.Color(255, 255, 255));
         rbnBlue.setText("Blue");
+        jPanel1.add(rbnBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         rbnGreen.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(rbnGreen);
         rbnGreen.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         rbnGreen.setForeground(new java.awt.Color(255, 255, 255));
         rbnGreen.setText("Green");
+        jPanel1.add(rbnGreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         rbnYellow.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(rbnYellow);
         rbnYellow.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         rbnYellow.setForeground(new java.awt.Color(255, 255, 255));
         rbnYellow.setText("Yellow");
+        jPanel1.add(rbnYellow, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+
+        rbnRed.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(rbnRed);
+        rbnRed.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        rbnRed.setForeground(new java.awt.Color(255, 255, 255));
+        rbnRed.setText("Red");
+        jPanel1.add(rbnRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
         chkCrown.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup2.add(chkCrown);
         chkCrown.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         chkCrown.setForeground(new java.awt.Color(255, 255, 255));
         chkCrown.setText("Crown");
-        chkCrown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        chkCrown.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 chkCrownActionPerformed(evt);
             }
         });
+        jPanel1.add(chkCrown, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
         chkHeart.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup2.add(chkHeart);
         chkHeart.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         chkHeart.setForeground(new java.awt.Color(255, 255, 255));
         chkHeart.setText("Heart");
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Add Token");
+        jPanel1.add(chkHeart, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, -1, -1));
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("image to the new token");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/createtoken.jpg"))); // NOI18N
+        jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 89, -1, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rbnYellow)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(rbnBlue)
-                                .addComponent(rbnGreen)
-                                .addComponent(rbnRed)))
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkCrown)
-                            .addComponent(chkHeart)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addContainerGap(104, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbnRed)
-                    .addComponent(chkCrown))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbnBlue)
-                    .addComponent(chkHeart))
-                .addGap(22, 22, 22)
-                .addComponent(rbnGreen)
-                .addGap(18, 18, 18)
-                .addComponent(rbnYellow)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(26, 26, 26))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,14 +175,20 @@ public class CreateToken extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        dispose();
-        frame.setEnabled(true);
+       goBack();//return the before window
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        createToken();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -189,18 +213,26 @@ public class CreateToken extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new CreateToken().setVisible(true);
             }
         });
     }
-    public void openWindows(JFrame frame){
-        this.frame=frame;
+
+    public void openWindows(JFrame frame)
+    {
+        this.frame = frame;
         frame.setEnabled(false);
         this.setVisible(true);
     }
-
+    public void goBack(){
+        dispose();
+        frame.setEnabled(true);
+        frame.setVisible(true);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -208,9 +240,41 @@ public class CreateToken extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkHeart;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton rbnBlue;
     private javax.swing.JRadioButton rbnGreen;
     private javax.swing.JRadioButton rbnRed;
     private javax.swing.JRadioButton rbnYellow;
     // End of variables declaration//GEN-END:variables
+
+    public void createToken()
+    {
+        //joins the two values and creates a path
+        String message = "";
+        if (rbnBlue.isSelected()) {
+            message += "blue";
+        }
+        if (rbnGreen.isSelected()) {
+            message += "green";
+        }
+        if (rbnRed.isSelected()) {
+            message += "red";
+        }
+        if (rbnYellow.isSelected()) {
+            message += "yellow";
+        }
+
+        if (chkCrown.isSelected()) {
+            message += "crown";
+        }
+        if (chkHeart.isSelected()) {
+            message += "heart";
+        } 
+        String link = "src/pk/codeapp/tools/tokens/" + message+".png";
+        System.out.println(link);
+       goBack();//return the before window
+    }
 }
