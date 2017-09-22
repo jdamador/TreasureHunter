@@ -28,6 +28,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
      */
     public GameMasterInterface() {
         initComponents();
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
 
@@ -178,6 +179,11 @@ public class GameMasterInterface extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Editar Usuario");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, 270, 60));
 
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
@@ -225,10 +231,28 @@ public class GameMasterInterface extends javax.swing.JFrame {
         Object data = JOptionPane.showInputDialog(rootPane, "Write User");
         if (data == null) {
             System.out.println("null");
-        } else{
-            methods.deleteUser((String)data);
+        } else {
+            methods.deleteUser((String) data);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        Object data = JOptionPane.showInputDialog(rootPane, "Write the username", "Edit User", JOptionPane.INFORMATION_MESSAGE);
+        if (data == null) {
+            System.out.println("null");
+        } else {
+            User user = methods.searchUser((String) data);
+            if (user == null) {
+                JOptionPane.showMessageDialog(rootPane, "User don't exists");
+            } else {
+                EditUser edit = new EditUser();
+                edit.openWindows(this, methods, user);
+            }
+        }
+
+
+    }//GEN-LAST:event_jButton5ActionPerformed
     private void addFunction() {
         String colorFunction = (String) cmbColor.getSelectedItem();
         if (txtFunction.getText().isEmpty()) {

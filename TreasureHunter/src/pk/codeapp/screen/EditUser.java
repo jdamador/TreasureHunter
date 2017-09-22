@@ -15,33 +15,29 @@ import pk.codeapp.model.User;
  *
  * @author Daniel Amador
  */
-public class EditUser extends javax.swing.JFrame
-{
+public class EditUser extends javax.swing.JFrame {
 
     private JFrame afterWindows;
-
+    User edit;
     private Methods methods;
-    
 
     /**
      * Creates new form EditUser
      */
-    public EditUser()
-    {
+    public EditUser() {
         initComponents();
         this.setLocationRelativeTo(afterWindows);
-        
 
     }
 
-    public void openWindows(JFrame frame,Methods methods)
-    {
+    public void openWindows(JFrame frame, Methods editUser,User user) {
         this.afterWindows = frame;
-        this.methods = methods;
-        
-        txtEmail.setText(methods.getActualUser().getEmail());
-        txtName.setText(methods.getActualUser().getName());
-        txtUsename.setText(methods.getActualUser().getUserName());
+        this.methods = editUser;
+        this.edit=user;
+     
+        txtEmail.setText(edit.getEmail());
+        txtName.setText(edit.getName());
+        txtUsename.setText(edit.getUserName());
         this.setVisible(true);
 
     }
@@ -206,8 +202,7 @@ public class EditUser extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -232,24 +227,27 @@ public class EditUser extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new EditUser().setVisible(true);
             }
         });
     }
 
-    public void goBack()
-    {
+    public void goBack() {
         afterWindows.setVisible(true);
         dispose();
     }
 
-    public void updateChanges()
-    {
-        methods.updateUser(txtName.getText(),txtUsename.getText(),txtPassword.getText(),txtEmail.getText());
+    public void updateChanges() {
+        updateUser(txtName.getText(), txtUsename.getText(), txtPassword.getText(), txtEmail.getText());
+
+    }
+     public void updateUser(String name, String Username, String Password, String email) {
+        edit.setEmail(email);
+        edit.setName(name);
+        edit.setPassword(Password);
+        edit.setUserName(Username);
 
     }
 

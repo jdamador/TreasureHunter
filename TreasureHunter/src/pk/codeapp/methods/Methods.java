@@ -170,13 +170,7 @@ public class Methods {
         }
     }
 
-    public void updateUser(String name, String Username, String Password, String email) {
-        actualUser.setEmail(email);
-        actualUser.setName(name);
-        actualUser.setPassword(Password);
-        actualUser.setUserName(Username);
-
-    }
+   
 
     public User getActualUser() {
         return actualUser;
