@@ -44,7 +44,7 @@ public class CreateToken extends javax.swing.JFrame
         btnGroup1 = new javax.swing.ButtonGroup();
         btnGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnAddToken = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         rbnBlue = new javax.swing.JRadioButton();
         rbnGreen = new javax.swing.JRadioButton();
@@ -52,8 +52,9 @@ public class CreateToken extends javax.swing.JFrame
         rbnRed = new javax.swing.JRadioButton();
         chkCrown = new javax.swing.JCheckBox();
         chkHeart = new javax.swing.JCheckBox();
-        jButton2 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnCleanTokens = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,18 +65,18 @@ public class CreateToken extends javax.swing.JFrame
         jPanel1.setForeground(new java.awt.Color(0, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Add Token");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        btnAddToken.setBackground(new java.awt.Color(0, 0, 0));
+        btnAddToken.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnAddToken.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddToken.setText("Add Token");
+        btnAddToken.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                btnAddTokenActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
+        jPanel1.add(btnAddToken, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
@@ -132,24 +133,37 @@ public class CreateToken extends javax.swing.JFrame
         chkHeart.setText("Heart");
         jPanel1.add(chkHeart, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
+        btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton2ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, -1, -1));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("image to the new token");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+
+        btnCleanTokens.setBackground(new java.awt.Color(0, 0, 0));
+        btnCleanTokens.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnCleanTokens.setForeground(new java.awt.Color(255, 255, 255));
+        btnCleanTokens.setText("Clean Tokens");
+        btnCleanTokens.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCleanTokensActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCleanTokens, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/createtoken.jpg"))); // NOI18N
         jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
@@ -175,16 +189,23 @@ public class CreateToken extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_chkCrownActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         goBack();//return the before window
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void btnAddTokenActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAddTokenActionPerformed
+    {//GEN-HEADEREND:event_btnAddTokenActionPerformed
         // TODO add your handling code here:
         createToken();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAddTokenActionPerformed
+
+    private void btnCleanTokensActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCleanTokensActionPerformed
+    {//GEN-HEADEREND:event_btnCleanTokensActionPerformed
+        // TODO add your handling code here:
+        MainApp.methods.setTokens(new String[4]);
+        JOptionPane.showMessageDialog(rootPane, "cleaned");
+    }//GEN-LAST:event_btnCleanTokensActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,12 +259,13 @@ public class CreateToken extends javax.swing.JFrame
         frame.setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddToken;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnCleanTokens;
     private javax.swing.ButtonGroup btnGroup1;
     private javax.swing.ButtonGroup btnGroup2;
     private javax.swing.JCheckBox chkCrown;
     private javax.swing.JCheckBox chkHeart;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -282,10 +304,15 @@ public class CreateToken extends javax.swing.JFrame
             }
             //create a link that save the image path
             String link = "src/pk/codeapp/tools/tokens/" + message + ".png";
-
+            
+            if (MainApp.methods.setToken(link)) {
+                JOptionPane.showMessageDialog(rootPane, "Added successfully;");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Failure to add, four tokens already exist");
+            }
             goBack();//return the before window 
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Select one color and optio!");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Select one color and option!");
         }
 
     }

@@ -5,11 +5,14 @@
  */
 package pk.codeapp.methods;
 
+import com.sun.xml.internal.ws.api.message.saaj.SAAJFactory;
 import java.awt.Color;
+import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 
 import java.io.IOException;
@@ -37,14 +40,17 @@ public class Methods
     private User actualUser;
     private Color color;
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
+     File tokenFile = new File("src/pk/codeapp/tools/tokens.txt");
     private boolean activePaint;
     private String specialFunction = "";
+    String tokens[] = new String[4];
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
 
     public Methods()
     {
         rootFunction = null;
+        
     }
 
     public boolean addUser(String name, String userName, String email, String password, String rol)
@@ -206,6 +212,30 @@ public class Methods
     {
         actualUser.setGameSig(newRootBoard);
     }
+
+    public String[] getTokens()
+    {
+        return tokens;
+    }
+
+    public boolean setToken(String token)
+    {
+        
+        for (int i = 0; i < tokens.length; i++) {
+            if( tokens[i]==null){
+              tokens[i]=  token;
+                System.out.println(tokens[i]);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public File getTokenFile()
+    {
+        return tokenFile;
+    }
+    
 //</editor-fold>
 
     public void chargeUsers() // method that chage user from binary file
@@ -255,6 +285,15 @@ public class Methods
         }
     }
 
+    /**
+     * add new element to board
+     *
+     * @param column
+     * @param row
+     * @param numPosition
+     * @param function
+     * @return true or false when operation is successful
+     */
     public boolean addBoard(int column, int row, int numPosition, Function function)
     {
         Board newblock = new Board(column, row, numPosition, function);
@@ -269,6 +308,13 @@ public class Methods
         }
     }
 
+    /**
+     * Create new function
+     *
+     * @param name
+     * @param color
+     * @return true or false when operation is successful
+     */
     public boolean addFunction(String name, String color)
     {
         Function newFunction = new Function(name, color);
@@ -283,6 +329,11 @@ public class Methods
         }
     }
 
+    /**
+     * Delete user from the array
+     *
+     * @param username
+     */
     public void deleteUser(String username)
     {
         if (root == null) {
@@ -312,16 +363,49 @@ public class Methods
         }
     }
 
-    public void writeInTextFile(File file, String data)
+    /**
+     * Write in text file
+     *
+     * @param file
+     * @param data
+     */
+    public void writeInTextFile(File file, String[] data)
     {
+          if (file.exists()) {
+            //clean file
+            file.delete();
+            System.out.println("Deleted");
+        }
         try {
             FileWriter writer = new FileWriter(file, true);
-            writer.write(data);
+            for (int i = 0; i < data.length; i++) {
+                 writer.write(data[i]);
+            }
+           
             writer.close();
-        }catch(Exception e){
-            System.out.println("Error al escribir");
+        } catch (Exception e) {
+            System.out.println("Failure write");
         }
-        
     }
 
+    public void readFromTextFile(File file,String[] arrayFinite)
+    {
+        try{
+            FileReader reader = new FileReader(file);
+            BufferedReader data= new BufferedReader(reader);
+            String text;
+            int i=0;
+            while((text=data.readLine())!=null&& i<arrayFinite.length){
+                arrayFinite[i]=text;
+                i++;
+            }
+        }catch(Exception e){
+            System.out.println("fail to read");
+        }
+    }
+
+    public void setTokens(String[] tokens)
+    {
+        this.tokens=tokens;
+    }
 }

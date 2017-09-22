@@ -34,11 +34,13 @@ public class MainApp extends javax.swing.JFrame {
         methods.addFunction("End", "magenta");
         methods.addFunction("Empty", "green");
         methods.chargeUsers();
+        methods.readFromTextFile(methods.getTokenFile(), methods.getTokens());
         methods.addUser("Gabe Newell", "Gabe", "gabenewell@ofertas.valve", "123", "GameMaster");
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
 
                 methods.writeUser();
+                methods.writeInTextFile(methods.getTokenFile(), methods.getTokens());
                 System.exit(0);
             }
         });
