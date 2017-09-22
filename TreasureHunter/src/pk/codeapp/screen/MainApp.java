@@ -37,7 +37,7 @@ public class MainApp extends javax.swing.JFrame
         methods.addFunction("End","magenta");
         methods.addFunction("Empty","green");
         methods.chargeUsers();
-        methods.add_User("Gabe Newell", "gabe", "gabenewell@ofertas.valve", "123", "GameMaster");
+        methods.add_User("Gabe Newell", "Gabe", "gabenewell@ofertas.valve", "123", "GameMaster");
         this.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent evt)

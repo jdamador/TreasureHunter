@@ -227,8 +227,8 @@ public class GameMasterInterface extends javax.swing.JFrame {
 //                "Choose one", "Input",
 //                JOptionPane.INFORMATION_MESSAGE, null,
 //                possibleValues, possibleValues[0]);
-
-        Object data = JOptionPane.showInputDialog(rootPane, "Write User");
+      
+        Object data = JOptionPane.showInputDialog(rootPane, "Write the username", "Delete user", JOptionPane.INFORMATION_MESSAGE);
         if (data == null) {
             System.out.println("null");
         } else {

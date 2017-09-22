@@ -39,7 +39,7 @@ public class EditUser extends javax.swing.JFrame {
         txtName.setText(edit.getName());
         txtUsename.setText(edit.getUserName());
         this.setVisible(true);
-
+        afterWindows.setEnabled(false);
     }
 
     /**
