@@ -17,6 +17,7 @@ import java.io.ObjectOutputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.RootPaneUI;
 import pk.codeapp.model.Board;
 import pk.codeapp.model.Function;
 import pk.codeapp.model.User;
@@ -25,8 +26,7 @@ import pk.codeapp.model.User;
  *
  * @author Jose Pablo Brenes
  */
-public class Methods
-{
+public class Methods {
 
     private User root, end;
     private User newUser;
@@ -36,16 +36,15 @@ public class Methods
     private Color color;
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
     private boolean activePaint;
-    private  String specialFunction = "";
+    private String specialFunction = "";
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
-    
+
     public Methods() {
-        rootFunction=null;
+        rootFunction = null;
     }
 
-    public boolean add_User(String name, String userName, String email, String password, String rol)
-    { //Cheack border sig
+    public boolean add_User(String name, String userName, String email, String password, String rol) { //Cheack border sig
         if (isValidEmailAddress(email) == true) {
             newUser = new User(name, userName, email, password, rol);
             if (end == null) {
@@ -72,7 +71,7 @@ public class Methods
 
     }
 
-    public boolean isValidEmailAddress(String email)  // email format checker
+    public boolean isValidEmailAddress(String email) // email format checker
     {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"; // Email Pattern 
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
@@ -120,17 +119,15 @@ public class Methods
     }
 
 //<editor-fold desc="getter and setter" defaultstate="collapsed">
-    public ImageIcon getIcon()
-    {
+    public ImageIcon getIcon() {
         return icon;
     }
 
-    public void setIcon(ImageIcon icon)
-    {
+    public void setIcon(ImageIcon icon) {
         this.icon = icon;
     }
 //</editor-fold>
-    
+
     public void chargeUsers() // method that chage user from binary file
     {
 
@@ -158,8 +155,7 @@ public class Methods
         }
     }
 
-    public User searchUser(String userName)
-    {
+    public User searchUser(String userName) {
         if (end == null) {
             return null;
         } else {
@@ -174,8 +170,7 @@ public class Methods
         }
     }
 
-    public void updateUser(String name, String Username, String Password, String email)
-    {
+    public void updateUser(String name, String Username, String Password, String email) {
         actualUser.setEmail(email);
         actualUser.setName(name);
         actualUser.setPassword(Password);
@@ -183,30 +178,29 @@ public class Methods
 
     }
 
-    public User getActualUser()
-    {
+    public User getActualUser() {
         return actualUser;
     }
 
-    public void setActualUser(User actualUser)
-    {
+    public void setActualUser(User actualUser) {
         this.actualUser = actualUser;
     }
-    public boolean addBoard(int column,int row,int numPosition,Function function){
-        Board newblock = new Board(column,row,numPosition,function);
-        if(actualUser.getGameSig()==null){
+
+    public boolean addBoard(int column, int row, int numPosition, Function function) {
+        Board newblock = new Board(column, row, numPosition, function);
+        if (actualUser.getGameSig() == null) {
             actualUser.setGameSig(newblock);
-             return true;
-        }else{
+            return true;
+        } else {
             newblock.setSig(actualUser.getGameSig());
             actualUser.getGameSig().setAnt(newblock);
             actualUser.setGameSig(newblock);
             return true;
         }
     }
-    public boolean addFunction(String name, String color)
-    {
-        Function  newFunction = new Function(name, color);
+
+    public boolean addFunction(String name, String color) {
+        Function newFunction = new Function(name, color);
         if (rootFunction == null) {
             rootFunction = newFunction;
             System.out.println("rootFunction=" + rootFunction.getColor());
@@ -245,6 +239,7 @@ public class Methods
     public void setActivePaint(boolean activePaint) {
         this.activePaint = activePaint;
     }
+
     public String getSpecialFunction() {
         return specialFunction;
     }
@@ -252,10 +247,27 @@ public class Methods
     public void setSpecialFunction(String specialFunction) {
         this.specialFunction = specialFunction;
     }
-    public Board getRootBoard(){
+
+    public Board getRootBoard() {
         return actualUser.getGameSig();
     }
-    public void setRootBoard(Board newRootBoard){
-         actualUser.setGameSig(newRootBoard);
+
+    public void setRootBoard(Board newRootBoard) {
+        actualUser.setGameSig(newRootBoard);
+    }
+
+    public void deleteUser(String username) {
+        if (root == null && root.getUserName().equals(username)) {
+            root = null;
+        } else {
+            User find = searchUser(username);
+            if (find != null) {
+                find.getAnt().setSig(find.getSig());
+                find.getSig().setAnt(find.getAnt());
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "User don't exist");
+            }
+        }
     }
 }
