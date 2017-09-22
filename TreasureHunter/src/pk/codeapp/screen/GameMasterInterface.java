@@ -264,6 +264,8 @@ public class GameMasterInterface extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        CreateToken newToken= new CreateToken();
+        newToken.openWindows(this);
     }//GEN-LAST:event_jButton7ActionPerformed
     private void addFunction() {
         String colorFunction = (String) cmbColor.getSelectedItem();

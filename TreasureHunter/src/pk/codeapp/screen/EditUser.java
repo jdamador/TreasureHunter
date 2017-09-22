@@ -235,8 +235,12 @@ public class EditUser extends javax.swing.JFrame {
     }
 
     public void goBack() {
-        afterWindows.setVisible(true);
-        dispose();
+         this.dispose();
+         afterWindows.setVisible(true);
+         afterWindows.setEnabled(true);
+        
+        
+       
     }
 
     public void updateChanges() {
