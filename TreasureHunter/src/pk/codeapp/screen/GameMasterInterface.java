@@ -226,7 +226,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
         if (data == null) {
             System.out.println("null");
         } else{
-            methods.deleteUser(data.toString());
+            methods.deleteUser((String)data);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
     private void addFunction() {
