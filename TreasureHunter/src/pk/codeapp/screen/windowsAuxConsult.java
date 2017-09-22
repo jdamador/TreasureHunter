@@ -163,6 +163,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
             case "pink":return Color.pink;
             case "magenta":return Color.magenta;
             case "cyan":return Color.cyan;
+            
         }return null;
     }
     private String getColorFuctions(String nameFuction){ 

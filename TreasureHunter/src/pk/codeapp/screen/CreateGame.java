@@ -50,15 +50,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     private int numPosition=0;
     public CreateGame(String nombre, Methods methods) {
         initComponents();
-         this.addWindowListener(new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent evt)
-            {
-                
-                methods.writeUser();
-                System.exit(0);
-            }
-        });
+         
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(nombre);
@@ -101,7 +93,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
 
         btnDraw.setBackground(new java.awt.Color(0, 0, 0));
         btnDraw.setForeground(new java.awt.Color(0, 0, 0));
-        btnDraw.setIcon(new javax.swing.ImageIcon("E:\\Segundo Semestre 2017\\Estructuras\\Treasure Hunter\\TreasureHunter\\TreasureHunter\\src\\pk\\codeapp\\tools\\paint.png")); // NOI18N
+        btnDraw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/paint.png"))); // NOI18N
         btnDraw.setToolTipText("Click to create pictures in the matrix ");
         btnDraw.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -114,7 +106,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         jLabel4.setText("Delete Picture");
 
         btnDeleteFrame.setBackground(new java.awt.Color(0, 0, 0));
-        btnDeleteFrame.setIcon(new javax.swing.ImageIcon("E:\\Segundo Semestre 2017\\Estructuras\\Treasure Hunter\\TreasureHunter\\TreasureHunter\\src\\pk\\codeapp\\tools\\delete.png")); // NOI18N
+        btnDeleteFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/delete.png"))); // NOI18N
         btnDeleteFrame.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDeleteFrameMouseClicked(evt);
