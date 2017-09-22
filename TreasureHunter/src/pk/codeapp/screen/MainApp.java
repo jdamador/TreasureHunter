@@ -31,11 +31,13 @@ public class MainApp extends javax.swing.JFrame
      */
     public MainApp()
     {
+        
         initComponents();
         methods.addFunction("Start","cyan");
         methods.addFunction("End","magenta");
         methods.addFunction("Empty","green");
         methods.chargeUsers();
+        methods.add_User("Gabe Newell", "gabe", "gabenewell@ofertas.valve", "123", "GameMaster");
         this.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent evt)
