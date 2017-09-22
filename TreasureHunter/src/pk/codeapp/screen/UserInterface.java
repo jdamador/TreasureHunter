@@ -61,15 +61,17 @@ public class UserInterface extends javax.swing.JFrame
         jButton5 = new javax.swing.JButton();
         btnPlay = new javax.swing.JToggleButton();
         btnCreateWorld = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setViewportView(Games);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 323, 617));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 323, 617));
 
         jButton1.setText("<<");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 650, 107, -1));
@@ -118,7 +120,7 @@ public class UserInterface extends javax.swing.JFrame
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, -1, -1));
 
         btnPlay.setText("Play");
-        getContentPane().add(btnPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 250, 60));
+        getContentPane().add(btnPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 250, 60));
 
         btnCreateWorld.setText("Create Board");
         btnCreateWorld.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,7 +133,10 @@ public class UserInterface extends javax.swing.JFrame
                 btnCreateWorldActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCreateWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 250, 60));
+        getContentPane().add(btnCreateWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 250, 60));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Webp.net-resizeimage (1).jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,6 +243,7 @@ public class UserInterface extends javax.swing.JFrame
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblName;
