@@ -10,6 +10,7 @@ import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -150,7 +151,8 @@ public class Methods
     {
         this.actualUser = actualUser;
     }
-       public Function getRootFunction()
+
+    public Function getRootFunction()
     {
         return rootFunction;
     }
@@ -205,9 +207,7 @@ public class Methods
         actualUser.setGameSig(newRootBoard);
     }
 //</editor-fold>
-    
-    
-    
+
     public void chargeUsers() // method that chage user from binary file
     {
         //Read user from binary file
@@ -283,8 +283,6 @@ public class Methods
         }
     }
 
- 
-
     public void deleteUser(String username)
     {
         if (root == null) {
@@ -313,4 +311,17 @@ public class Methods
 
         }
     }
+
+    public void writeInTextFile(File file, String data)
+    {
+        try {
+            FileWriter writer = new FileWriter(file, true);
+            writer.write(data);
+            writer.close();
+        }catch(Exception e){
+            System.out.println("Error al escribir");
+        }
+        
+    }
+
 }

@@ -7,6 +7,7 @@ package pk.codeapp.screen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ButtonModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -27,6 +28,7 @@ public class CreateToken extends javax.swing.JFrame
     {
         initComponents();
         this.setLocationRelativeTo(this);
+
     }
 
     /**
@@ -39,8 +41,8 @@ public class CreateToken extends javax.swing.JFrame
     private void initComponents()
     {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        btnGroup1 = new javax.swing.ButtonGroup();
+        btnGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -82,35 +84,35 @@ public class CreateToken extends javax.swing.JFrame
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         rbnBlue.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroup1.add(rbnBlue);
+        btnGroup1.add(rbnBlue);
         rbnBlue.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         rbnBlue.setForeground(new java.awt.Color(255, 255, 255));
         rbnBlue.setText("Blue");
         jPanel1.add(rbnBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         rbnGreen.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroup1.add(rbnGreen);
+        btnGroup1.add(rbnGreen);
         rbnGreen.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         rbnGreen.setForeground(new java.awt.Color(255, 255, 255));
         rbnGreen.setText("Green");
         jPanel1.add(rbnGreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         rbnYellow.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroup1.add(rbnYellow);
+        btnGroup1.add(rbnYellow);
         rbnYellow.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         rbnYellow.setForeground(new java.awt.Color(255, 255, 255));
         rbnYellow.setText("Yellow");
         jPanel1.add(rbnYellow, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         rbnRed.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroup1.add(rbnRed);
+        btnGroup1.add(rbnRed);
         rbnRed.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         rbnRed.setForeground(new java.awt.Color(255, 255, 255));
         rbnRed.setText("Red");
         jPanel1.add(rbnRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
         chkCrown.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroup2.add(chkCrown);
+        btnGroup2.add(chkCrown);
         chkCrown.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         chkCrown.setForeground(new java.awt.Color(255, 255, 255));
         chkCrown.setText("Crown");
@@ -124,7 +126,7 @@ public class CreateToken extends javax.swing.JFrame
         jPanel1.add(chkCrown, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
         chkHeart.setBackground(new java.awt.Color(0, 0, 0));
-        buttonGroup2.add(chkHeart);
+        btnGroup2.add(chkHeart);
         chkHeart.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         chkHeart.setForeground(new java.awt.Color(255, 255, 255));
         chkHeart.setText("Heart");
@@ -175,7 +177,7 @@ public class CreateToken extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-       goBack();//return the before window
+        goBack();//return the before window
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
@@ -228,14 +230,16 @@ public class CreateToken extends javax.swing.JFrame
         frame.setEnabled(false);
         this.setVisible(true);
     }
-    public void goBack(){
+
+    public void goBack()
+    {
         dispose();
         frame.setEnabled(true);
         frame.setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup btnGroup1;
+    private javax.swing.ButtonGroup btnGroup2;
     private javax.swing.JCheckBox chkCrown;
     private javax.swing.JCheckBox chkHeart;
     private javax.swing.JButton jButton1;
@@ -254,27 +258,35 @@ public class CreateToken extends javax.swing.JFrame
     {
         //joins the two values and creates a path
         String message = "";
-        if (rbnBlue.isSelected()) {
-            message += "blue";
-        }
-        if (rbnGreen.isSelected()) {
-            message += "green";
-        }
-        if (rbnRed.isSelected()) {
-            message += "red";
-        }
-        if (rbnYellow.isSelected()) {
-            message += "yellow";
+        //Verify that is selected one color and option
+        if ((rbnBlue.isSelected() || rbnGreen.isSelected() || rbnRed.isSelected() || rbnYellow.isSelected())
+                && (chkCrown.isSelected() || chkHeart.isSelected())) {
+            if (rbnBlue.isSelected()) {
+                message += "blue";
+            }
+            if (rbnGreen.isSelected()) {
+                message += "green";
+            }
+            if (rbnRed.isSelected()) {
+                message += "red";
+            }
+            if (rbnYellow.isSelected()) {
+                message += "yellow";
+            }
+
+            if (chkCrown.isSelected()) {
+                message += "crown";
+            }
+            if (chkHeart.isSelected()) {
+                message += "heart";
+            }
+            //create a link that save the image path
+            String link = "src/pk/codeapp/tools/tokens/" + message + ".png";
+
+            goBack();//return the before window 
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Select one color and optio!");
         }
 
-        if (chkCrown.isSelected()) {
-            message += "crown";
-        }
-        if (chkHeart.isSelected()) {
-            message += "heart";
-        } 
-        String link = "src/pk/codeapp/tools/tokens/" + message+".png";
-        System.out.println(link);
-       goBack();//return the before window
     }
 }
