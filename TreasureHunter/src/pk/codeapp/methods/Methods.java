@@ -255,7 +255,7 @@ public class Methods
     public Board getRootBoard(){
         return actualUser.getGameSig();
     }
-    public Board setRootBoard(Board newRootBoard){
-        actualUser.setGameSig(newRootBoard);
+    public void setRootBoard(Board newRootBoard){
+         actualUser.setGameSig(newRootBoard);
     }
 }

@@ -234,37 +234,29 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
             }
          }
     }
-    public void deletePaintFrame(int column,int row){
+    public void deletePaintFrame(int column,int row){ 
        drawSurface.deleteFrame(column, row);
        deleteLinkening(column,row);
     }
-    private void deleteLinkening(int column,int row){
+    private void deleteLinkening(int column,int row){ // Delete Linkening to blocks
         Board reco = MainApp.methods.getRootBoard();
-        Board end = MainApp.methods.getEndBoard();
-        Board aux = reco.getSig();
+        Board aux = reco.getSig(); // aux is the next to reco 
         if(reco.getPosX()==column && reco.getPosY()==row){ // Check the first position
-            MainApp.methods.setRootBoard(reco.getSig());
-            reco.setSig(null);
-            reco.setAnt(null);
+            MainApp.methods.setRootBoard(aux); // Move the rootBoard
+            reco = null;
         }
-        if(end.getPosX()==column && end.getPosY()==row){// Check the last position
-            MainApp.methods.setEndBoard(end.getAnt());
-            end.setAnt(null);
-            end.setSig(null);            
-        }
-        while(reco!=end){    
-            if(reco.getPosX()==column && reco.getPosY()==row){
+        while(reco.getSig()!=null){    
+            if(reco.getPosX()==column && reco.getPosY()==row){ // if is the position move the sig and ant
                 reco.getAnt().setSig(aux);
                 aux.setAnt(reco.getAnt());
-                reco.setAnt(null);
-                reco.setSig(null);
-            }
+                reco=null; // Actual is delete
+            } // else move reco to the next position, same to aux
             reco = reco.getSig();
             aux = aux.getSig();
         }
     }
     public void UpdatePaintFrame() {
-        if (MainApp.methods.getActivePaint()) {
+        if (MainApp.methods.getActivePaint()){
             System.out.println("Ejecutar Codigo");
             paintSpecialFunction();
             
