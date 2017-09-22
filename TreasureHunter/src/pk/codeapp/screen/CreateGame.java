@@ -48,8 +48,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     private  String nameMethod;
     private Methods methods = MainApp.methods;
     private int numPosition=0;
-    public CreateGame(String nombre, Methods methods) {
+    private JFrame afterWindows;
+    public CreateGame(String nombre,JFrame afterWindows) {
         initComponents();
+<<<<<<< Updated upstream
          this.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent evt)
@@ -60,6 +62,9 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
             }
         });
 
+=======
+        this.afterWindows= afterWindows;
+>>>>>>> Stashed changes
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(nombre);
         this.getContentPane().setBackground(new Color(207, 216, 220));
@@ -85,6 +90,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         btnDraw = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnDeleteFrame = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1280, 800));
@@ -121,6 +127,16 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
             }
         });
 
+        btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,8 +145,8 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
                 .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(25, 25, 25))
+                        .addComponent(jLabel2)
+                        .addGap(152, 152, 152))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnDraw, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,8 +154,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
                             .addComponent(jLabel4))
                         .addGap(126, 126, 126))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(152, 152, 152))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +172,9 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
                 .addComponent(jLabel4)
                 .addGap(26, 26, 26)
                 .addComponent(btnDeleteFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,6 +203,11 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         activateMouse = true;
         nameMethod = "delete";
     }//GEN-LAST:event_btnDeleteFrameMouseClicked
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.dispose();
+        afterWindows.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,6 +331,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteFrame;
     private javax.swing.JButton btnDraw;
     private javax.swing.JLabel jLabel1;

@@ -1,16 +1,18 @@
 package pk.codeapp.screen;
 
+import javax.swing.JFrame;
 import pk.codeapp.methods.Methods;
 
 public class ControlCreateTable 
 {
-    private static Methods methods;
+
+    private static JFrame afterWindows;
     private static CreateGame window;
-    public void addMethod(Methods met){
-        this.methods=met;
+    public void beforeWindows(JFrame afterWindows){
+        this.afterWindows=afterWindows;
     }
     public  static void main(String args[])
     {
-        window= new CreateGame("Create Map",methods);
+        window= new CreateGame("Create Map",afterWindows);
     }
 }
