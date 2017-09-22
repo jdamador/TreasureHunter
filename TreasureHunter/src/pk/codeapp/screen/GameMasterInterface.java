@@ -28,6 +28,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
      */
     public GameMasterInterface() {
         initComponents();
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
 
@@ -77,6 +78,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,7 +140,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
         cmbColor.setBackground(new java.awt.Color(0, 0, 0));
         cmbColor.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         cmbColor.setForeground(new java.awt.Color(255, 255, 255));
-        cmbColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "blue", "red", "green", "yellow", "orange", "pink", "magenta", "cyan" }));
+        cmbColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "blue", "red", "green", "yellow", "orange", "pink", "magenta", "cyan", " " }));
         jPanel1.add(cmbColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 260, 40));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -177,19 +179,35 @@ public class GameMasterInterface extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Editar Usuario");
+        jButton5.setText("Edit User");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, 270, 60));
 
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
         jButton6.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Eliminar Usuario");
+        jButton6.setText("Delete User");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, 270, 60));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 270, 60));
+
+        jButton7.setBackground(new java.awt.Color(0, 0, 0));
+        jButton7.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Create Token");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 270, 60));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/GameBackGround.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -216,19 +234,37 @@ public class GameMasterInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddFunctionActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-//        Object[] possibleValues = {"First", "Second", "Third"};
-//        Object selectedValue = JOptionPane.showInputDialog(null,
-//                "Choose one", "Input",
-//                JOptionPane.INFORMATION_MESSAGE, null,
-//                possibleValues, possibleValues[0]);
 
-        Object data = JOptionPane.showInputDialog(rootPane, "Write User");
+      
+        Object data = JOptionPane.showInputDialog(rootPane, "Write the username", "Delete user", JOptionPane.INFORMATION_MESSAGE);
         if (data == null) {
             System.out.println("null");
-        } else{
-            methods.deleteUser(data.toString());
+        } else {
+            methods.deleteUser((String) data);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        Object data = JOptionPane.showInputDialog(rootPane, "Write the username", "Edit User", JOptionPane.INFORMATION_MESSAGE);
+        if (data == null) {
+            System.out.println("null");
+        } else {
+            User user = methods.searchUser((String) data);
+            if (user == null) {
+                JOptionPane.showMessageDialog(rootPane, "User don't exists");
+            } else {
+                EditUser edit = new EditUser();
+                edit.openWindows(this, methods, user);
+            }
+        }
+
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
     private void addFunction() {
         String colorFunction = (String) cmbColor.getSelectedItem();
         if (txtFunction.getText().isEmpty()) {
@@ -292,6 +328,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

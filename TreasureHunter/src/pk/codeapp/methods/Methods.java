@@ -170,13 +170,7 @@ public class Methods {
         }
     }
 
-    public void updateUser(String name, String Username, String Password, String email) {
-        actualUser.setEmail(email);
-        actualUser.setName(name);
-        actualUser.setPassword(Password);
-        actualUser.setUserName(Username);
-
-    }
+   
 
     public User getActualUser() {
         return actualUser;
@@ -257,17 +251,30 @@ public class Methods {
     }
 
     public void deleteUser(String username) {
-        if (root == null && root.getUserName().equals(username)) {
+        if (root == null) {
             root = null;
         } else {
-            User find = searchUser(username);
-            if (find != null) {
-                find.getAnt().setSig(find.getSig());
-                find.getSig().setAnt(find.getAnt());
+            if (root.getUserName().equals(username)) {
+                root = root.getSig();
+                root.setAnt(end);
+                JOptionPane.showMessageDialog(null, "Deleted!");
+            } else {
+                if (end.getUserName().equals(username)) {
+                    end = end.getAnt();
+                    end.setSig(root);
+                    JOptionPane.showMessageDialog(null, "Deleted!");
+                } else {
+                    User find = searchUser(username);
+                    if (find != null) {
+                        find.getAnt().setSig(find.getSig());
+                        find.getSig().setAnt(find.getAnt());
+                           JOptionPane.showMessageDialog(null, "Deleted!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "User don't exist");
+                    }
+                }
             }
-            else{
-                JOptionPane.showMessageDialog(null, "User don't exist");
-            }
+
         }
     }
 }

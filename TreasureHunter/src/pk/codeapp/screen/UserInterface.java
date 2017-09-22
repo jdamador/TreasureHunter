@@ -146,7 +146,7 @@ public class UserInterface extends javax.swing.JFrame
         // TODO add your handling code here:
         EditUser editUser = new EditUser();
         
-        editUser.openWindows(this, methods);
+        editUser.openWindows(this, methods,methods.getActualUser());
     
         
     }//GEN-LAST:event_jButton4ActionPerformed

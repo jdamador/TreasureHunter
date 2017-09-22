@@ -20,29 +20,24 @@ import pk.codeapp.model.User;
  *
  * @author Jose Pablo Brenes
  */
-public class MainApp extends javax.swing.JFrame
-{
+public class MainApp extends javax.swing.JFrame {
 
-   static  Methods methods = new Methods();
+    static Methods methods = new Methods();
 
-   
     /**
      * Creates new form TH_Main
      */
-    public MainApp()
-    {
-        
+    public MainApp() {
+
         initComponents();
-        methods.addFunction("Start","cyan");
-        methods.addFunction("End","magenta");
-        methods.addFunction("Empty","green");
+        methods.addFunction("Start", "cyan");
+        methods.addFunction("End", "magenta");
+        methods.addFunction("Empty", "green");
         methods.chargeUsers();
-        methods.add_User("Gabe Newell", "gabe", "gabenewell@ofertas.valve", "123", "GameMaster");
-        this.addWindowListener(new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent evt)
-            {
-                
+        methods.add_User("Gabe Newell", "Gabe", "gabenewell@ofertas.valve", "123", "GameMaster");
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+
                 methods.writeUser();
                 System.exit(0);
             }
@@ -51,8 +46,7 @@ public class MainApp extends javax.swing.JFrame
     }
 
     @Override
-    public Image getIconImage()
-    {
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
         return retValue;
     }
@@ -232,7 +226,7 @@ public class MainApp extends javax.swing.JFrame
     {//GEN-HEADEREND:event_txtUserNameKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-
+            login();
         }
     }//GEN-LAST:event_txtUserNameKeyPressed
 
@@ -255,8 +249,7 @@ public class MainApp extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -282,10 +275,8 @@ public class MainApp extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new MainApp().setVisible(true);
             }
         });
@@ -304,9 +295,8 @@ public class MainApp extends javax.swing.JFrame
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
-public void login()
-    {
-        
+public void login() {
+
         String userName = txtUserName.getText();
         User askUser = methods.searchUser(userName);
         if (askUser != null) {
@@ -327,5 +317,5 @@ public void login()
             JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
         }
     }
-    
+
 }
