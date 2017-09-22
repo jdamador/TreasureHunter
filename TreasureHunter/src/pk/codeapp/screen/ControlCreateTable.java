@@ -6,13 +6,13 @@ import pk.codeapp.methods.Methods;
 public class ControlCreateTable 
 {
 
-    private static JFrame afterWindows;
+    private static JFrame beforeWindows;
     private static CreateGame window;
     public void beforeWindows(JFrame afterWindows){
-        this.afterWindows=afterWindows;
+        this.beforeWindows=afterWindows;
     }
     public  static void main(String args[])
     {
-        window= new CreateGame("Create Map",afterWindows);
+        window= new CreateGame("Create Map",beforeWindows);
     }
 }

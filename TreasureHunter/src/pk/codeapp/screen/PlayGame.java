@@ -5,17 +5,25 @@
  */
 package pk.codeapp.screen;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Jose Pablo Brenes
  */
-public class PlayGame extends javax.swing.JFrame {
+public class PlayGame extends javax.swing.JFrame implements Runnable{
 
     /**
      * Creates new form PlayGame
      */
+    //Variables
+     private boolean running; // Running the loop
+     private Thread thread; //Main thread
+     //End Variables
     public PlayGame() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,16 +36,17 @@ public class PlayGame extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1250, 788));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1250, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 788, Short.MAX_VALUE)
         );
 
         pack();
@@ -77,7 +86,45 @@ public class PlayGame extends javax.swing.JFrame {
             }
         });
     }
+    private void init() { // variable initiator
+        
+    }
+    private void tick() { // Variables
 
+    }
+
+    private void render() { // Graphics
+        
+    }
+    @Override
+    public void run() { // Main Loop in the Game 
+         init();
+          while (running) { //Main Loop
+            tick();
+            render();
+        }
+        stop();
+    }
+    public synchronized void start() { //Start to synchronized main thread with Jframe
+        if (running) {
+            return;
+        }
+        running = true;
+        thread = new Thread(this); // Create new Thread
+        thread.start();
+    }
+
+    public synchronized void stop() {//Stop to synchronized main thread with Jframe
+        if (!running) {
+            return;
+        }
+        running = false;
+        try {
+            thread.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CreateGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
