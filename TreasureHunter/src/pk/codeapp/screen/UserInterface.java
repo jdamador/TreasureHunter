@@ -9,6 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import pk.codeapp.methods.Methods;
+import static pk.codeapp.screen.MainApp.methods;
 
 /**
  *
@@ -32,6 +33,7 @@ public class UserInterface extends javax.swing.JFrame
             {
                 
                 methods.writeUser();
+                 methods.writeInTextFile(methods.getTokenFile(), methods.getTokens());
                 System.exit(0);
             }
         });

@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.User;
+import static pk.codeapp.screen.MainApp.methods;
 
 /**
  *
@@ -33,6 +34,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
             public void windowClosing(WindowEvent evt) {
 
                 methods.writeUser();
+                 methods.writeInTextFile(methods.getTokenFile(), methods.getTokens());
                 System.exit(0);
             }
         });

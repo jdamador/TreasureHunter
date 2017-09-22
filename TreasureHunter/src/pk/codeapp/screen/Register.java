@@ -16,6 +16,7 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import pk.codeapp.methods.Methods;
 
+
 /**
  *
  * @author Daniel Amador
@@ -38,6 +39,7 @@ public class Register extends javax.swing.JFrame
             {
                 
                 methods.writeUser();
+                 methods.writeInTextFile(methods.getTokenFile(), methods.getTokens());
                 System.exit(0);
             }
         });
