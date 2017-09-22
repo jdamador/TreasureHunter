@@ -233,10 +233,6 @@ public class SelectToken extends javax.swing.JFrame {
 
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
         if(checknumPlayers()){
-            // Saltar a la ventana siguiente
-            for (int i = 0; i < tokens.length; i++) {
-                 System.out.println(tokens[i]);
-            }
            
         }else
             JOptionPane.showMessageDialog(rootPane,"Do you need one or more players !!!");
