@@ -5,11 +5,21 @@
  */
 package pk.codeapp.screen;
 
+import java.applet.Applet;
+import static java.applet.Applet.newAudioClip;
+import java.applet.AudioClip;
+
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -22,13 +32,14 @@ import pk.codeapp.model.User;
  */
 public class MainApp extends javax.swing.JFrame
 {
-
+    AudioClip   sound;
+    File audio = new File("src/pk/codeapp/tools/auido theme.wav");
     static Methods methods = new Methods();
 
     /**
      * Creates new form TH_Main
      */
-    public MainApp()
+    public MainApp() 
     {
 
         initComponents();
@@ -37,7 +48,15 @@ public class MainApp extends javax.swing.JFrame
         methods.addFunction("Empty", "green");
         methods.chargeUsers();
         methods.readFromTextFile(methods.getTokenFile(), methods.getTokens());
-
+         URL u=null;
+        try {
+            u = audio.toURL();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         sound =Applet.newAudioClip(u);
+          sound.play();
+    
         this.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent evt)
