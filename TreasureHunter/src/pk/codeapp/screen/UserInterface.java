@@ -231,9 +231,10 @@ public class UserInterface extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
         System.out.println(jListGames.getModel());
         if(jListGames.getModel().getSize()!=0){
+                methods.setMapSelected(methods.getShowActual().getGameSig());
               play();
         }else{
             JOptionPane.showMessageDialog(rootPane, "Select one map!!","Alert",JOptionPane.WARNING_MESSAGE);
@@ -271,6 +272,7 @@ public class UserInterface extends javax.swing.JFrame
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPlayActionPerformed
     {//GEN-HEADEREND:event_btnPlayActionPerformed
         // TODO add your handling code here:
+         methods.setMapSelected(methods.getActualUser().getGameSig());
         play();
     }//GEN-LAST:event_btnPlayActionPerformed
 

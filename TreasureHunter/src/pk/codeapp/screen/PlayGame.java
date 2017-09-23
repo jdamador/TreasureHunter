@@ -36,7 +36,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
     private int widhtDS = 800; // Widht draw surface
     private int heightSD = 800; // Height draw surface
     private int COLUMNS = 10, ROW = 10, SIDE = 80;
-    private int numPosition = 0; // Num position of Block or Frame
+
     private boolean firstPaintBlocks = true;
     private Board block;
     private Function function;
@@ -57,7 +57,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
     
     public PlayGame(String name, JFrame beforeWindows) {
         initComponents();
-        this.block = MainApp.methods.getRootBoard();
+        this.block = MainApp.methods.getMapSelected();
         this.beforeWindows = beforeWindows;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(name);
@@ -192,11 +192,11 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
         
         
     }//GEN-LAST:event_btnRollActionPerformed
-    public void spin() {
+    public void spin() { // View the animation of dice
         //Stting spin animation
         Dice.setIcon(new ImageIcon(animationPath));
     }
-    private void obtainResult(){
+    private void obtainResult(){ // Obtain result of spin
         Random r = new Random();
 
          int guess = faces[r.nextInt(faces.length)];
@@ -208,7 +208,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
 
     }
 
-    public void UpdatePaintFrame() { //
+    public void UpdatePaintFrame() { //Methods to paint block
         if (firstPaintBlocks) {
             Board reco = block;
             while (reco != null) {
@@ -223,9 +223,8 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
          
     }
 
-    private void paintBlock(Board reco, Color color) {
-        numPosition++;
-        drawSurface.paintToPLay(reco.getPosX(), reco.getPosY(), color, numPosition);
+    private void paintBlock(Board reco, Color color) { // Paints blocks
+        drawSurface.paintToPLay(reco.getPosX(), reco.getPosY(), color, reco.getNumPosicion());
     }
 
     private boolean paintSpecialFunction(Board reco) { //Methods to check Special Function and paint if is true

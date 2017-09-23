@@ -46,7 +46,7 @@ public class Methods
     private boolean activePaint;
     private String specialFunction = "";
     String tokens[] = new String[4];
-
+    private Board mapSelected;
     DefaultListModel<String> showUser = new DefaultListModel();
 
     User showActual;
@@ -164,8 +164,17 @@ public class Methods
     public void setActualUser(User actualUser)
     {
         this.actualUser = actualUser;
+      
     }
 
+    public Board getMapSelected() {
+        return mapSelected;
+    }
+
+    public void setMapSelected(Board mapSelected) {
+        this.mapSelected = mapSelected;
+    }
+    
     public Function getRootFunction()
     {
         return rootFunction;
@@ -195,12 +204,19 @@ public class Methods
     {
         return actualUser.getGameSig();
     }
+    
+    public User getShowActual() {
+        return showActual;
+    }
+
+    public void setShowActual(User showActual) {
+        this.showActual = showActual;
+    }
 
     public void setRootBoard(Board newRootBoard)
     {
         actualUser.setGameSig(newRootBoard);
     }
-
     public String[] getTokens()
     {
         return tokens;
@@ -285,8 +301,8 @@ public class Methods
     {
         Board newblock = new Board(column, row, numPosition, function);
         if (actualUser.getGameSig() == null) {
+            newblock.setSig(null);
             actualUser.setGameSig(newblock);
-
             return true;
         } else {
             newblock.setSig(actualUser.getGameSig());

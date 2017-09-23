@@ -15,7 +15,7 @@ public class Board implements Serializable{
     private int posX;
     private int posY;
     private int numPosicion;
-    private Function function;
+    private Function function; 
     // missing functions
     private Board sig, ant;
     
