@@ -38,7 +38,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
-
+        
     }
 
     public Image getIconImage() {
@@ -91,9 +91,12 @@ public class GameMasterInterface extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1360, 694));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        showUsers.setBackground(new java.awt.Color(38, 50, 56));
+        showUsers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        showUsers.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         jScrollPane1.setViewportView(showUsers);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, 280, 480));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, 280, 180));
 
         btnShowStart.setBackground(new java.awt.Color(0, 0, 0));
         btnShowStart.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -106,7 +109,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
                 btnShowStartActionPerformed(evt);
             }
         });
-        getContentPane().add(btnShowStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 520, -1, -1));
+        getContentPane().add(btnShowStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 220, -1, -1));
 
         btnShowBack.setBackground(new java.awt.Color(0, 0, 0));
         btnShowBack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -119,7 +122,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
                 btnShowBackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnShowBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 520, -1, -1));
+        getContentPane().add(btnShowBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 220, -1, -1));
 
         btnShowAhead.setBackground(new java.awt.Color(0, 0, 0));
         btnShowAhead.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -132,7 +135,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
                 btnShowAheadActionPerformed(evt);
             }
         });
-        getContentPane().add(btnShowAhead, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 520, -1, -1));
+        getContentPane().add(btnShowAhead, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 220, -1, -1));
 
         btnShowEnd.setBackground(new java.awt.Color(0, 0, 0));
         btnShowEnd.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -145,7 +148,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
                 btnShowEndActionPerformed(evt);
             }
         });
-        getContentPane().add(btnShowEnd, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 520, -1, -1));
+        getContentPane().add(btnShowEnd, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 220, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
@@ -313,13 +316,15 @@ public class GameMasterInterface extends javax.swing.JFrame {
     private void btnShowStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowStartActionPerformed
     {//GEN-HEADEREND:event_btnShowStartActionPerformed
         // TODO add your handling code here:
-         showUsers.setModel(methods.printUser(1));
+        showUsers.setModel(methods.printUser(1));
+
     }//GEN-LAST:event_btnShowStartActionPerformed
 
     private void btnShowEndActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowEndActionPerformed
     {//GEN-HEADEREND:event_btnShowEndActionPerformed
         // TODO add your handling code here:
-         showUsers.setModel(methods.printUser(2));
+        showUsers.setModel(methods.printUser(2));
+       
     }//GEN-LAST:event_btnShowEndActionPerformed
     private void addFunction() {
         String colorFunction = (String) cmbColor.getSelectedItem();

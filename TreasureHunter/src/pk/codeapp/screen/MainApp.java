@@ -20,14 +20,16 @@ import pk.codeapp.model.User;
  *
  * @author Jose Pablo Brenes
  */
-public class MainApp extends javax.swing.JFrame {
+public class MainApp extends javax.swing.JFrame
+{
 
     static Methods methods = new Methods();
 
     /**
      * Creates new form TH_Main
      */
-    public MainApp() {
+    public MainApp()
+    {
 
         initComponents();
         methods.addFunction("Start", "cyan");
@@ -35,9 +37,11 @@ public class MainApp extends javax.swing.JFrame {
         methods.addFunction("Empty", "green");
         methods.chargeUsers();
         methods.readFromTextFile(methods.getTokenFile(), methods.getTokens());
-        methods.addUser("Gabe Newell", "Gabe", "gabenewell@ofertas.valve", "123", "GameMaster");
-        this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent evt) {
+
+        this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent evt)
+            {
 
                 methods.writeUser();
                 methods.writeInTextFile(methods.getTokenFile(), methods.getTokens());
@@ -46,12 +50,13 @@ public class MainApp extends javax.swing.JFrame {
         });
         for (int i = 0; i < methods.getTokens().length; i++) {
             System.out.println(methods.getTokens()[i]);
-            
+
         }
     }
 
     @Override
-    public Image getIconImage() {
+    public Image getIconImage()
+    {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
         return retValue;
     }
@@ -254,7 +259,8 @@ public class MainApp extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -280,8 +286,10 @@ public class MainApp extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new MainApp().setVisible(true);
             }
         });
@@ -300,27 +308,37 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
-public void login() {
+public void login()
+    {
 
         String userName = txtUserName.getText();
-        User askUser = methods.searchUser(userName);
-        if (askUser != null) {
-            String password = txtPassword.getText();
-            if (askUser.getPassword().equals(password)) {
-                methods.setActualUser(askUser);
-                if (askUser.getRol().equals("GameMaster")) {
-                    GameMasterInterface gm = new GameMasterInterface();
-                    gm.openWindows(this, methods);
-                } else {
-                    UserInterface ui = new UserInterface();
-                    ui.openWindows(this, methods);
-                }
+        String password = txtPassword.getText();
+        if (userName.equals("Gabe")) {
+            if (password.equals("123")) {
+                GameMasterInterface gm = new GameMasterInterface();
+                gm.openWindows(this, methods);
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Password invalid!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+            User askUser = methods.searchUser(userName);
+            if (askUser != null) {
+
+                if (askUser.getPassword().equals(password)) {
+                    methods.setActualUser(askUser);
+
+                    UserInterface ui = new UserInterface();
+                    ui.openWindows(this, methods);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Password invalid!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Username don't exist!, try again...", "Password invalid", JOptionPane.WARNING_MESSAGE);
+            }
+
         }
+
     }
 
 }

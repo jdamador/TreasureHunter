@@ -47,11 +47,12 @@ public class Methods
     private String specialFunction = "";
     String tokens[] = new String[4];
     DefaultListModel<String> showUser = new DefaultListModel();
-    User showActual;
+    User showActual = new User();
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
 
     public Methods()
     {
+        root = end = null;
         rootFunction = null;
 
     }
@@ -64,8 +65,9 @@ public class Methods
             newUser = new User(name, userName, email, password, rol);
             if (end == null) {
                 //linkending when array is empty 
-                root = end = newUser;
-                end.setSig(newUser);
+                root = newUser;
+                end = newUser;
+                end.setSig(root);
                 root.setAnt(end);
 
                 return true;
@@ -75,8 +77,8 @@ public class Methods
                     end.setSig(newUser);
                     newUser.setAnt(end);
                     end = newUser;
-                    root.setAnt(end);
                     end.setSig(root);
+                    root.setAnt(end);
                     return true;
                 }
             }
@@ -240,15 +242,11 @@ public class Methods
         } catch (Exception exc) {
         }
         //
-
-        if (end != null) {
-            User reco = end;
-            do {
-                reco = reco.getAnt();
-            } while (reco != end);
-
-            root = reco;
-        }
+        root=end.getSig();
+        showActual=root;
+    
+            
+        
     }
 
     public User searchUser(String userName)
@@ -430,21 +428,30 @@ public class Methods
             switch (type) {
                 case 1: { //Show start
                     showActual = root;
+                    showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
+            return showUser;
                 }
                 case 2: {//Show end
                     showActual = end;
+showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
+            return showUser;
                 }
                 case 3: {//Show back
                     showActual = showActual.getAnt();
+                    showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
+            return showUser;
                 }
                 case 4: { //Show ahead
                     showActual = showActual.getSig();
+                    showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
+            return showUser;
                 }
-                showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
 
             }
-           
-        }
+            
+        } 
          return showUser;
+        
+
     }
 }

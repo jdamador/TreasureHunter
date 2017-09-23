@@ -86,5 +86,9 @@ public class User implements java.io.Serializable{
         this.rol = rol;
     }
 
+    public User()
+    {
+    }
+
     
 }
