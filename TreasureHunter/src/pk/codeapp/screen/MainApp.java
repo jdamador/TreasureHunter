@@ -44,7 +44,10 @@ public class MainApp extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
-
+        for (int i = 0; i < methods.getTokens().length; i++) {
+            System.out.println(methods.getTokens()[i]);
+            
+        }
     }
 
     @Override

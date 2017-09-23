@@ -8,6 +8,7 @@ package pk.codeapp.methods;
 import com.sun.xml.internal.ws.api.message.saaj.SAAJFactory;
 import java.awt.Color;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -40,7 +41,7 @@ public class Methods
     private User actualUser;
     private Color color;
     private File userFile = new File("src/pk/codeapp/tools/user.ser");
-     File tokenFile = new File("src/pk/codeapp/tools/tokens.txt");
+    File tokenFile = new File("src/pk/codeapp/tools/tokens.txt");
     private boolean activePaint;
     private String specialFunction = "";
     String tokens[] = new String[4];
@@ -50,7 +51,7 @@ public class Methods
     public Methods()
     {
         rootFunction = null;
-        
+
     }
 
     public boolean addUser(String name, String userName, String email, String password, String rol)
@@ -220,10 +221,10 @@ public class Methods
 
     public boolean setToken(String token)
     {
-        
+
         for (int i = 0; i < tokens.length; i++) {
-            if( tokens[i]==null){
-              tokens[i]=  token;
+            if (tokens[i] == null) {
+                tokens[i] = token;
                 System.out.println(tokens[i]);
                 return true;
             }
@@ -235,9 +236,8 @@ public class Methods
     {
         return tokenFile;
     }
-    
-//</editor-fold>
 
+//</editor-fold>
     public void chargeUsers() // method that chage user from binary file
     {
         //Read user from binary file
@@ -371,41 +371,45 @@ public class Methods
      */
     public void writeInTextFile(File file, String[] data)
     {
-          if (file.exists()) {
+        //<editor-fold desc="Delete file" defaultstate="collapsed">
+        if (file.exists()) {
             //clean file
             file.delete();
             System.out.println("Deleted");
         }
+        //</editor-fold>
         try {
-            FileWriter writer = new FileWriter(file, true);
+            FileWriter writer = new FileWriter(tokenFile);
             for (int i = 0; i < data.length; i++) {
-                 writer.write(data[i]);
+                if (null != data[i]) {
+                    writer.write(data[i]);
+                    writer.write("\r\n");   // write new line
+                }
             }
-           
             writer.close();
-        } catch (Exception e) {
-            System.out.println("Failure write");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public void readFromTextFile(File file,String[] arrayFinite)
+    public void readFromTextFile(File file, String[] arrayFinite)
     {
-        try{
-            FileReader reader = new FileReader(file);
-            BufferedReader data= new BufferedReader(reader);
+        try {
+
+            BufferedReader data = new BufferedReader(new FileReader(file));
             String text;
-            int i=0;
-            while((text=data.readLine())!=null&& i<arrayFinite.length){
-                arrayFinite[i]=text;
+            int i = 0;
+            while ((text = data.readLine()) != null) {
+                arrayFinite[i] = text;
                 i++;
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("fail to read");
         }
     }
 
     public void setTokens(String[] tokens)
     {
-        this.tokens=tokens;
+        this.tokens = tokens;
     }
 }

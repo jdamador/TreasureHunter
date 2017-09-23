@@ -62,7 +62,8 @@ public class GameMasterInterface extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Users = new javax.swing.JList<>();
@@ -78,9 +79,9 @@ public class GameMasterInterface extends javax.swing.JFrame {
         txtFunction = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnEditUser = new javax.swing.JButton();
+        btnDeleteUser = new javax.swing.JButton();
+        btnCreateToken = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,8 +111,10 @@ public class GameMasterInterface extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText(">>");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton3ActionPerformed(evt);
             }
         });
@@ -132,8 +135,10 @@ public class GameMasterInterface extends javax.swing.JFrame {
         btnAddFunction.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnAddFunction.setForeground(new java.awt.Color(255, 255, 255));
         btnAddFunction.setText("Add Function");
-        btnAddFunction.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAddFunction.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAddFunctionActionPerformed(evt);
             }
         });
@@ -155,7 +160,6 @@ public class GameMasterInterface extends javax.swing.JFrame {
         jLabel3.setText("Function:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        txtFunction.setBackground(new java.awt.Color(255, 255, 255));
         txtFunction.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtFunction.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtFunction, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 270, 40));
@@ -171,45 +175,53 @@ public class GameMasterInterface extends javax.swing.JFrame {
         btnBack.setFont(new java.awt.Font("Century Schoolbook L", 1, 24)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBackActionPerformed(evt);
             }
         });
         getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, -1, -1));
 
-        jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Edit User");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+        btnEditUser.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditUser.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnEditUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditUser.setText("Edit User");
+        btnEditUser.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnEditUserActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, 270, 60));
+        getContentPane().add(btnEditUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, 270, 60));
 
-        jButton6.setBackground(new java.awt.Color(0, 0, 0));
-        jButton6.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Delete User");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+        btnDeleteUser.setBackground(new java.awt.Color(0, 0, 0));
+        btnDeleteUser.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnDeleteUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteUser.setText("Delete User");
+        btnDeleteUser.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnDeleteUserActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 270, 60));
+        getContentPane().add(btnDeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 270, 60));
 
-        jButton7.setBackground(new java.awt.Color(0, 0, 0));
-        jButton7.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Create Token");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+        btnCreateToken.setBackground(new java.awt.Color(0, 0, 0));
+        btnCreateToken.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnCreateToken.setForeground(new java.awt.Color(255, 255, 255));
+        btnCreateToken.setText("Create Token");
+        btnCreateToken.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCreateTokenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 270, 60));
+        getContentPane().add(btnCreateToken, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 270, 60));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/GameBackGround.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -235,7 +247,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
         addFunction();
     }//GEN-LAST:event_btnAddFunctionActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
 
       
         Object data = JOptionPane.showInputDialog(rootPane, "Write the username", "Delete user", JOptionPane.INFORMATION_MESSAGE);
@@ -244,9 +256,9 @@ public class GameMasterInterface extends javax.swing.JFrame {
         } else {
             methods.deleteUser((String) data);
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnDeleteUserActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnEditUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditUserActionPerformed
         // TODO add your handling code here:
         Object data = JOptionPane.showInputDialog(rootPane, "Write the username", "Edit User", JOptionPane.INFORMATION_MESSAGE);
         if (data == null) {
@@ -262,13 +274,13 @@ public class GameMasterInterface extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnEditUserActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnCreateTokenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTokenActionPerformed
         // TODO add your handling code here:
         CreateToken newToken= new CreateToken();
         newToken.openWindows(this);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnCreateTokenActionPerformed
     private void addFunction() {
         String colorFunction = (String) cmbColor.getSelectedItem();
         if (txtFunction.getText().isEmpty()) {
@@ -325,14 +337,14 @@ public class GameMasterInterface extends javax.swing.JFrame {
     private javax.swing.JList<String> Users;
     private javax.swing.JButton btnAddFunction;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnCreateToken;
+    private javax.swing.JButton btnDeleteUser;
+    private javax.swing.JButton btnEditUser;
     private javax.swing.JComboBox<String> cmbColor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
