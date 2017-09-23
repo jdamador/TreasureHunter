@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< Updated upstream
         <group>
             <file>file:/E:/Segundo%20Semestre%202017/Estructuras/Treasure%20Hunter/TreasureHunter/TreasureHunter/src/pk/codeapp/screen/ControlPlayGame.java</file>
             <file>file:/E:/Segundo%20Semestre%202017/Estructuras/Treasure%20Hunter/TreasureHunter/TreasureHunter/src/pk/codeapp/screen/windowsAuxConsult.java</file>
@@ -19,5 +20,8 @@
             <file>file:/E:/Segundo%20Semestre%202017/Estructuras/Treasure%20Hunter/TreasureHunter/TreasureHunter/src/pk/codeapp/screen/CreateGame.java</file>
             <file>file:/E:/Segundo%20Semestre%202017/Estructuras/Treasure%20Hunter/TreasureHunter/TreasureHunter/src/pk/codeapp/screen/ControlCreateTable.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> Stashed changes
     </open-files>
 </project-private>
