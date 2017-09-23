@@ -5,11 +5,13 @@
  */
 package pk.codeapp.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jose Pablo Brenes
  */
-public class Board {
+public class Board implements Serializable{
     private int posX;
     private int posY;
     private int numPosicion;

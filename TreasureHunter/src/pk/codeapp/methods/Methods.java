@@ -49,7 +49,6 @@ public class Methods
 
     DefaultListModel<String> showUser = new DefaultListModel();
 
-
     User showActual;
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
@@ -246,8 +245,10 @@ public class Methods
         } catch (Exception exc) {
         }
         //
-        root = end.getSig();
-        showActual = root;
+        if (end != null) {
+            root = end.getSig();
+            showActual = root;
+        }
 
     }
 
@@ -285,7 +286,7 @@ public class Methods
         Board newblock = new Board(column, row, numPosition, function);
         if (actualUser.getGameSig() == null) {
             actualUser.setGameSig(newblock);
-            
+
             return true;
         } else {
             newblock.setSig(actualUser.getGameSig());
@@ -448,8 +449,8 @@ public class Methods
                 }
 
             }
-            showUser.addElement("Name:\n\t\t\t\t\t "+showActual.getName()); 
-             showUser.addElement("UserName:\n\t\t\t\t\t "+showActual.getUserName()); 
+            showUser.addElement("Name:\n\t\t\t\t\t " + showActual.getName());
+            showUser.addElement("UserName:\n\t\t\t\t\t " + showActual.getUserName());
         }
         return showUser;
 
