@@ -19,6 +19,7 @@ public class EditUser extends javax.swing.JFrame {
 
     private JFrame afterWindows;
     User edit;
+    UserInterface userInterface=null;
     private Methods methods;
 
     /**
@@ -40,6 +41,9 @@ public class EditUser extends javax.swing.JFrame {
         txtUsename.setText(edit.getUserName());
         this.setVisible(true);
         afterWindows.setEnabled(false);
+    }
+    public void openWindowsFromUser(UserInterface userInterface){
+        this.userInterface=userInterface;
     }
 
     /**
@@ -195,6 +199,7 @@ public class EditUser extends javax.swing.JFrame {
     private void btnMakeChangesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnMakeChangesActionPerformed
     {//GEN-HEADEREND:event_btnMakeChangesActionPerformed
         // TODO add your handling code here:
+       
         updateChanges();
         goBack();
     }//GEN-LAST:event_btnMakeChangesActionPerformed
@@ -235,6 +240,9 @@ public class EditUser extends javax.swing.JFrame {
     }
 
     public void goBack() {
+         if(userInterface!=null){
+             userInterface.chargeData();
+         }
          this.dispose();
          afterWindows.setVisible(true);
          afterWindows.setEnabled(true);

@@ -427,7 +427,8 @@ public void updateTokens()
         frame.setVisible(false);
     }
     public void goBack(){
-    this.dispose();
     frame.setVisible(true);
+    this.dispose();
+  
     }
 }

@@ -275,11 +275,30 @@ public class GameMasterInterface extends javax.swing.JFrame {
 
         lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.add(lblToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 70));
-        jPanel2.add(rbnDelete2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
-        jPanel2.add(rbnDelete3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
-        jPanel2.add(rbnDelete4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
-        jPanel2.add(rbnDelete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
+        rbnDelete2.setBackground(new java.awt.Color(0, 0, 0));
+        rbnDelete2.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        rbnDelete2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(rbnDelete2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, -1, -1));
+
+        rbnDelete3.setBackground(new java.awt.Color(0, 0, 0));
+        rbnDelete3.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        rbnDelete3.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(rbnDelete3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+
+        rbnDelete4.setBackground(new java.awt.Color(0, 0, 0));
+        rbnDelete4.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        rbnDelete4.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(rbnDelete4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
+
+        rbnDelete1.setBackground(new java.awt.Color(0, 0, 0));
+        rbnDelete1.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        rbnDelete1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(rbnDelete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+
+        btnDelete.setBackground(new java.awt.Color(0, 0, 0));
+        btnDelete.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener()
         {
@@ -288,7 +307,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        jPanel2.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+        jPanel2.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/newFont.jpg"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 270));
@@ -297,7 +316,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/GameBackGround.jpg"))); // NOI18N
         jLabel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

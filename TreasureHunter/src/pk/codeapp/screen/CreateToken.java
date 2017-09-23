@@ -233,10 +233,12 @@ public class CreateToken extends javax.swing.JFrame
 
     public void goBack()
     {
+        frame.updateTokens();
+        frame.setVisible(true);
         dispose();
         frame.setEnabled(true);
-        frame.setVisible(true);
-        frame.updateTokens();
+        
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToken;
