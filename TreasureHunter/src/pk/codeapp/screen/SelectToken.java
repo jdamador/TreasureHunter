@@ -5,6 +5,7 @@
  */
 package pk.codeapp.screen;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,7 @@ public class SelectToken extends javax.swing.JFrame {
 
     public SelectToken() {
         initComponents();
+        updateTokens();
     }
 
     /**
@@ -30,7 +32,8 @@ public class SelectToken extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
@@ -48,6 +51,10 @@ public class SelectToken extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         btnStartGame = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        lblToken2 = new javax.swing.JLabel();
+        lblToken3 = new javax.swing.JLabel();
+        lblToken4 = new javax.swing.JLabel();
+        lblToken1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,6 +79,13 @@ public class SelectToken extends javax.swing.JFrame {
         btnToken1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnToken1.setForeground(new java.awt.Color(255, 255, 255));
         btnToken1.setText("Token 1");
+        btnToken1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnToken1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
 
         btnToken3.setBackground(new java.awt.Color(0, 0, 0));
@@ -91,8 +105,10 @@ public class SelectToken extends javax.swing.JFrame {
         btnPlayer1.setBackground(new java.awt.Color(0, 0, 0));
         btnPlayer1.setForeground(new java.awt.Color(255, 255, 255));
         btnPlayer1.setText("Player 1");
-        btnPlayer1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPlayer1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPlayer1ActionPerformed(evt);
             }
         });
@@ -101,8 +117,10 @@ public class SelectToken extends javax.swing.JFrame {
         btnPlayer2.setBackground(new java.awt.Color(0, 0, 0));
         btnPlayer2.setForeground(new java.awt.Color(255, 255, 255));
         btnPlayer2.setText("Player 2");
-        btnPlayer2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPlayer2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPlayer2ActionPerformed(evt);
             }
         });
@@ -111,8 +129,10 @@ public class SelectToken extends javax.swing.JFrame {
         btnPlayer3.setBackground(new java.awt.Color(0, 0, 0));
         btnPlayer3.setForeground(new java.awt.Color(255, 255, 255));
         btnPlayer3.setText("Player 3");
-        btnPlayer3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPlayer3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPlayer3ActionPerformed(evt);
             }
         });
@@ -121,8 +141,10 @@ public class SelectToken extends javax.swing.JFrame {
         btnPlayer4.setBackground(new java.awt.Color(0, 0, 0));
         btnPlayer4.setForeground(new java.awt.Color(255, 255, 255));
         btnPlayer4.setText("Player 4");
-        btnPlayer4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPlayer4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPlayer4ActionPerformed(evt);
             }
         });
@@ -148,13 +170,19 @@ public class SelectToken extends javax.swing.JFrame {
         btnStartGame.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnStartGame.setForeground(new java.awt.Color(255, 255, 255));
         btnStartGame.setText("Play !!! ");
-        btnStartGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnStartGame.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnStartGameActionPerformed(evt);
             }
         });
         jPanel1.add(btnStartGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 560, 296, 83));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 188, -1, -1));
+        jPanel1.add(lblToken2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 80, 80));
+        jPanel1.add(lblToken3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, 80, 80));
+        jPanel1.add(lblToken4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 190, 80, 80));
+        jPanel1.add(lblToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 80, 80));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/GameBackGround.jpg"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -238,6 +266,11 @@ public class SelectToken extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane,"Do you need one or more players !!!");
             
     }//GEN-LAST:event_btnStartGameActionPerformed
+
+    private void btnToken1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnToken1ActionPerformed
+    {//GEN-HEADEREND:event_btnToken1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnToken1ActionPerformed
     private boolean checknumPlayers(){ // Check to has more than zero players
         for (int i = 0; i < tokens.length; i++) {
             if(tokens[i]!=null)
@@ -313,5 +346,29 @@ public class SelectToken extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblToken1;
+    private javax.swing.JLabel lblToken2;
+    private javax.swing.JLabel lblToken3;
+    private javax.swing.JLabel lblToken4;
     // End of variables declaration//GEN-END:variables
+public void updateTokens(){
+    String[]tokens=MainApp.methods.getTokens();
+    if(tokens[0]!=null){
+           btnToken1.setVisible(true);
+        lblToken1.setIcon(new ImageIcon(tokens[0]));
+    }else   btnToken1.setVisible(false);
+    
+    if(tokens[1]!=null){  btnToken1.setVisible(true); lblToken1.setIcon(new ImageIcon(tokens[0]));    
+    } else btnToken1.setVisible(false);
+    
+    if(tokens[2]!=null){ btnToken1.setVisible(true);  lblToken1.setIcon(new ImageIcon(tokens[0])); 
+    }else   btnToken1.setVisible(false);
+   
+    if(tokens[3]!=null){
+           btnToken1.setVisible(true);
+       lblToken1.setIcon(new ImageIcon(tokens[0])); 
+    }else   btnToken1.setVisible(false);
+    
+}
+
 }

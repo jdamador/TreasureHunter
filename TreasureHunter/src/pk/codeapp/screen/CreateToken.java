@@ -51,7 +51,7 @@ public class CreateToken extends javax.swing.JFrame
         rbnYellow = new javax.swing.JRadioButton();
         rbnRed = new javax.swing.JRadioButton();
         chkCrown = new javax.swing.JCheckBox();
-        chkHeart = new javax.swing.JCheckBox();
+        chkmushroom = new javax.swing.JCheckBox();
         btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnCleanTokens = new javax.swing.JButton();
@@ -126,12 +126,12 @@ public class CreateToken extends javax.swing.JFrame
         });
         jPanel1.add(chkCrown, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
-        chkHeart.setBackground(new java.awt.Color(0, 0, 0));
-        btnGroup2.add(chkHeart);
-        chkHeart.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        chkHeart.setForeground(new java.awt.Color(255, 255, 255));
-        chkHeart.setText("Heart");
-        jPanel1.add(chkHeart, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
+        chkmushroom.setBackground(new java.awt.Color(0, 0, 0));
+        btnGroup2.add(chkmushroom);
+        chkmushroom.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        chkmushroom.setForeground(new java.awt.Color(255, 255, 255));
+        chkmushroom.setText("mushroom ");
+        jPanel1.add(chkmushroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
         btnBack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
@@ -265,7 +265,7 @@ public class CreateToken extends javax.swing.JFrame
     private javax.swing.ButtonGroup btnGroup1;
     private javax.swing.ButtonGroup btnGroup2;
     private javax.swing.JCheckBox chkCrown;
-    private javax.swing.JCheckBox chkHeart;
+    private javax.swing.JCheckBox chkmushroom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -282,7 +282,7 @@ public class CreateToken extends javax.swing.JFrame
         String message = "";
         //Verify that is selected one color and option
         if ((rbnBlue.isSelected() || rbnGreen.isSelected() || rbnRed.isSelected() || rbnYellow.isSelected())
-                && (chkCrown.isSelected() || chkHeart.isSelected())) {
+                && (chkCrown.isSelected() || chkmushroom.isSelected())) {
             if (rbnBlue.isSelected()) {
                 message += "blue";
             }
@@ -296,10 +296,10 @@ public class CreateToken extends javax.swing.JFrame
                 message += "yellow";
             }
 
-            if (chkCrown.isSelected()) {
-                message += "crown";
+            if (chkmushroom.isSelected()) {
+                message += "mushroom";
             }
-            if (chkHeart.isSelected()) {
+            if (chkmushroom.isSelected()) {
                 message += "heart";
             }
             //create a link that save the image path
