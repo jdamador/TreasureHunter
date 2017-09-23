@@ -47,7 +47,7 @@ public class DrawSurface extends Canvas {
         buffer.show();
     }
 
-    public void paintFrame(int column, int row, Color color, int numPosition) {
+    public void paintFrame(int column, int row, Color color, int numPosition) { // Start Buffer to paint in the PlayGame
         buffertToCreateMap = getBufferStrategy();
         if (buffer == null) {
             createBufferStrategy(3);
