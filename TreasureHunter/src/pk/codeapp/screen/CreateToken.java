@@ -19,7 +19,7 @@ import javax.swing.JRadioButton;
 public class CreateToken extends javax.swing.JFrame
 {
 
-    JFrame frame;
+    GameMasterInterface frame;
 
     /**
      * Creates new form CreateToken
@@ -54,7 +54,6 @@ public class CreateToken extends javax.swing.JFrame
         chkmushroom = new javax.swing.JCheckBox();
         btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btnCleanTokens = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -152,19 +151,6 @@ public class CreateToken extends javax.swing.JFrame
         jLabel3.setText("image to the new token");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
-        btnCleanTokens.setBackground(new java.awt.Color(0, 0, 0));
-        btnCleanTokens.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        btnCleanTokens.setForeground(new java.awt.Color(255, 255, 255));
-        btnCleanTokens.setText("Clean Tokens");
-        btnCleanTokens.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnCleanTokensActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCleanTokens, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, -1, -1));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/createtoken.jpg"))); // NOI18N
         jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 89, -1, 460));
@@ -199,13 +185,6 @@ public class CreateToken extends javax.swing.JFrame
         // TODO add your handling code here:
         createToken();
     }//GEN-LAST:event_btnAddTokenActionPerformed
-
-    private void btnCleanTokensActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCleanTokensActionPerformed
-    {//GEN-HEADEREND:event_btnCleanTokensActionPerformed
-        // TODO add your handling code here:
-        MainApp.methods.setTokens(new String[4]);
-        JOptionPane.showMessageDialog(rootPane, "cleaned");
-    }//GEN-LAST:event_btnCleanTokensActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,7 +224,7 @@ public class CreateToken extends javax.swing.JFrame
         });
     }
 
-    public void openWindows(JFrame frame)
+    public void openWindows(GameMasterInterface frame)
     {
         this.frame = frame;
         frame.setEnabled(false);
@@ -257,11 +236,11 @@ public class CreateToken extends javax.swing.JFrame
         dispose();
         frame.setEnabled(true);
         frame.setVisible(true);
+        frame.updateTokens();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToken;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnCleanTokens;
     private javax.swing.ButtonGroup btnGroup1;
     private javax.swing.ButtonGroup btnGroup2;
     private javax.swing.JCheckBox chkCrown;

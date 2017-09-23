@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pk.codeapp.methods.Methods;
@@ -29,6 +30,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
      */
     public GameMasterInterface() {
         initComponents();
+        updateTokens();
 
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
@@ -38,7 +40,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
-        
+       
     }
 
     public Image getIconImage() {
@@ -82,6 +84,17 @@ public class GameMasterInterface extends javax.swing.JFrame {
         btnEditUser = new javax.swing.JButton();
         btnDeleteUser = new javax.swing.JButton();
         btnCreateToken = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        lblToken3 = new javax.swing.JLabel();
+        lblToken4 = new javax.swing.JLabel();
+        lblToken2 = new javax.swing.JLabel();
+        lblToken1 = new javax.swing.JLabel();
+        rbnDelete2 = new javax.swing.JRadioButton();
+        rbnDelete3 = new javax.swing.JRadioButton();
+        rbnDelete4 = new javax.swing.JRadioButton();
+        rbnDelete1 = new javax.swing.JRadioButton();
+        btnDelete = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,6 +107,7 @@ public class GameMasterInterface extends javax.swing.JFrame {
         showUsers.setBackground(new java.awt.Color(38, 50, 56));
         showUsers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         showUsers.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        showUsers.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(showUsers);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, 280, 180));
@@ -247,8 +261,43 @@ public class GameMasterInterface extends javax.swing.JFrame {
         });
         getContentPane().add(btnCreateToken, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 270, 60));
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblToken3.setBackground(new java.awt.Color(0, 0, 0));
+        lblToken3.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel2.add(lblToken3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 70, 70));
+
+        lblToken4.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel2.add(lblToken4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 70, 70));
+
+        lblToken2.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel2.add(lblToken2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 70, 70));
+
+        lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel2.add(lblToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 70));
+        jPanel2.add(rbnDelete2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
+        jPanel2.add(rbnDelete3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
+        jPanel2.add(rbnDelete4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+        jPanel2.add(rbnDelete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/newFont.jpg"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 270));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 310, 300, 270));
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/GameBackGround.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -326,6 +375,12 @@ public class GameMasterInterface extends javax.swing.JFrame {
         showUsers.setModel(methods.printUser(2));
        
     }//GEN-LAST:event_btnShowEndActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnDeleteActionPerformed
+    {//GEN-HEADEREND:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        checkToken();
+    }//GEN-LAST:event_btnDeleteActionPerformed
     private void addFunction() {
         String colorFunction = (String) cmbColor.getSelectedItem();
         if (txtFunction.getText().isEmpty()) {
@@ -377,11 +432,43 @@ public class GameMasterInterface extends javax.swing.JFrame {
         });
     }
 
+public void updateTokens()
+    {
+        String[] tokens = MainApp.methods.getTokens();
+        if (tokens[0] != null) {
+            rbnDelete1.setVisible(true);
+            lblToken1.setIcon(new ImageIcon(tokens[0]));
+        } else {
+            rbnDelete1.setVisible(false);
+        }
 
+        if (tokens[1] != null) {
+            rbnDelete2.setVisible(true);
+            lblToken2.setIcon(new ImageIcon(tokens[1]));
+        } else {
+            rbnDelete2.setVisible(false);
+        }
+
+        if (tokens[2] != null) {
+            rbnDelete3.setVisible(true);
+            lblToken3.setIcon(new ImageIcon(tokens[2]));
+        } else {
+            rbnDelete3.setVisible(false);
+        }
+
+        if (tokens[3] != null) {
+            rbnDelete4.setVisible(true);
+            lblToken4.setIcon(new ImageIcon(tokens[3]));
+        } else {
+            rbnDelete4.setVisible(false);
+        }
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddFunction;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateToken;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDeleteUser;
     private javax.swing.JButton btnEditUser;
     private javax.swing.JButton btnShowAhead;
@@ -393,9 +480,44 @@ public class GameMasterInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblToken1;
+    private javax.swing.JLabel lblToken2;
+    private javax.swing.JLabel lblToken3;
+    private javax.swing.JLabel lblToken4;
+    private javax.swing.JRadioButton rbnDelete1;
+    private javax.swing.JRadioButton rbnDelete2;
+    private javax.swing.JRadioButton rbnDelete3;
+    private javax.swing.JRadioButton rbnDelete4;
     private javax.swing.JList<String> showUsers;
     private javax.swing.JTextField txtFunction;
     // End of variables declaration//GEN-END:variables
+  private void checkToken()
+    {
+         String[] tokens = MainApp.methods.getTokens();
+        if (rbnDelete1.isSelected() ) {
+           tokens[0]=null;
+            rbnDelete1.setVisible(false);
+             lblToken1.setIcon(null);
+        }
+        if (rbnDelete2.isSelected() ) {
+             tokens[1]=null;
+               rbnDelete2.setVisible(false);
+                lblToken2.setIcon(null);
+        }
+        if (rbnDelete3.isSelected() ) {
+             tokens[2]=null;
+               rbnDelete3.setVisible(false);
+                lblToken3.setIcon(null);
+        }
+        if (rbnDelete4.isSelected()) {
+             tokens[3]=null;
+               rbnDelete4.setVisible(false);
+                lblToken4.setIcon(null);
+        }
+       
+    }
 }

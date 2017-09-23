@@ -242,11 +242,9 @@ public class Methods
         } catch (Exception exc) {
         }
         //
-        root=end.getSig();
-        showActual=root;
-    
-            
-        
+        root = end.getSig();
+        showActual = root;
+
     }
 
     public User searchUser(String userName)
@@ -428,30 +426,28 @@ public class Methods
             switch (type) {
                 case 1: { //Show start
                     showActual = root;
-                    showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
-            return showUser;
+
+                    break;
                 }
                 case 2: {//Show end
                     showActual = end;
-showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
-            return showUser;
+                    break;
                 }
                 case 3: {//Show back
                     showActual = showActual.getAnt();
-                    showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
-            return showUser;
+                    break;
                 }
                 case 4: { //Show ahead
                     showActual = showActual.getSig();
-                    showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
-            return showUser;
+                    break;
                 }
 
             }
-            
-        } 
-         return showUser;
-        
+            showUser.addElement("Name:\n\t\t\t\t\t "+showActual.getName()); 
+             showUser.addElement("UserName:\n\t\t\t\t\t "+showActual.getUserName()); 
+        }
+        return showUser;
 
     }
+
 }

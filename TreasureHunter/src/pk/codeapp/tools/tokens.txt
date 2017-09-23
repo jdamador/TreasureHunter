@@ -1,4 +1,2 @@
-src/pk/codeapp/tools/tokens/redcrown.png
-src/pk/codeapp/tools/tokens/bluemushroom.png
-src/pk/codeapp/tools/tokens/greenmushroom.png
+src/pk/codeapp/tools/tokens/bluecrown.png
 src/pk/codeapp/tools/tokens/greencrown.png
