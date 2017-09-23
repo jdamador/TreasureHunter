@@ -393,6 +393,6 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
     {
         Point cursor = e.getPoint();
         
-        return new Point((int)cursor.getX(),(int)cursor.getY());
+        return cursor;
     }
 }
