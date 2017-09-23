@@ -423,21 +423,21 @@ public class Methods
         this.tokens = tokens;
     }
 
-    public DefaultListModel imprimir(int tipo)
+    public DefaultListModel printUser(int type)
     {
         showUser.clear();
         if (end != null) {
-            switch (tipo) {
-                case 1: { //Ver inicio;
+            switch (type) {
+                case 1: { //Show start
                     showActual = root;
                 }
-                case 2: {//ver final
+                case 2: {//Show end
                     showActual = end;
                 }
-                case 3: {//ver Atras
+                case 3: {//Show back
                     showActual = showActual.getAnt();
                 }
-                case 4: { //ver Adelante
+                case 4: { //Show ahead
                     showActual = showActual.getSig();
                 }
                 showUser.addElement(showActual.getName() + "   " + showActual.getUserName());

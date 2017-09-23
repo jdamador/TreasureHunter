@@ -66,11 +66,11 @@ public class GameMasterInterface extends javax.swing.JFrame {
     {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        Users = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        showUsers = new javax.swing.JList<>();
+        btnShowStart = new javax.swing.JButton();
+        btnShowBack = new javax.swing.JButton();
+        btnShowAhead = new javax.swing.JButton();
+        btnShowEnd = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnAddFunction = new javax.swing.JButton();
         cmbColor = new javax.swing.JComboBox<>();
@@ -91,40 +91,61 @@ public class GameMasterInterface extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1360, 694));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane1.setViewportView(Users);
+        jScrollPane1.setViewportView(showUsers);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, 280, 480));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Start");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 520, -1, -1));
-
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("<<");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 520, -1, -1));
-
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText(">>");
-        jButton3.addActionListener(new java.awt.event.ActionListener()
+        btnShowStart.setBackground(new java.awt.Color(0, 0, 0));
+        btnShowStart.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnShowStart.setForeground(new java.awt.Color(255, 255, 255));
+        btnShowStart.setText("Start");
+        btnShowStart.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton3ActionPerformed(evt);
+                btnShowStartActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 520, -1, -1));
+        getContentPane().add(btnShowStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 520, -1, -1));
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("End");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 520, -1, -1));
+        btnShowBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnShowBack.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnShowBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnShowBack.setText("<<");
+        btnShowBack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnShowBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnShowBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 520, -1, -1));
+
+        btnShowAhead.setBackground(new java.awt.Color(0, 0, 0));
+        btnShowAhead.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnShowAhead.setForeground(new java.awt.Color(255, 255, 255));
+        btnShowAhead.setText(">>");
+        btnShowAhead.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnShowAheadActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnShowAhead, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 520, -1, -1));
+
+        btnShowEnd.setBackground(new java.awt.Color(0, 0, 0));
+        btnShowEnd.setFont(new java.awt.Font("Century Schoolbook L", 1, 18)); // NOI18N
+        btnShowEnd.setForeground(new java.awt.Color(255, 255, 255));
+        btnShowEnd.setText("End");
+        btnShowEnd.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnShowEndActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnShowEnd, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 520, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
@@ -238,10 +259,11 @@ public class GameMasterInterface extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
-    {//GEN-HEADEREND:event_jButton3ActionPerformed
+    private void btnShowAheadActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowAheadActionPerformed
+    {//GEN-HEADEREND:event_btnShowAheadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+         showUsers.setModel(methods.printUser(4));
+    }//GEN-LAST:event_btnShowAheadActionPerformed
 
     private void btnAddFunctionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFunctionActionPerformed
         addFunction();
@@ -281,6 +303,24 @@ public class GameMasterInterface extends javax.swing.JFrame {
         CreateToken newToken= new CreateToken();
         newToken.openWindows(this);
     }//GEN-LAST:event_btnCreateTokenActionPerformed
+
+    private void btnShowBackActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowBackActionPerformed
+    {//GEN-HEADEREND:event_btnShowBackActionPerformed
+        // TODO add your handling code here:
+        showUsers.setModel(methods.printUser(3));
+    }//GEN-LAST:event_btnShowBackActionPerformed
+
+    private void btnShowStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowStartActionPerformed
+    {//GEN-HEADEREND:event_btnShowStartActionPerformed
+        // TODO add your handling code here:
+         showUsers.setModel(methods.printUser(1));
+    }//GEN-LAST:event_btnShowStartActionPerformed
+
+    private void btnShowEndActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowEndActionPerformed
+    {//GEN-HEADEREND:event_btnShowEndActionPerformed
+        // TODO add your handling code here:
+         showUsers.setModel(methods.printUser(2));
+    }//GEN-LAST:event_btnShowEndActionPerformed
     private void addFunction() {
         String colorFunction = (String) cmbColor.getSelectedItem();
         if (txtFunction.getText().isEmpty()) {
@@ -334,23 +374,23 @@ public class GameMasterInterface extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> Users;
     private javax.swing.JButton btnAddFunction;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateToken;
     private javax.swing.JButton btnDeleteUser;
     private javax.swing.JButton btnEditUser;
+    private javax.swing.JButton btnShowAhead;
+    private javax.swing.JButton btnShowBack;
+    private javax.swing.JButton btnShowEnd;
+    private javax.swing.JButton btnShowStart;
     private javax.swing.JComboBox<String> cmbColor;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> showUsers;
     private javax.swing.JTextField txtFunction;
     // End of variables declaration//GEN-END:variables
 }
