@@ -32,14 +32,16 @@ import pk.codeapp.model.User;
  */
 public class MainApp extends javax.swing.JFrame
 {
-    AudioClip   sound;
+
+    AudioClip sound;
     File audio = new File("src/pk/codeapp/tools/auido theme.wav");
     static Methods methods = new Methods();
+    boolean play;
 
     /**
      * Creates new form TH_Main
      */
-    public MainApp() 
+    public MainApp()
     {
 
         initComponents();
@@ -48,15 +50,17 @@ public class MainApp extends javax.swing.JFrame
         methods.addFunction("Empty", "green");
         methods.chargeUsers();
         methods.readFromTextFile(methods.getTokenFile(), methods.getTokens());
-         URL u=null;
+        URL u = null;
         try {
             u = audio.toURL();
         } catch (MalformedURLException ex) {
             Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
-         sound =Applet.newAudioClip(u);
-          sound.play();
-    
+        sound = Applet.newAudioClip(u);
+        sound.play();
+        sound.loop();
+        play = true;
+
         this.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent evt)
@@ -99,13 +103,13 @@ public class MainApp extends javax.swing.JFrame
         btnLogin = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
         btnRegister = new javax.swing.JButton();
+        btnSound = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome to Treasure Hunter");
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -228,8 +232,19 @@ public class MainApp extends javax.swing.JFrame
         });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 650, 250, 40));
 
+        btnSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/sound1 (2).png"))); // NOI18N
+        btnSound.setOpaque(false);
+        btnSound.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnSoundActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSound, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 60));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/treasurehunter.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 810, 710));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 710));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -275,6 +290,23 @@ public class MainApp extends javax.swing.JFrame
         }
     }//GEN-LAST:event_btnLoginKeyPressed
 
+    private void btnSoundActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSoundActionPerformed
+    {//GEN-HEADEREND:event_btnSoundActionPerformed
+        // TODO add your handling code here:
+        if (play) {
+            btnSound.setIcon(new ImageIcon("src/pk/codeapp/tools/sound1 (1).png"));
+            sound.stop();
+            play=false;
+        }
+        else{
+            sound.stop();
+            btnSound.setIcon(new ImageIcon("src/pk/codeapp/tools/sound1 (2).png"));
+            sound.play();
+             sound.loop();
+            play=true;
+        }
+    }//GEN-LAST:event_btnSoundActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,6 +350,7 @@ public class MainApp extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnSound;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
