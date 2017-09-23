@@ -45,7 +45,8 @@ public class Methods
     private boolean activePaint;
     private String specialFunction = "";
     String tokens[] = new String[4];
-
+    DefualtListModel<String> showUser;
+    User showActual;
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
 
     public Methods()
@@ -410,4 +411,23 @@ public class Methods
     {
         this.tokens = tokens;
     }
+    public DefaultListModel imprimir(int tipo){
+        showUser.clear();
+        if(end!=null){
+             switch (tipo){
+            case 1:{ //Ver inicio;
+             showActual=root;
+            }
+            case 2:{//ver final
+              showActual=end;
+            }
+            case 3:{//ver Atras
+            showActual=showActual.getAnt();
+            }
+            case 4:{ //ver Adelante
+               showActual=showActual.getSig();
+            }
+            showUser.addElement(showActual.getName()+"   "+showActual.getUserName());
+             return showUser;
+        }
 }

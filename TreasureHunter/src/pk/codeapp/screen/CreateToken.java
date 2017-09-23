@@ -310,7 +310,7 @@ public class CreateToken extends javax.swing.JFrame
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Failure to add, four tokens already exist");
             }
-            goBack();//return the before window 
+           
         } else {
             JOptionPane.showMessageDialog(rootPane, "Select one color and option!");
         }
