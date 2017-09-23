@@ -1,2 +1,0 @@
-src/pk/codeapp/tools/tokens/bluecrown.png
-src/pk/codeapp/tools/tokens/yellowcrown.png

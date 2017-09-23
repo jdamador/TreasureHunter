@@ -296,11 +296,11 @@ public class CreateToken extends javax.swing.JFrame
                 message += "yellow";
             }
 
-            if (chkmushroom.isSelected()) {
-                message += "mushroom";
+            if (chkCrown.isSelected()) {
+                message += "crown";
             }
             if (chkmushroom.isSelected()) {
-                message += "heart";
+                message += "mushroom";
             }
             //create a link that save the image path
             String link = "src/pk/codeapp/tools/tokens/" + message + ".png";

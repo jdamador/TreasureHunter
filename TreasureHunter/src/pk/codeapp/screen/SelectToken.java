@@ -6,21 +6,25 @@
 package pk.codeapp.screen;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jose Pablo Brenes
  */
-public class SelectToken extends javax.swing.JFrame {
+public class SelectToken extends javax.swing.JFrame
+{
 
     /**
      * Creates new form SelectToken
      */
     private String[] tokens = new String[4];
     private String token;
+    JFrame frame;
 
-    public SelectToken() {
+    public SelectToken()
+    {
         initComponents();
         updateTokens();
     }
@@ -164,6 +168,13 @@ public class SelectToken extends javax.swing.JFrame {
         btnBack.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnBackActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 637, 120, 51));
 
         btnStartGame.setBackground(new java.awt.Color(0, 0, 0));
@@ -208,76 +219,94 @@ public class SelectToken extends javax.swing.JFrame {
     private void btnPlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayer1ActionPerformed
         token = checkToken(); // Check to which token is selected
         if (token != null) {
-            if(checkDuplicateToken(token))
+            if (checkDuplicateToken(token)) {
                 tokens[0] = token; // Add in position 0 because is the player 1
-            else
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Can not be repeated Token");
+            }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Select Token !!! ");
         }
     }//GEN-LAST:event_btnPlayer1ActionPerformed
-    private boolean checkDuplicateToken(String token){ // Checks to not replicated the same token
+    private boolean checkDuplicateToken(String token)
+    { // Checks to not replicated the same token
         for (int i = 0; i < tokens.length; i++) {
-            if(tokens[i]==token)
+            if (tokens[i] == token) {
                 return false;
+            }
         }
         return true;
     }
     private void btnPlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayer2ActionPerformed
         token = checkToken(); // Check to which token is selected
         if (token != null) {
-            if(checkDuplicateToken(token))
+            if (checkDuplicateToken(token)) {
                 tokens[1] = token; // Add in position 1 because is the player 2
-             else
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Can not be repeated Token");
+            }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Select Token !!! ");
         }
     }//GEN-LAST:event_btnPlayer2ActionPerformed
 
     private void btnPlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayer3ActionPerformed
-       token = checkToken(); // Check to which token is selected
+        token = checkToken(); // Check to which token is selected
         if (token != null) {
-            if(checkDuplicateToken(token))
+            if (checkDuplicateToken(token)) {
                 tokens[2] = token; // Add in position 2 because is the player 3
-            else
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Can not be repeated Token");
+            }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Select Token !!! ");
-        }  
+        }
     }//GEN-LAST:event_btnPlayer3ActionPerformed
 
     private void btnPlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayer4ActionPerformed
         token = checkToken(); // Check to which token is selected
         if (token != null) {
-            if(checkDuplicateToken(token))
+            if (checkDuplicateToken(token)) {
                 tokens[3] = token; // Add in position 3 because is the player 4
-            else
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Can not be repeated Token");
+            }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Select Token !!! ");
         }
     }//GEN-LAST:event_btnPlayer4ActionPerformed
 
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
-        if(checknumPlayers()){
-           
-        }else
-            JOptionPane.showMessageDialog(rootPane,"Do you need one or more players !!!");
-            
+        if (checknumPlayers()) {
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Do you need one or more players !!!");
+        }
+
     }//GEN-LAST:event_btnStartGameActionPerformed
 
     private void btnToken1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnToken1ActionPerformed
     {//GEN-HEADEREND:event_btnToken1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnToken1ActionPerformed
-    private boolean checknumPlayers(){ // Check to has more than zero players
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBackActionPerformed
+    {//GEN-HEADEREND:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        goBack();
+    }//GEN-LAST:event_btnBackActionPerformed
+    private boolean checknumPlayers()
+    { // Check to has more than zero players
         for (int i = 0; i < tokens.length; i++) {
-            if(tokens[i]!=null)
+            if (tokens[i] != null) {
                 return true;
-        }return false;
+            }
+        }
+        return false;
     }
-    private String checkToken() {
+
+    private String checkToken()
+    {
         if (btnToken1.isSelected() == true) {
             return "token1";
         }
@@ -296,7 +325,8 @@ public class SelectToken extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -321,8 +351,10 @@ public class SelectToken extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new SelectToken().setVisible(true);
             }
         });
@@ -351,24 +383,47 @@ public class SelectToken extends javax.swing.JFrame {
     private javax.swing.JLabel lblToken3;
     private javax.swing.JLabel lblToken4;
     // End of variables declaration//GEN-END:variables
-public void updateTokens(){
-    String[]tokens=MainApp.methods.getTokens();
-    if(tokens[0]!=null){
-           btnToken1.setVisible(true);
-        lblToken1.setIcon(new ImageIcon(tokens[0]));
-    }else   btnToken1.setVisible(false);
-    
-    if(tokens[1]!=null){  btnToken1.setVisible(true); lblToken1.setIcon(new ImageIcon(tokens[0]));    
-    } else btnToken1.setVisible(false);
-    
-    if(tokens[2]!=null){ btnToken1.setVisible(true);  lblToken1.setIcon(new ImageIcon(tokens[0])); 
-    }else   btnToken1.setVisible(false);
-   
-    if(tokens[3]!=null){
-           btnToken1.setVisible(true);
-       lblToken1.setIcon(new ImageIcon(tokens[0])); 
-    }else   btnToken1.setVisible(false);
-    
-}
+public void updateTokens()
+    {
+        String[] tokens = MainApp.methods.getTokens();
+        if (tokens[0] != null) {
+            btnToken1.setVisible(true);
+            lblToken1.setIcon(new ImageIcon(tokens[0]));
+        } else {
+            btnToken1.setVisible(false);
+        }
 
+        if (tokens[1] != null) {
+            btnToken2.setVisible(true);
+            lblToken2.setIcon(new ImageIcon(tokens[1]));
+        } else {
+            btnToken2.setVisible(false);
+        }
+
+        if (tokens[2] != null) {
+            btnToken3.setVisible(true);
+            lblToken3.setIcon(new ImageIcon(tokens[2]));
+        } else {
+            btnToken3.setVisible(false);
+        }
+
+        if (tokens[3] != null) {
+            btnToken4.setVisible(true);
+            lblToken4.setIcon(new ImageIcon(tokens[3]));
+        } else {
+            btnToken4.setVisible(false);
+        }
+
+    }
+
+    public void openWindow(JFrame frame)
+    {
+        this.frame=frame;
+        this.setVisible(true);
+        frame.setVisible(false);
+    }
+    public void goBack(){
+    this.dispose();
+    frame.setVisible(true);
+    }
 }

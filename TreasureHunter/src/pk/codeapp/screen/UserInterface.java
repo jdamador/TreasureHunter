@@ -48,7 +48,8 @@ public class UserInterface extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Games = new javax.swing.JList<>();
@@ -67,7 +68,6 @@ public class UserInterface extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -79,8 +79,10 @@ public class UserInterface extends javax.swing.JFrame
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 650, 107, -1));
 
         jButton2.setText("Play");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
@@ -94,8 +96,10 @@ public class UserInterface extends javax.swing.JFrame
 
         jButton4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jButton4.setText("Editar Perfil");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton4ActionPerformed(evt);
             }
         });
@@ -114,24 +118,37 @@ public class UserInterface extends javax.swing.JFrame
         getContentPane().add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jButton5.setText("Back");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton5ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, -1, -1));
 
         btnPlay.setText("Play");
+        btnPlay.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnPlayActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 250, 60));
 
         btnCreateWorld.setText("Create Board");
-        btnCreateWorld.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnCreateWorld.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnCreateWorldMouseClicked(evt);
             }
         });
-        btnCreateWorld.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCreateWorld.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCreateWorldActionPerformed(evt);
             }
         });
@@ -174,6 +191,13 @@ public class UserInterface extends javax.swing.JFrame
     private void btnCreateWorldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreateWorldMouseClicked
        
     }//GEN-LAST:event_btnCreateWorldMouseClicked
+
+    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPlayActionPerformed
+    {//GEN-HEADEREND:event_btnPlayActionPerformed
+        // TODO add your handling code here:
+       SelectToken select= new SelectToken();
+       select.openWindow(this);
+    }//GEN-LAST:event_btnPlayActionPerformed
 
     /**
      * @param args the command line arguments

@@ -228,6 +228,11 @@ public class Methods
                 System.out.println(tokens[i]);
                 return true;
             }
+            else{
+                if(token.equals(tokens[i])){
+                return false;
+                } 
+            }
         }
         return false;
     }
