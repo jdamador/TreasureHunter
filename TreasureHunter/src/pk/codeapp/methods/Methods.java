@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import javax.swing.DefaultListModel;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -45,7 +46,7 @@ public class Methods
     private boolean activePaint;
     private String specialFunction = "";
     String tokens[] = new String[4];
-    DefualtListModel<String> showUser;
+    DefaultListModel<String> showUser = new DefaultListModel();
     User showActual;
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
 
@@ -165,7 +166,6 @@ public class Methods
         return rootFunction;
     }
 
-   
     public boolean getActivePaint()
     {
         return activePaint;
@@ -209,11 +209,10 @@ public class Methods
                 tokens[i] = token;
                 System.out.println(tokens[i]);
                 return true;
-            }
-            else{
-                if(token.equals(tokens[i])){
-                return false;
-                } 
+            } else {
+                if (token.equals(tokens[i])) {
+                    return false;
+                }
             }
         }
         return false;
@@ -394,40 +393,58 @@ public class Methods
             System.out.println("fail to read");
         }
     }
-     public  Color getColor(String color){ // Methods to get Color through String 
-        switch(color){
-            case "blue":return Color.blue;
-            case "red": return Color.red;
-            case "green":return Color.green;
-            case "yellow":return Color.yellow;
-            case "orange":return Color.orange;
-            case "pink":return Color.pink;
-            case "magenta":return Color.magenta;
-            case "cyan":return Color.cyan;
-            
-        }return null;
+
+    public Color getColor(String color)
+    { // Methods to get Color through String 
+        switch (color) {
+            case "blue":
+                return Color.blue;
+            case "red":
+                return Color.red;
+            case "green":
+                return Color.green;
+            case "yellow":
+                return Color.yellow;
+            case "orange":
+                return Color.orange;
+            case "pink":
+                return Color.pink;
+            case "magenta":
+                return Color.magenta;
+            case "cyan":
+                return Color.cyan;
+
+        }
+        return null;
     }
+
     public void setTokens(String[] tokens)
     {
         this.tokens = tokens;
     }
-    public DefaultListModel imprimir(int tipo){
+
+    public DefaultListModel imprimir(int tipo)
+    {
         showUser.clear();
-        if(end!=null){
-             switch (tipo){
-            case 1:{ //Ver inicio;
-             showActual=root;
+        if (end != null) {
+            switch (tipo) {
+                case 1: { //Ver inicio;
+                    showActual = root;
+                }
+                case 2: {//ver final
+                    showActual = end;
+                }
+                case 3: {//ver Atras
+                    showActual = showActual.getAnt();
+                }
+                case 4: { //ver Adelante
+                    showActual = showActual.getSig();
+                }
+                showUser.addElement(showActual.getName() + "   " + showActual.getUserName());
+
             }
-            case 2:{//ver final
-              showActual=end;
-            }
-            case 3:{//ver Atras
-            showActual=showActual.getAnt();
-            }
-            case 4:{ //ver Adelante
-               showActual=showActual.getSig();
-            }
-            showUser.addElement(showActual.getName()+"   "+showActual.getUserName());
-             return showUser;
+           
         }
+         return showUser;
+    }
 }
