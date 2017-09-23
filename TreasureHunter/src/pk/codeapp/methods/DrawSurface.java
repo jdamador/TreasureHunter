@@ -11,7 +11,7 @@ public class DrawSurface extends Canvas {
 
     private BufferStrategy buffer;
     private BufferStrategy buffertToCreateMap;
-
+    private BufferStrategy bufferToGame;
     private Graphics g;
     private Graphics graphics;
     private int widht;
@@ -35,7 +35,7 @@ public class DrawSurface extends Canvas {
         buffer = getBufferStrategy();
 
         if (buffer == null) {
-            createBufferStrategy(2);
+            createBufferStrategy(3);
             return;
         }
 
@@ -50,7 +50,7 @@ public class DrawSurface extends Canvas {
     public void paintFrame(int column, int row, Color color, int numPosition) {
         buffertToCreateMap = getBufferStrategy();
         if (buffer == null) {
-            createBufferStrategy(2);
+            createBufferStrategy(3);
             return;
         }
 
@@ -58,16 +58,39 @@ public class DrawSurface extends Canvas {
         //Paint here
         Dupla newDupla = new Dupla(column, row);
         picture.drawPeric(numPosition, color, newDupla, g);
+
         g.dispose();
         buffer.show();
 
     }
- 
+    public void paintToPlay(){
+        buffertToCreateMap = getBufferStrategy();
+        if (buffer == null) {
+            createBufferStrategy(3);
+            return;
+        }
+    }
+    public void paintToPLay(int column, int row, Color color, int numPosition){
+        buffertToCreateMap = getBufferStrategy();
+        if (buffer == null) {
+            createBufferStrategy(3);
+            return;
+        }
+
+        g = buffer.getDrawGraphics();
+        //Paint here
+        Dupla newDupla = new Dupla(column, row);
+        picture.drawPeric(numPosition, color, newDupla, g);
+
+        g.dispose();
+        buffer.show();
+
+    }
     
     public void deleteFrame(int column, int row) {
         buffertToCreateMap = getBufferStrategy();
         if (buffer == null) {
-            createBufferStrategy(2);
+            createBufferStrategy(3);
             return;
         }
 
