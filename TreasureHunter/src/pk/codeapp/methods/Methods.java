@@ -46,7 +46,9 @@ public class Methods
     private boolean activePaint;
     private String specialFunction = "";
     String tokens[] = new String[4];
+
     DefaultListModel<String> showUser = new DefaultListModel();
+
     User showActual;
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
 
@@ -285,6 +287,7 @@ public class Methods
         Board newblock = new Board(column, row, numPosition, function);
         if (actualUser.getGameSig() == null) {
             actualUser.setGameSig(newblock);
+            
             return true;
         } else {
             newblock.setSig(actualUser.getGameSig());

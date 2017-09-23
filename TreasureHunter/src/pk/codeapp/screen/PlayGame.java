@@ -34,6 +34,8 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
     private int heightSD = 800; // Height draw surface
     private int COLUMNS = 10, ROW = 10, SIDE = 80;
     private int numPosition = 0; // Num position of Block or Frame
+    private boolean firstPaintBlocks = true; 
+    
     private Board block; 
     private Function function;
     //End Variables
@@ -61,7 +63,6 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1250, 788));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,28 +78,32 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+
     public void update() { // Update to paint 
         drawSurface.paint();
+     
     }
 
     public void UpdatePaintFrame() { //
+          if(firstPaintBlocks){
             Board reco = block;
             while(reco!=null){
             paintSpecialFunction(reco); // Checks to name of functions is Start or End 
-
             if (paintSpecialFunction(reco) == false) {
-                numPosition += 1;
                 Color color = MainApp.methods.getColor(reco.getFunction().getColor());
-                drawSurface.paintFrame(block.getPosX(),reco.getPosY(), color, numPosition);
-                MainApp.methods.setActivePaint(false);
-                 }
-            }
+                System.out.println("Pos x: "+reco.getPosX());
+                System.out.println("Pos y: "+reco.getPosY());
+                paintBlock(reco,color);           
+               }
+                reco = reco.getSig();
+            }firstPaintBlocks=false;
+        }
     }
-
+    private void paintBlock(Board reco,Color color){
+        drawSurface.paintFrame(reco.getPosX(),reco.getPosY(), color, numPosition);
+    }
     private boolean paintSpecialFunction(Board reco) { //Methods to check Special Function and paint if is true
+        
         switch (reco.getFunction().getFuction()) {
             case "Start":
                 Color color = MainApp.methods.getColor(reco.getFunction().getColor());
@@ -112,6 +117,9 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
         return false;
     }
 
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
     private void init() { // variable initiator
         drawSurface = new DrawSurface(widhtDS, heightSD);
         this.drawSurface = drawSurface;
@@ -121,12 +129,14 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
     }
 
     private void tick() { // Variables
-
+        
     }
 
     private void render() { // Graphics
+        
         update();
-        UpdatePaintFrame();
+       UpdatePaintFrame();
+        
     }
 
     @Override
@@ -159,6 +169,4 @@ public class PlayGame extends javax.swing.JFrame implements Runnable {
             Logger.getLogger(CreateGame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
 }

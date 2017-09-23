@@ -31,7 +31,7 @@ public class Picture
         return new Dupla(x,y);
     }
     public void drawPeric(int numPosition,Color color,Dupla pos,Graphics g){
-        System.out.println("Posicion num: "+numPosition);
+        System.out.println("Entro en Peric");
         if(numPosition == -1)
             stringPosition="Start";
         else if(numPosition == -2){
@@ -46,12 +46,11 @@ public class Picture
         g.drawRect((int)calculatePosition(pos).posX,(int)calculatePosition(pos).posY, size, size);
         g.setFont(new Font("Vendara",Font.PLAIN,15));
         g.drawString(stringPosition+"",(int)calculatePosition(pos).posX+3,(int)calculatePosition(pos).posY+12);
-     
+        System.out.println("Pinto");
     }
 
     void deletePeric(Dupla pos, Graphics g) {
-//        Color newColor = new Color(207, 216, 220);
-//        g.setColor(newColor);
+
         g.clearRect((int)calculatePosition(pos).posX,(int)calculatePosition(pos).posY, size, size);
     }
  

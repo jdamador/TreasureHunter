@@ -264,12 +264,16 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
        drawSurface.deleteFrame(column, row);// call methods to clear paint to block
        deleteLinkening(column,row);// Delete linkening to next and before block
     }
+    //Falta Corregir
     private void deleteLinkening(int column,int row){ // Delete Linkening to blocks
         Board reco = MainApp.methods.getRootBoard();
         Board aux = reco.getSig(); // aux is the next to reco 
         if(reco.getPosX()==column && reco.getPosY()==row){ // Check the first position
-            MainApp.methods.setRootBoard(aux); // Move the rootBoard
-            reco = null;
+            if(aux==null)
+                MainApp.methods.setRootBoard(null); // Move the rootBoard
+            else{
+                MainApp.methods.setRootBoard(aux); // Move the rootBoard
+                reco = null;}
         }
         while(reco.getSig()!=null){    
             if(reco.getPosX()==column && reco.getPosY()==row){ // if is the position move the sig and ant
@@ -289,7 +293,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
             
             if( paintSpecialFunction()==false){
                 numPosition+=1;
-                MainApp.methods.addBoard(column, ROW,numPosition, function);
+                MainApp.methods.addBoard(column, row,numPosition, function);
                 columnAux = column;
                 rowAux = row;
                 Color color = MainApp.methods.getColor(function.getColor());
@@ -300,8 +304,8 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     }
     private boolean paintSpecialFunction(){ //Methods to check Special Function and return true if this
         switch(function.getFuction()){
-            case "Start": MainApp.methods.addBoard(column, ROW,-1,function); UpdateSpecialFrame(-1);return true;
-            case "End": MainApp.methods.addBoard(column, ROW,-2, function);UpdateSpecialFrame(-2); return true;
+            case "Start": MainApp.methods.addBoard(column, row,-1,function); UpdateSpecialFrame(-1);return true;
+            case "End": MainApp.methods.addBoard(column, row,-2, function);UpdateSpecialFrame(-2); return true;
         }return false;
     }
     private void UpdateSpecialFrame(int num){
@@ -354,7 +358,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     public void run() {
 
         init();
-        while (running) {
+        while (running) { // Main Loop
 
             tick();
             render();
