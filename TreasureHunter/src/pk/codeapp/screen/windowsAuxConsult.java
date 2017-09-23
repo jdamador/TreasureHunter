@@ -5,7 +5,6 @@
  */
 package pk.codeapp.screen;
 
-import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import pk.codeapp.methods.Methods;
@@ -24,10 +23,11 @@ public class windowsAuxConsult extends javax.swing.JFrame {
     private String nameFuction;
     private String color;
     private Function aux;
-    private JFrame afterWindows;
+    private JFrame beforeWindows;
     private boolean printSpecialFunction=true;
+    private Function pointerFunction;
     public windowsAuxConsult() {
-        System.out.println("Entro al constructor");
+
         
         initComponents();
         loadFunctions(); // Load All fuctions before to start windows
@@ -128,20 +128,14 @@ public class windowsAuxConsult extends javax.swing.JFrame {
 
     private void btnAddFunctionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFunctionActionPerformed
         nameFuction = (String) cmbFunctions.getSelectedItem(); // Get item to combobox selected
-        String color = getColorFuctions(nameFuction);
-        this.nameFuction = nameFuction;
-        checkNameFunction(); // For special Function
-        this.color = color;
-        System.out.println("El color es: "+color);
-        Color colorFrame = getColor(color);
-        MainApp.methods.setColor(colorFrame);
+        pointerFunction=getPointerFunction(nameFuction);
         MainApp.methods.setActivePaint(true); // Active boolean to paint methods
-        afterWindows.enable(true);  
+        beforeWindows.enable(true);  
         dispose(); // Delete windows
     }//GEN-LAST:event_btnAddFunctionActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        afterWindows.enable(true); 
+        beforeWindows.enable(true); 
         dispose();
          
     }//GEN-LAST:event_btnExitActionPerformed
@@ -149,50 +143,32 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         aux = MainApp.methods.getRootFunction();
         while(aux!=null){
             System.out.println(aux.getFuction());
+            System.out.println(aux.getColor());
             cmbModel.addElement(aux.getFuction());
             aux= aux.getSig();   
         }cmbFunctions.setModel(cmbModel);
     }
-    private Color getColor(String color){ // Methods to get Color through String 
-        switch(color){
-            case "blue":return Color.blue;
-            case "red": return Color.red;
-            case "green":return Color.green;
-            case "yellow":return Color.yellow;
-            case "orange":return Color.orange;
-            case "pink":return Color.pink;
-            case "magenta":return Color.magenta;
-            case "cyan":return Color.cyan;
-            
-        }return null;
-    }
-    private String getColorFuctions(String nameFuction){ 
+   
+    private Function getPointerFunction(String nameFuction){ //Get Pointer of Function
         aux = MainApp.methods.getRootFunction(); // Pointer to Fuctions       
         while(aux!=null){
             if(aux.getFuction().equals(nameFuction)){
-                MainApp.methods.setPointerAux(aux);
-                return aux.getColor();}
+                return aux;
+            }
             else{
                 aux = aux.getSig();
             }
-        }   return "";
-    }
-    private void checkNameFunction(){ 
-        switch(nameFuction){
-            case "Start": MainApp.methods.setSpecialFunction(nameFuction); // Change name in methods of SpecialFunction
-            case "End": MainApp.methods.setSpecialFunction(nameFuction);
-        }
-    }
-   
-    
-    public String getNameFuction() {
-        return nameFuction;
+        }   return null;
     }
 
-    public String getColor() {
-        return color;
+    public Function getPointerFunction() {
+        return pointerFunction;
     }
-   
+
+    public void setPointerFunction(Function pointerFunction) {
+        this.pointerFunction = pointerFunction;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -228,7 +204,9 @@ public class windowsAuxConsult extends javax.swing.JFrame {
             }
         });
     }
-
+    public void beforeWindows(JFrame frame){
+        beforeWindows=frame;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddFunction;
     private javax.swing.JButton btnExit;
@@ -236,8 +214,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+    
+    
 
-    public void addMethods(Methods met,JFrame frame) {
-        this.afterWindows=frame;
-    }
 }

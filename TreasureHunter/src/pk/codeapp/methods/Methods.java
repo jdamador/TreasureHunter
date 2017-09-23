@@ -164,26 +164,7 @@ public class Methods
         return rootFunction;
     }
 
-    public Function getPointerAux()
-    {
-        return pointerAux;
-    }
-
-    public void setPointerAux(Function pointerAux)
-    {
-        this.pointerAux = pointerAux;
-    }
-
-    public Color getColor()
-    {
-        return color;
-    }
-
-    public void setColor(Color color)
-    {
-        this.color = color;
-    }
-
+   
     public boolean getActivePaint()
     {
         return activePaint;
@@ -412,7 +393,19 @@ public class Methods
             System.out.println("fail to read");
         }
     }
-
+     public  Color getColor(String color){ // Methods to get Color through String 
+        switch(color){
+            case "blue":return Color.blue;
+            case "red": return Color.red;
+            case "green":return Color.green;
+            case "yellow":return Color.yellow;
+            case "orange":return Color.orange;
+            case "pink":return Color.pink;
+            case "magenta":return Color.magenta;
+            case "cyan":return Color.cyan;
+            
+        }return null;
+    }
     public void setTokens(String[] tokens)
     {
         this.tokens = tokens;

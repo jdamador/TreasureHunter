@@ -5,25 +5,50 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import pk.codeapp.methods.DrawSurface;
+import pk.codeapp.model.Board;
+import pk.codeapp.model.Function;
 
 /**
  *
  * @author Jose Pablo Brenes
  */
-public class PlayGame extends javax.swing.JFrame implements Runnable{
+public class PlayGame extends javax.swing.JFrame implements Runnable {
 
     /**
      * Creates new form PlayGame
      */
     //Variables
-     private boolean running; // Running the loop
-     private Thread thread; //Main thread
-     //End Variables
-    public PlayGame() {
+    private boolean running; // Running the loop
+    private Thread thread; //Main thread
+    private JFrame beforeWindows;
+    private DrawSurface drawSurface;
+    private int xOffset; // Size to out DS in x
+    private int yOffset; // Size to out DS in x
+    private int widhtDS = 800; // Widht draw surface
+    private int heightSD = 800; // Height draw surface
+    private int COLUMNS = 10, ROW = 10, SIDE = 80;
+    private int numPosition = 0; // Num position of Block or Frame
+    private Board block; 
+    private Function function;
+    //End Variables
+
+    public PlayGame(String name, JFrame beforeWindows) {
         initComponents();
-         this.setLocationRelativeTo(null);
+        this.block=MainApp.methods.getRootBoard();
+        this.beforeWindows = beforeWindows;
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle(name);
+        this.setResizable(false);
+        this.setLayout(new BorderLayout());
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+        start();
     }
 
     /**
@@ -55,56 +80,65 @@ public class PlayGame extends javax.swing.JFrame implements Runnable{
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PlayGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PlayGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PlayGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PlayGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    public void update() { // Update to paint 
+        drawSurface.paint();
+    }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PlayGame().setVisible(true);
+    public void UpdatePaintFrame() { //
+            Board reco = block;
+            while(reco!=null){
+            paintSpecialFunction(reco); // Checks to name of functions is Start or End 
+
+            if (paintSpecialFunction(reco) == false) {
+                numPosition += 1;
+                Color color = MainApp.methods.getColor(reco.getFunction().getColor());
+                drawSurface.paintFrame(block.getPosX(),reco.getPosY(), color, numPosition);
+                MainApp.methods.setActivePaint(false);
+                 }
             }
-        });
     }
+
+    private boolean paintSpecialFunction(Board reco) { //Methods to check Special Function and paint if is true
+        switch (reco.getFunction().getFuction()) {
+            case "Start":
+                Color color = MainApp.methods.getColor(reco.getFunction().getColor());
+                drawSurface.paintFrame(reco.getPosX(),reco.getPosY(), color, -1);
+                return true;
+            case "End":
+                Color colorAux = MainApp.methods.getColor(reco.getFunction().getColor());
+                drawSurface.paintFrame(reco.getPosX(),reco.getPosY(), colorAux, -2);
+                return true;
+        }
+        return false;
+    }
+
     private void init() { // variable initiator
-        
+        drawSurface = new DrawSurface(widhtDS, heightSD);
+        this.drawSurface = drawSurface;
+        this.add(drawSurface);
+        xOffset = (widhtDS - (COLUMNS * SIDE)) / 2;
+        yOffset = (heightSD - (ROW * SIDE)) / 2;
     }
+
     private void tick() { // Variables
 
     }
 
     private void render() { // Graphics
-        
+        update();
+        UpdatePaintFrame();
     }
+
     @Override
     public void run() { // Main Loop in the Game 
-         init();
-          while (running) { //Main Loop
+        init();
+        while (running) { //Main Loop
             tick();
             render();
         }
         stop();
     }
+
     public synchronized void start() { //Start to synchronized main thread with Jframe
         if (running) {
             return;

@@ -7,19 +7,15 @@ package pk.codeapp.screen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import pk.codeapp.methods.DrawSurface;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.Board;
-import static pk.codeapp.screen.MainApp.methods;
+import pk.codeapp.model.Function;
 
 /**
  *
@@ -48,6 +44,8 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     private  String nameMethod; // Save the nameMethods to know action to perform 
     private Methods methods = MainApp.methods;// Get methods
     private int numPosition=0; // Num position of Block or Frame
+    private Function function;
+    private windowsAuxConsult winAuxConsult;
     private JFrame beforeWindows; 
     
     public CreateGame(String nombre,JFrame afterWindows) { 
@@ -284,40 +282,42 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         }
     }
     public void UpdatePaintFrame() { //
+         
         if (MainApp.methods.getActivePaint()){ // Check to mouse is actived
+            function=winAuxConsult.getPointerFunction();
             paintSpecialFunction(); // Checks to name of functions is Start or End 
             
             if( paintSpecialFunction()==false){
                 numPosition+=1;
-                MainApp.methods.addBoard(column, ROW,numPosition, methods.getPointerAux());
+                MainApp.methods.addBoard(column, ROW,numPosition, function);
                 columnAux = column;
                 rowAux = row;
-                Color color = MainApp.methods.getColor();
+                Color color = MainApp.methods.getColor(function.getColor());
                 drawSurface.paintFrame(column, row, color,numPosition);
                 MainApp.methods.setActivePaint(false);
             }
         }MainApp.methods.setSpecialFunction("");
     }
     private boolean paintSpecialFunction(){ //Methods to check Special Function and return true if this
-        switch(MainApp.methods.getSpecialFunction()){
-            case "Start": MainApp.methods.addBoard(column, ROW,-1, methods.getPointerAux()); UpdateSpecialFrame(-1);return true;
-            case "End": MainApp.methods.addBoard(column, ROW,-2, methods.getPointerAux());UpdateSpecialFrame(-2); return true;
+        switch(function.getFuction()){
+            case "Start": MainApp.methods.addBoard(column, ROW,-1,function); UpdateSpecialFrame(-1);return true;
+            case "End": MainApp.methods.addBoard(column, ROW,-2, function);UpdateSpecialFrame(-2); return true;
         }return false;
     }
     private void UpdateSpecialFrame(int num){
         columnAux = column;
         rowAux = row;
-        Color color = MainApp.methods.getColor();
+        Color color = MainApp.methods.getColor(function.getColor());
         drawSurface.paintFrame(column, row, color,num);
          
          MainApp.methods.setActivePaint(false);
     }
     private void jumpAuxConsult() {
         this.enable(false);
-        windowsAuxConsult auxConsult = new windowsAuxConsult();
-        auxConsult.addMethods(methods, this);
-        auxConsult.setLocationRelativeTo(null);
-        auxConsult.setVisible(true);
+         winAuxConsult = new windowsAuxConsult();
+        winAuxConsult.beforeWindows(this);
+        winAuxConsult.setLocationRelativeTo(null);
+        winAuxConsult.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -337,7 +337,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         addMouseListener(this);
         xOffset = (widhtDS - (COLUMNS * SIDE)) / 2;
         yOffset = (heightSD - (ROW * SIDE)) / 2;
-        methods = new Methods();
+        
     }
 
     private void tick() { // Variables
