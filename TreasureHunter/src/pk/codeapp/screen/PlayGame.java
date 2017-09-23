@@ -10,6 +10,7 @@ import java.awt.Color;
 
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -52,7 +53,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
     private Board block;
     private Function function;
     //End Variables
-
+    
     //some variables
     private Point position = new Point(0, 0);
     private Point startLog;
@@ -91,6 +92,14 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         if (tokens[3] != null) {
             lblToken4.setIcon(new ImageIcon(MainApp.methods.getTokens()[3]));
         }
+        MouseListener listener = new MouseAdapter() {
+            public void mousePressed(MouseEvent me) {
+                JComponent comp = (JComponent) me.getSource();
+                TransferHandler handler = comp.getTransferHandler();
+                handler.exportAsDrag(comp, me, TransferHandler.COPY);
+      }
+    };
+        lblToken1.addMouseListener(listener);
         this.block = MainApp.methods.getMapSelected();
         this.beforeWindows = beforeWindows;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,19 +118,18 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
+        lblToken1 = new javax.swing.JLabel();
         jPanel = new javax.swing.JPanel();
+        lblToken4 = new javax.swing.JLabel();
+        lblToken3 = new javax.swing.JLabel();
+        lblToken2 = new javax.swing.JLabel();
         lblActualPlayer = new javax.swing.JLabel();
         lblTurn = new javax.swing.JLabel();
         Dice = new javax.swing.JLabel();
         lblNameDice = new javax.swing.JLabel();
         btnRoll = new javax.swing.JButton();
-        lblToken2 = new javax.swing.JLabel();
-        lblToken1 = new javax.swing.JLabel();
-        lblToken3 = new javax.swing.JLabel();
-        lblToken4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -130,8 +138,30 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
+        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblToken1MouseDragged(evt);
+            }
+        });
+        lblToken1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblToken1MousePressed(evt);
+            }
+        });
+        getContentPane().add(lblToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 80, 80));
+
         jPanel.setBackground(new java.awt.Color(0, 191, 165));
         jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblToken4.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel.add(lblToken4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 80, 80));
+
+        lblToken3.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel.add(lblToken3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 80, 80));
+
+        lblToken2.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel.add(lblToken2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 80, 80));
 
         lblActualPlayer.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblActualPlayer.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,51 +183,20 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         btnRoll.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRoll.setForeground(new java.awt.Color(255, 255, 255));
         btnRoll.setText("Roll !!");
-        btnRoll.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnRoll.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRollMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnRollMouseExited(evt);
             }
         });
-        btnRoll.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRollActionPerformed(evt);
             }
         });
         jPanel.add(btnRoll, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 710, 147, 60));
-
-        lblToken2.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel.add(lblToken2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 80, 80));
-
-        lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
-        {
-            public void mouseDragged(java.awt.event.MouseEvent evt)
-            {
-                lblToken1MouseDragged(evt);
-            }
-        });
-        lblToken1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mousePressed(java.awt.event.MouseEvent evt)
-            {
-                lblToken1MousePressed(evt);
-            }
-        });
-        jPanel.add(lblToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 80, 80));
-
-        lblToken3.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel.add(lblToken3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 80, 80));
-
-        lblToken4.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel.add(lblToken4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 80, 80));
 
         jLabel1.setText("Player #4");
         jPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
@@ -211,7 +210,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         jLabel4.setText("Player #3");
         jPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
-        getContentPane().add(jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(804, 0, 450, 860));
+        getContentPane().add(jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 450, 860));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

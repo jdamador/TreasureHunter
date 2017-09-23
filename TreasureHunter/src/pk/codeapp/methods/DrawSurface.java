@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import java.awt.image.BufferStrategy;
+import javax.swing.JLabel;
 
 public class DrawSurface extends Canvas {
 
@@ -26,6 +27,7 @@ public class DrawSurface extends Canvas {
         this.height = height;
         this.setSize(widht, height);
         this.setLocation(0, 0);
+        
         table = new Table(this);
         picture = new Picture(this);
 
