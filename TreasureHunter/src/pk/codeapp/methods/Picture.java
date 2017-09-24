@@ -15,7 +15,7 @@ import java.awt.Graphics;
  */
 public class Picture
 {
-   DrawSurface drawSurface;
+    DrawSurface drawSurface;
     Dupla tablePosition;
     int size;
     private String stringPosition;

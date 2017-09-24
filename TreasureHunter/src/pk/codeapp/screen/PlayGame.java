@@ -7,6 +7,7 @@ package pk.codeapp.screen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -25,6 +26,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.TransferHandler;
 import pk.codeapp.methods.DrawSurface;
+import pk.codeapp.methods.Dupla;
+import pk.codeapp.methods.Picture;
 import pk.codeapp.model.Board;
 import pk.codeapp.model.Function;
 
@@ -32,7 +35,7 @@ import pk.codeapp.model.Function;
  *
  * @author Jose Pablo Brenes
  */
-public class PlayGame extends javax.swing.JFrame implements Runnable
+public class PlayGame extends javax.swing.JFrame implements Runnable 
 {
 
     /**
@@ -61,7 +64,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
     private Point offset;
     private int newY = 1;
     private int newX = 1;
-
+    private Picture picture;
     // Variables to Dice
     private final String animationPath = "src/pk/codeapp/tools/Dice/rollDice.gif";//Animation of Dice
     private final String[] imgs = { // String of directions images of dices
@@ -120,7 +123,6 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblToken1 = new javax.swing.JLabel();
         jPanel = new javax.swing.JPanel();
         lblToken4 = new javax.swing.JLabel();
         lblToken3 = new javax.swing.JLabel();
@@ -134,22 +136,10 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lblToken1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                lblToken1MouseDragged(evt);
-            }
-        });
-        lblToken1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblToken1MousePressed(evt);
-            }
-        });
-        getContentPane().add(lblToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 80, 80));
 
         jPanel.setBackground(new java.awt.Color(0, 191, 165));
         jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -210,6 +200,19 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         jLabel4.setText("Player #3");
         jPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
+        lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
+        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblToken1MouseDragged(evt);
+            }
+        });
+        lblToken1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblToken1MousePressed(evt);
+            }
+        });
+        jPanel.add(lblToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 80, 80));
+
         getContentPane().add(jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 450, 860));
 
         pack();
@@ -267,14 +270,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         String getImage = imgs[guess - 1];
         Dice.setIcon(new ImageIcon(getImage));
     }
-
-    public void update()
-    { // Update to paint 
-        drawSurface.paint();
-
-    }
-
-    public void UpdatePaintFrame()
+    public void paintBlocks()
     { //Methods to paint block
         if (firstPaintBlocks) {
             Board reco = block;
@@ -282,7 +278,9 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
                 paintSpecialFunction(reco); // Checks to name of functions is Start or End 
                 if (paintSpecialFunction(reco) == false) {
                     Color color = MainApp.methods.getColor(reco.getFunction().getColor());
-                    paintBlock(reco, color);
+                    Graphics g=this.getGraphics();
+                    super.paint(g);
+                    picture.drawPeric(reco.getNumPosicion(), color, new Dupla(reco.getPosX(),reco.getPosY()), g);
                 }
                 reco = reco.getSig();
             }
@@ -291,22 +289,20 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
 
     }
 
-    private void paintBlock(Board reco, Color color)
-    { // Paints blocks
-        drawSurface.paintToPLay(reco.getPosX(), reco.getPosY(), color, reco.getNumPosicion());
-    }
+    
 
     private boolean paintSpecialFunction(Board reco)
     { //Methods to check Special Function and paint if is true
-
+        Graphics g=this.getGraphics();
+        super.paint(g);
         switch (reco.getFunction().getFuction()) {
             case "Start":
-                Color color = MainApp.methods.getColor(reco.getFunction().getColor());
-                drawSurface.paintToPLay(reco.getPosX(), reco.getPosY(), color, -1);
+                Color color = MainApp.methods.getColor(reco.getFunction().getColor());      
+                  picture.drawPeric(-1, color, new Dupla(reco.getPosX(),reco.getPosY()), g);
                 return true;
             case "End":
                 Color colorAux = MainApp.methods.getColor(reco.getFunction().getColor());
-                drawSurface.paintToPLay(reco.getPosX(), reco.getPosY(), colorAux, -2);
+                picture.drawPeric(-2, colorAux, new Dupla(reco.getPosX(),reco.getPosY()), g);
                 return true;
         }
         return false;
@@ -337,7 +333,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         xOffset = (widhtDS - (COLUMNS * SIDE)) / 2;
         yOffset = (heightSD - (ROW * SIDE)) / 2;
         drawSurface.paintToPlay();
-
+        paintBlocks();
     }
 
     private void tick()
@@ -348,8 +344,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
     private void render()
     { // Graphics
 
-        update();
-        UpdatePaintFrame();
+  
 
     }
 
