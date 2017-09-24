@@ -64,14 +64,14 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     @Override
     public void mousePressed(MouseEvent e) {
         this.starDrag = getScreenLocation(e);
-        this.startLoc= this.getLocationOnScreen();
+        this.startLoc= this.getLocation();
         aux.paint(this.getGraphics());
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        newX= (this.getLocationOnScreen().x);
-        newY= (this.getLocationOnScreen().y);    
+        newX= (this.getLocation().x);
+        newY= (this.getLocation().y);    
 //         this.setLocation(newX, newY);
          Point point = getScreenLocation(e);
          checkFunction(point.x,point.y);
@@ -104,7 +104,7 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     }
 
     private Point getScreenLocation(MouseEvent e) {
-       Point cursor = e.getLocationOnScreen();
+       Point cursor = e.getPoint();
        Point targetLocation = this.getLocationOnScreen();
        return new Point((int)(targetLocation.getX()+cursor.getX()),(int)(targetLocation.getY()+cursor.getY()));
     }
