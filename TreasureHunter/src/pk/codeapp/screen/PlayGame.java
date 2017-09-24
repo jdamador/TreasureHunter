@@ -5,7 +5,6 @@
  */
 package pk.codeapp.screen;
 
-
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;
@@ -16,13 +15,13 @@ import pk.codeapp.methods.Dupla;
 import pk.codeapp.model.Board;
 import pk.codeapp.model.Tokens;
 
-
 /**
  *
  * @author amador
  */
-public class PlayGameAux extends javax.swing.JFrame
+public class PlayGame extends javax.swing.JFrame
 {
+
     private DrawSurfaceAux drawSurface;
     //Variables of Dice
     private final String animationPath = "src/pk/codeapp/tools/Dice/rollDice.gif";//Animation of Dice
@@ -36,20 +35,16 @@ public class PlayGameAux extends javax.swing.JFrame
     };
     private final int[] faces = {1, 2, 3, 4, 5, 6};
     private boolean changeOptionDice = true;
-    
+
     /**
      * Creates new form PlayGameAux
      */
-    public PlayGameAux()
+    public PlayGame()
     {
         initComponents();
-        drawSurface= new DrawSurfaceAux();
-         this.add(drawSurface);
-//        pane.setLayout(null);
-//        Tokens tk = new Tokens("src/pk/codeapp/tools/tokens/bluecrown.png", "nada", this);
-//        tk.setLocation(10, 10);
-//        jPanel1.add(tk);
-
+        drawSurface = new DrawSurfaceAux();
+        this.add(drawSurface);
+        chargeImage();
     }
 
     /**
@@ -59,8 +54,10 @@ public class PlayGameAux extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
+        paneMarkeup = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         Dice = new javax.swing.JLabel();
         lblNameDice = new javax.swing.JLabel();
@@ -70,92 +67,66 @@ public class PlayGameAux extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        paneMarkeup.setOpaque(false);
+        paneMarkeup.setPreferredSize(new java.awt.Dimension(800, 800));
+        paneMarkeup.setLayout(null);
+
         jPanel1.setBackground(new java.awt.Color(0, 191, 165));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Dice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/1c.png"))); // NOI18N
+        jPanel1.add(Dice, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 425, -1, -1));
 
         lblNameDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/Dicepjc.png"))); // NOI18N
+        jPanel1.add(lblNameDice, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 363, -1, -1));
 
         lblTurn.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblTurn.setForeground(new java.awt.Color(255, 255, 255));
         lblTurn.setText("Turn :");
+        jPanel1.add(lblTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 49, -1, -1));
 
         lblActualPlayer.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblActualPlayer.setForeground(new java.awt.Color(255, 255, 255));
         lblActualPlayer.setText("Player 1");
+        jPanel1.add(lblActualPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 126, -1, -1));
 
         btnRoll.setBackground(new java.awt.Color(0, 0, 0));
         btnRoll.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRoll.setForeground(new java.awt.Color(255, 255, 255));
         btnRoll.setText("Roll !!");
-        btnRoll.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        btnRoll.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 btnRollMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 btnRollMouseExited(evt);
             }
         });
-        btnRoll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRoll.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnRollActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(lblNameDice))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(lblTurn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Dice)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblActualPlayer)
-                                .addGap(12, 12, 12)))
-                        .addGap(108, 108, 108))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(lblTurn)
-                .addGap(30, 30, 30)
-                .addComponent(lblActualPlayer)
-                .addGap(190, 190, 190)
-                .addComponent(lblNameDice)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Dice)
-                .addGap(31, 31, 31)
-                .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
+        jPanel1.add(btnRoll, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 626, 147, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 799, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(paneMarkeup, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addComponent(paneMarkeup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -195,6 +166,7 @@ public class PlayGameAux extends javax.swing.JFrame
         String getImage = imgs[guess - 1];
         Dice.setIcon(new ImageIcon(getImage));
     }
+
     /**
      * @param args the command line arguments
      */
@@ -213,14 +185,15 @@ public class PlayGameAux extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PlayGameAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlayGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PlayGameAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlayGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PlayGameAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlayGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PlayGameAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlayGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -228,7 +201,7 @@ public class PlayGameAux extends javax.swing.JFrame
         {
             public void run()
             {
-                new PlayGameAux().setVisible(true);
+                new PlayGame().setVisible(true);
             }
         });
     }
@@ -240,9 +213,8 @@ public class PlayGameAux extends javax.swing.JFrame
     private javax.swing.JLabel lblActualPlayer;
     private javax.swing.JLabel lblNameDice;
     private javax.swing.JLabel lblTurn;
+    private javax.swing.JPanel paneMarkeup;
     // End of variables declaration//GEN-END:variables
-
-    
 
     public void runForPaint()
     {
@@ -254,5 +226,19 @@ public class PlayGameAux extends javax.swing.JFrame
         this.setVisible(true);
         select.setVisible(false);
         runForPaint();
+    }
+
+    public void chargeImage()
+    {
+        String tokens[] = SelectToken.getTokens();
+        for (int i = 0; i < tokens.length; i++) {
+            if(tokens[i]!=null){
+                Tokens tk = new Tokens("src/pk/codeapp/tools/tokens/bluecrown.png", "nada", this);
+                tk.setLocation(i*80+10, 700);
+                paneMarkeup.add(tk);
+            }
+        }
+        
+        
     }
 }
