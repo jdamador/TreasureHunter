@@ -279,12 +279,17 @@ public class SelectToken extends javax.swing.JFrame
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
         if (checknumPlayers()) { //Checks the numer of players than more one
             this.setVisible(false);
-            ControlPlayGame aux = new ControlPlayGame();
-            aux.beforeWindows(this);
-            ControlPlayGame.main(new String[0]);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Do you need one or more players !!!");
+            
+            //edit
+            PlayGameAux play= new PlayGameAux();
+            play.open(this);
         }
+//            ControlPlayGame aux = new ControlPlayGame();
+//            aux.beforeWindows(this);
+//            ControlPlayGame.main(new String[0]);
+//        } else {
+//            JOptionPane.showMessageDialog(rootPane, "Do you need one or more players !!!");
+//        }
 
     }//GEN-LAST:event_btnStartGameActionPerformed
 
