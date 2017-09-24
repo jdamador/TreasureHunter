@@ -156,7 +156,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         lblActualPlayer.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblActualPlayer.setForeground(new java.awt.Color(255, 255, 255));
         lblActualPlayer.setText("Player 1");
-        jPanel.add(lblActualPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 74, -1, -1));
+        jPanel.add(lblActualPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         lblTurn.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblTurn.setForeground(new java.awt.Color(255, 255, 255));
