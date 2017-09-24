@@ -46,6 +46,7 @@ public class PlayGame extends javax.swing.JFrame
         this.add(drawSurface);
         chargeImage();
         this.setLocationRelativeTo(null);
+       
     }
 
     /**
@@ -67,6 +68,7 @@ public class PlayGame extends javax.swing.JFrame
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         paneMarkeup.setOpaque(false);
         paneMarkeup.setPreferredSize(new java.awt.Dimension(800, 800));

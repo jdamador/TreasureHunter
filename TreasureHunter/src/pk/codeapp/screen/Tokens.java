@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -63,15 +64,15 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
 
     @Override
     public void mousePressed(MouseEvent e) {
-        this.starDrag = getScreenLocation(e);
+        this.starDrag = new Point(e.getX(),e.getY());
         this.startLoc= this.getLocation();
         aux.paint(this.getGraphics());
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        newX= (this.getLocation().x);
-        newY= (this.getLocation().y);    
+        newX= (e.getX());
+        newY= (e.getY());    
 //         this.setLocation(newX, newY);
          Point point = getScreenLocation(e);
          checkFunction(point.x,point.y);
@@ -110,10 +111,19 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     }
     private void checkFunction(int posX,int posY){
         Board reco = board;
+        Toolkit t;
+        t = Toolkit.getDefaultToolkit();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        if(screenSize.width==1920 && screenSize.height==180){
         System.out.println("Posicion Mouse X: "+posX);
         System.out.println("Posicion Mouse Y: "+posY);
         column = ((posX - xOffset-14) / 80)-4; // get Column
         row = ((posY - (yOffset-14)) / 80)-2; // get Row
+        }
+        else if(screenSize.width==1280 && screenSize.height==720){
+          column = ((posX - xOffset-14) / 80)-4; // get Column
+          row = ((posY - (yOffset-14)) / 80)-2; // get Row}
+         }
         System.out.println("Columna: "+column);
         System.out.println("Fila: "+row);
         while(reco!=null){
