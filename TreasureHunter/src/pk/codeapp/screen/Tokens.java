@@ -16,6 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import pk.codeapp.model.Board;
 import pk.codeapp.screen.PlayGame;
 
@@ -40,7 +41,7 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     private int yOffset = (800 - (ROW * SIDE)) / 2;
     private int column;
     private int row;
-    public Tokens(String icon, String key,PlayGame aux){
+    public Tokens(String icon, String key,PlayGame aux,JPanel pane){
         this.key=key;
         this.setToolTipText(key);
         this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -49,10 +50,11 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
         this.setText("");
         this.setVisible(true);
         this.setLocation(posicition);
+        
+        this.aux=aux;
+        pane.add(this);
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
-        this.aux=aux;
-        
     }
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -62,14 +64,14 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     @Override
     public void mousePressed(MouseEvent e) {
         this.starDrag = getScreenLocation(e);
-        this.startLoc= this.getLocation();
+        this.startLoc= this.getLocationOnScreen();
         aux.paint(this.getGraphics());
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        newX= (this.getLocation().x);
-        newY= (this.getLocation().y);    
+        newX= (this.getLocationOnScreen().x);
+        newY= (this.getLocationOnScreen().y);    
 //         this.setLocation(newX, newY);
          Point point = getScreenLocation(e);
          checkFunction(point.x,point.y);
@@ -102,7 +104,7 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     }
 
     private Point getScreenLocation(MouseEvent e) {
-       Point cursor = e.getPoint();
+       Point cursor = e.getLocationOnScreen();
        Point targetLocation = this.getLocationOnScreen();
        return new Point((int)(targetLocation.getX()+cursor.getX()),(int)(targetLocation.getY()+cursor.getY()));
     }

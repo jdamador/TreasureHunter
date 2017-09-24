@@ -245,12 +245,13 @@ public class PlayGame extends javax.swing.JFrame
 
     public void chargeImage()
     {
+        
         String tokens[] = SelectToken.getTokens();
         for (int i = 0; i < tokens.length; i++) {
             if(tokens[i]!=null){
-                Tokens tk = new Tokens(tokens[i], "nada", this);
+                Tokens tk = new Tokens(tokens[i], "nada", this,paneMarkeup);
                 tk.setLocation(i*80+10, 700);
-                paneMarkeup.add(tk);
+               
             }
         }
         
