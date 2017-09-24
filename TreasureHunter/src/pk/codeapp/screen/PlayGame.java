@@ -233,7 +233,7 @@ public class PlayGame extends javax.swing.JFrame
         String tokens[] = SelectToken.getTokens();
         for (int i = 0; i < tokens.length; i++) {
             if(tokens[i]!=null){
-                Tokens tk = new Tokens("src/pk/codeapp/tools/tokens/bluecrown.png", "nada", this);
+                Tokens tk = new Tokens(tokens[i], "nada", this);
                 tk.setLocation(i*80+10, 700);
                 paneMarkeup.add(tk);
             }

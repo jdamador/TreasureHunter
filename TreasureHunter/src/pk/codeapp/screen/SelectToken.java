@@ -22,7 +22,7 @@ public class SelectToken extends javax.swing.JFrame
     static String[] tokens = new String[4];
     private String token;
     JFrame frame;
-
+    String[] imageToken;
     public SelectToken()
     {
         initComponents();
@@ -312,16 +312,16 @@ public class SelectToken extends javax.swing.JFrame
     private String checkToken()
     {
         if (btnToken1.isSelected() == true) {
-            return "token1";
+            return imageToken[0];
         }
         if (btnToken2.isSelected() == true) {
-            return "token2";
+            return imageToken[1];
         }
         if (btnToken3.isSelected() == true) {
-            return "token3";
+            return imageToken[2];
         }
         if (btnToken4.isSelected() == true) {
-            return "token4";
+            return imageToken[3];
         }
         else{
  
@@ -393,31 +393,31 @@ public class SelectToken extends javax.swing.JFrame
     // End of variables declaration//GEN-END:variables
 public void updateTokens()
     {
-        String[] tokens = MainApp.methods.getTokens();
-        if (tokens[0] != null) {
+        String[] imageToken = MainApp.methods.getTokens();
+        if (imageToken[0] != null) {
             btnToken1.setVisible(true);
-            lblToken1.setIcon(new ImageIcon(tokens[0]));
+            lblToken1.setIcon(new ImageIcon(imageToken[0]));
         } else {
             btnToken1.setVisible(false);
         }
 
-        if (tokens[1] != null) {
+        if (imageToken[1] != null) {
             btnToken2.setVisible(true);
-            lblToken2.setIcon(new ImageIcon(tokens[1]));
+            lblToken2.setIcon(new ImageIcon(imageToken[1]));
         } else {
             btnToken2.setVisible(false);
         }
 
-        if (tokens[2] != null) {
+        if (imageToken[2] != null) {
             btnToken3.setVisible(true);
-            lblToken3.setIcon(new ImageIcon(tokens[2]));
+            lblToken3.setIcon(new ImageIcon(imageToken[2]));
         } else {
             btnToken3.setVisible(false);
         }
 
-        if (tokens[3] != null) {
+        if (imageToken[3] != null) {
             btnToken4.setVisible(true);
-            lblToken4.setIcon(new ImageIcon(tokens[3]));
+            lblToken4.setIcon(new ImageIcon(imageToken[3]));
         } else {
             btnToken4.setVisible(false);
         }
@@ -429,6 +429,7 @@ public void updateTokens()
         this.frame = frame;
         this.setVisible(true);
         frame.setVisible(false);
+        imageToken = MainApp.methods.getTokens();
     }
 
     public void goBack()
