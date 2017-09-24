@@ -279,17 +279,13 @@ public class SelectToken extends javax.swing.JFrame
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
         if (checknumPlayers()) { //Checks the numer of players than more one
             this.setVisible(false);
-            
+
             //edit
-            PlayGameAux play= new PlayGameAux();
+            PlayGame play = new PlayGame();
             play.open(this);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Do you need one or more players !!!");
         }
-//            ControlPlayGame aux = new ControlPlayGame();
-//            aux.beforeWindows(this);
-//            ControlPlayGame.main(new String[0]);
-//        } else {
-//            JOptionPane.showMessageDialog(rootPane, "Do you need one or more players !!!");
-//        }
 
     }//GEN-LAST:event_btnStartGameActionPerformed
 
@@ -426,14 +422,16 @@ public void updateTokens()
 
     public void openWindow(JFrame frame)
     {
-        this.frame=frame;
+        this.frame = frame;
         this.setVisible(true);
         frame.setVisible(false);
     }
-    public void goBack(){
-    frame.setVisible(true);
-    this.dispose();
-  
+
+    public void goBack()
+    {
+        frame.setVisible(true);
+        this.dispose();
+
     }
 
     public static String[] getTokens()
@@ -445,5 +443,5 @@ public void updateTokens()
     {
         SelectToken.tokens = tokens;
     }
-    
+
 }

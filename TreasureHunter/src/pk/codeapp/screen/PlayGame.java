@@ -5,67 +5,26 @@
  */
 package pk.codeapp.screen;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
 
-import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.TransferHandler;
-import pk.codeapp.methods.DrawSurface;
+import javax.swing.JPanel;
 import pk.codeapp.methods.Dupla;
-import pk.codeapp.methods.Picture;
 import pk.codeapp.model.Board;
-import pk.codeapp.model.Function;
+import pk.codeapp.model.Tokens;
+
 
 /**
  *
- * @author Jose Pablo Brenes
+ * @author amador
  */
-public class PlayGame extends javax.swing.JFrame implements Runnable 
+public class PlayGameAux extends javax.swing.JFrame
 {
-
-    /**
-     * Creates new form PlayGame
-     */
-    //Variables
-    private boolean running; // Running the loop
-    private Thread thread; //Main thread
-    private JFrame beforeWindows;
-    private DrawSurface drawSurface;
-    private int xOffset; // Size to out DS in x
-    private int yOffset; // Size to out DS in x
-    private int widhtDS = 800; // Widht draw surface
-    private int heightSD = 800; // Height draw surface
-    private int COLUMNS = 10, ROW = 10, SIDE = 80;
-    private int x, y;
-    private boolean firstPaintBlocks = true;
-    private Board block;
-    private Function function;
-    //End Variables
-    
-    //some variables
-    private Point position = new Point(0, 0);
-    private Point startLog;
-    private Point startDrag;
-    private Point offset;
-    private int newY = 1;
-    private int newX = 1;
-    private Picture picture;
-    // Variables to Dice
+    private DrawSurfaceAux drawSurface;
+    //Variables of Dice
     private final String animationPath = "src/pk/codeapp/tools/Dice/rollDice.gif";//Animation of Dice
     private final String[] imgs = { // String of directions images of dices
         "src/pk/codeapp/tools/Dice/1c.png",
@@ -77,41 +36,20 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
     };
     private final int[] faces = {1, 2, 3, 4, 5, 6};
     private boolean changeOptionDice = true;
-
-    public PlayGame(String name, JFrame beforeWindows)
+    
+    /**
+     * Creates new form PlayGameAux
+     */
+    public PlayGameAux()
     {
         initComponents();
-        
-        String tokens[] = SelectToken.tokens;
-        if (tokens[0] != null) {
-            lblToken1.setIcon(new ImageIcon(MainApp.methods.getTokens()[0]));
-        }
-        if (tokens[1] != null) {
-            lblToken2.setIcon(new ImageIcon(MainApp.methods.getTokens()[1]));
-        }
-        if (tokens[2] != null) {
-            lblToken3.setIcon(new ImageIcon(MainApp.methods.getTokens()[2]));
-        }
-        if (tokens[3] != null) {
-            lblToken4.setIcon(new ImageIcon(MainApp.methods.getTokens()[3]));
-        }
-        MouseListener listener = new MouseAdapter() {
-            public void mousePressed(MouseEvent me) {
-                JComponent comp = (JComponent) me.getSource();
-                TransferHandler handler = comp.getTransferHandler();
-                handler.exportAsDrag(comp, me, TransferHandler.COPY);
-      }
-    };
-        lblToken1.addMouseListener(listener);
-        this.block = MainApp.methods.getMapSelected();
-        this.beforeWindows = beforeWindows;
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle(name);
-        this.setResizable(false);
-        this.setLayout(new BorderLayout());
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
-        start();
+        drawSurface= new DrawSurfaceAux();
+         this.add(drawSurface);
+//        pane.setLayout(null);
+//        Tokens tk = new Tokens("src/pk/codeapp/tools/tokens/bluecrown.png", "nada", this);
+//        tk.setLocation(10, 10);
+//        jPanel1.add(tk);
+
     }
 
     /**
@@ -123,51 +61,28 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
-        lblToken4 = new javax.swing.JLabel();
-        lblToken3 = new javax.swing.JLabel();
-        lblToken2 = new javax.swing.JLabel();
-        lblActualPlayer = new javax.swing.JLabel();
-        lblTurn = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         Dice = new javax.swing.JLabel();
         lblNameDice = new javax.swing.JLabel();
+        lblTurn = new javax.swing.JLabel();
+        lblActualPlayer = new javax.swing.JLabel();
         btnRoll = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        lblToken1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel.setBackground(new java.awt.Color(0, 191, 165));
-        jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBackground(new java.awt.Color(0, 191, 165));
 
-        lblToken4.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel.add(lblToken4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 80, 80));
+        Dice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/1c.png"))); // NOI18N
 
-        lblToken3.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel.add(lblToken3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 80, 80));
-
-        lblToken2.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel.add(lblToken2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 80, 80));
-
-        lblActualPlayer.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        lblActualPlayer.setForeground(new java.awt.Color(255, 255, 255));
-        lblActualPlayer.setText("Player 1");
-        jPanel.add(lblActualPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+        lblNameDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/Dicepjc.png"))); // NOI18N
 
         lblTurn.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblTurn.setForeground(new java.awt.Color(255, 255, 255));
         lblTurn.setText("Turn :");
-        jPanel.add(lblTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 21, -1, -1));
 
-        Dice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/1c.png"))); // NOI18N
-        jPanel.add(Dice, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, -1, -1));
-
-        lblNameDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/Dicepjc.png"))); // NOI18N
-        jPanel.add(lblNameDice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
+        lblActualPlayer.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lblActualPlayer.setForeground(new java.awt.Color(255, 255, 255));
+        lblActualPlayer.setText("Player 1");
 
         btnRoll.setBackground(new java.awt.Color(0, 0, 0));
         btnRoll.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -186,34 +101,62 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
                 btnRollActionPerformed(evt);
             }
         });
-        jPanel.add(btnRoll, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 710, 147, 60));
 
-        jLabel1.setText("Player #4");
-        jPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(lblNameDice))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(lblTurn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Dice)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblActualPlayer)
+                                .addGap(12, 12, 12)))
+                        .addGap(108, 108, 108))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(119, 119, 119))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(lblTurn)
+                .addGap(30, 30, 30)
+                .addComponent(lblActualPlayer)
+                .addGap(190, 190, 190)
+                .addComponent(lblNameDice)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Dice)
+                .addGap(31, 31, 31)
+                .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
 
-        jLabel2.setText("Player #1");
-        jPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
-
-        jLabel3.setText("Player #2");
-        jPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
-
-        jLabel4.setText("Player #3");
-        jPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
-
-        lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                lblToken1MouseDragged(evt);
-            }
-        });
-        lblToken1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblToken1MousePressed(evt);
-            }
-        });
-        jPanel.add(lblToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 80, 80));
-
-        getContentPane().add(jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 450, 860));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 799, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -221,7 +164,6 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
     private void btnRollMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRollMouseEntered
         btnRoll.setBackground(Color.white);
         btnRoll.setForeground(Color.black);
-
     }//GEN-LAST:event_btnRollMouseEntered
 
     private void btnRollMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRollMouseExited
@@ -238,24 +180,7 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
             btnRoll.setText("Roll !!");
         }
 
-
     }//GEN-LAST:event_btnRollActionPerformed
-
-    private void lblToken1MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblToken1MousePressed
-    {//GEN-HEADEREND:event_lblToken1MousePressed
-        // TODO add your handling code here:
-        this.startDrag = getScreenLocation(evt);
-        this.startLog = lblToken1.getLocation();
-    }//GEN-LAST:event_lblToken1MousePressed
-
-    private void lblToken1MouseDragged(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblToken1MouseDragged
-    {//GEN-HEADEREND:event_lblToken1MouseDragged
-        // TODO add your handling code here:
-        Point current = this.getScreenLocation(evt);
-        offset = new Point((int) current.getX() - (int) startDrag.getX(), (int) current.getY() - (int) startDrag.getY());
-        Point newLocation = new Point((int) (this.startLog.getX() + offset.getX()), (int) (this.startLog.getY() + offset.getY()));
-        lblToken1.setLocation(newLocation);
-    }//GEN-LAST:event_lblToken1MouseDragged
     public void spin()
     { // View the animation of dice
         //Stting spin animation
@@ -270,124 +195,64 @@ public class PlayGame extends javax.swing.JFrame implements Runnable
         String getImage = imgs[guess - 1];
         Dice.setIcon(new ImageIcon(getImage));
     }
-    public void paintBlocks()
-    { //Methods to paint block
-        if (firstPaintBlocks) {
-            Board reco = block;
-            while (reco != null) {
-                paintSpecialFunction(reco); // Checks to name of functions is Start or End 
-                if (paintSpecialFunction(reco) == false) {
-                    Color color = MainApp.methods.getColor(reco.getFunction().getColor());
-                    Graphics g=this.getGraphics();
-                    super.paint(g);
-                    picture.drawPeric(reco.getNumPosicion(), color, new Dupla(reco.getPosX(),reco.getPosY()), g);
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[])
+    {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
                 }
-                reco = reco.getSig();
             }
-            firstPaintBlocks = false;
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PlayGameAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PlayGameAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PlayGameAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PlayGameAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
 
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                new PlayGameAux().setVisible(true);
+            }
+        });
     }
-
-    
-
-    private boolean paintSpecialFunction(Board reco)
-    { //Methods to check Special Function and paint if is true
-        Graphics g=this.getGraphics();
-        super.paint(g);
-        switch (reco.getFunction().getFuction()) {
-            case "Start":
-                Color color = MainApp.methods.getColor(reco.getFunction().getColor());      
-                  picture.drawPeric(-1, color, new Dupla(reco.getPosX(),reco.getPosY()), g);
-                return true;
-            case "End":
-                Color colorAux = MainApp.methods.getColor(reco.getFunction().getColor());
-                picture.drawPeric(-2, colorAux, new Dupla(reco.getPosX(),reco.getPosY()), g);
-                return true;
-        }
-        return false;
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Dice;
     private javax.swing.JButton btnRoll;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblActualPlayer;
     private javax.swing.JLabel lblNameDice;
-    private javax.swing.JLabel lblToken1;
-    private javax.swing.JLabel lblToken2;
-    private javax.swing.JLabel lblToken3;
-    private javax.swing.JLabel lblToken4;
     private javax.swing.JLabel lblTurn;
     // End of variables declaration//GEN-END:variables
-    private void init()
-    { // variable initiator
-        drawSurface = new DrawSurface(widhtDS, heightSD);
-        this.drawSurface = drawSurface;
-        this.add(drawSurface);
-        xOffset = (widhtDS - (COLUMNS * SIDE)) / 2;
-        yOffset = (heightSD - (ROW * SIDE)) / 2;
-        drawSurface.paintToPlay();
-        paintBlocks();
-    }
 
-    private void tick()
-    { // Variables
+    
 
-    }
-
-    private void render()
-    { // Graphics
-
-  
-
-    }
-
-    @Override
-    public void run()
-    { // Main Loop in the Game 
-        init();
-        while (running) { //Main Loop
-            tick();
-            render();
-
-        }
-        stop();
-    }
-
-    public synchronized void start()
-    { //Start to synchronized main thread with Jframe
-        if (running) {
-            return;
-        }
-        running = true;
-        thread = new Thread(this); // Create new Thread
-        thread.start();
-    }
-
-    public synchronized void stop()
-    {//Stop to synchronized main thread with Jframe
-        if (!running) {
-            return;
-        }
-        running = false;
-        try {
-            thread.join();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(CreateGame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-
-    private Point getScreenLocation(MouseEvent e)
+    public void runForPaint()
     {
-        Point cursor = e.getPoint();
-        
-        return cursor;
+
+    }
+
+    public void open(SelectToken select)
+    {
+        this.setVisible(true);
+        select.setVisible(false);
+        runForPaint();
     }
 }

@@ -15,7 +15,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import pk.codeapp.screen.PlayGameAux;
+import pk.codeapp.screen.PlayGame;
 
 /**
  *
@@ -31,9 +31,9 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     private Point offset;
     private int newY=1;
     private int newX=1;
-    private PlayGameAux aux;
+    private PlayGame aux;
     
-    public Tokens(String icon, String key,PlayGameAux aux){
+    public Tokens(String icon, String key,PlayGame aux){
         this.key=key;
         this.setToolTipText(key);
         this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -62,9 +62,9 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     @Override
     public void mouseReleased(MouseEvent e) {
         newX= (this.getLocation().x);
-         newY= (this.getLocation().y);
-         
+         newY= (this.getLocation().y);    
          this.setLocation(newX, newY);
+         
     }
 
     @Override
