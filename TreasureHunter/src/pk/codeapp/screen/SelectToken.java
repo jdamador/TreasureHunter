@@ -323,7 +323,11 @@ public class SelectToken extends javax.swing.JFrame
         if (btnToken4.isSelected() == true) {
             return "token4";
         }
-        return "";
+        else{
+ 
+            return null;
+        }
+        
     }
 
     /**
