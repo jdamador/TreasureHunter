@@ -109,5 +109,5 @@ public class DrawSurface extends Canvas {
     public int getHeight() {
         return height;
     }
-
+  
 }

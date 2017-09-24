@@ -19,7 +19,7 @@ public class SelectToken extends javax.swing.JFrame
     /**
      * Creates new form SelectToken
      */
-    private String[] tokens = new String[4];
+    static String[] tokens = new String[4];
     private String token;
     JFrame frame;
 
