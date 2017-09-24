@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pk.codeapp.model;
+package pk.codeapp.screen;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -15,6 +15,8 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import pk.codeapp.model.Board;
 import pk.codeapp.screen.PlayGame;
 
 /**
@@ -32,7 +34,12 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     private int newY=1;
     private int newX=1;
     private PlayGame aux;
-    
+    private Board board=MainApp.methods.getMapSelected();
+    private  int COLUMNS = 10, ROW = 10, SIDE = 80;
+    private int xOffset = (800 - (COLUMNS * SIDE)) / 2; 
+    private int yOffset = (800 - (ROW * SIDE)) / 2;
+    private int column;
+    private int row;
     public Tokens(String icon, String key,PlayGame aux){
         this.key=key;
         this.setToolTipText(key);
@@ -62,9 +69,10 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     @Override
     public void mouseReleased(MouseEvent e) {
         newX= (this.getLocation().x);
-         newY= (this.getLocation().y);    
-         this.setLocation(newX, newY);
-         
+        newY= (this.getLocation().y);    
+//         this.setLocation(newX, newY);
+         Point point = getScreenLocation(e);
+         checkFunction(point.x,point.y);
     }
 
     @Override
@@ -98,5 +106,19 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
        Point targetLocation = this.getLocationOnScreen();
        return new Point((int)(targetLocation.getX()+cursor.getX()),(int)(targetLocation.getY()+cursor.getY()));
     }
-
+    private void checkFunction(int posX,int posY){
+        Board reco = board;
+        System.out.println("Posicion Mouse X: "+posX);
+        System.out.println("Posicion Mouse Y: "+posY);
+        column = ((posX - xOffset) / 80); // get Column
+        row = ((posY - (yOffset-14)) / 80); // get Row
+        System.out.println("Columna: "+column);
+        System.out.println("Fila: "+row);
+        while(reco!=null){
+            if(reco.getPosX()==column && reco.getPosY()==row)
+                JOptionPane.showMessageDialog(null,reco.getFunction().getFuction(),"Function",JOptionPane.INFORMATION_MESSAGE);
+            reco=reco.getSig();
+          }
+    }
+    
 }

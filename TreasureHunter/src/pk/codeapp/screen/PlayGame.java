@@ -10,10 +10,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import pk.codeapp.methods.Dupla;
 import pk.codeapp.model.Board;
-import pk.codeapp.model.Tokens;
 
 /**
  *
@@ -21,7 +21,7 @@ import pk.codeapp.model.Tokens;
  */
 public class PlayGame extends javax.swing.JFrame
 {
-
+    private JFrame beforeFrame;
     private DrawSurfaceAux drawSurface;
     //Variables of Dice
     private final String animationPath = "src/pk/codeapp/tools/Dice/rollDice.gif";//Animation of Dice
@@ -45,6 +45,7 @@ public class PlayGame extends javax.swing.JFrame
         drawSurface = new DrawSurfaceAux();
         this.add(drawSurface);
         chargeImage();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -54,8 +55,7 @@ public class PlayGame extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         paneMarkeup = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -64,6 +64,7 @@ public class PlayGame extends javax.swing.JFrame
         lblTurn = new javax.swing.JLabel();
         lblActualPlayer = new javax.swing.JLabel();
         btnRoll = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,25 +95,31 @@ public class PlayGame extends javax.swing.JFrame
         btnRoll.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRoll.setForeground(new java.awt.Color(255, 255, 255));
         btnRoll.setText("Roll !!");
-        btnRoll.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnRoll.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRollMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnRollMouseExited(evt);
             }
         });
-        btnRoll.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRollActionPerformed(evt);
             }
         });
         jPanel1.add(btnRoll, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 626, 147, 60));
+
+        btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 750, 110, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,7 +132,7 @@ public class PlayGame extends javax.swing.JFrame
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(paneMarkeup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -152,6 +159,11 @@ public class PlayGame extends javax.swing.JFrame
         }
 
     }//GEN-LAST:event_btnRollActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.dispose();
+        beforeFrame.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
     public void spin()
     { // View the animation of dice
         //Stting spin animation
@@ -208,6 +220,7 @@ public class PlayGame extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Dice;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRoll;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblActualPlayer;
@@ -223,9 +236,11 @@ public class PlayGame extends javax.swing.JFrame
 
     public void open(SelectToken select)
     {
+        this.beforeFrame=select;
         this.setVisible(true);
         select.setVisible(false);
         runForPaint();
+        
     }
 
     public void chargeImage()
