@@ -7,21 +7,37 @@ package pk.codeapp.screen;
 
 import com.sun.prism.paint.Color;
 import java.awt.Graphics;
-import java.awt.font.GraphicAttribute;
+import java.awt.Color.*;
+import java.awt.Font;
 import pk.codeapp.methods.Dupla;
 import pk.codeapp.model.Board;
+import pk.codeapp.model.Tokens;
+
 
 /**
  *
  * @author amador
  */
-public class PlayGameAux extends javax.swing.JFrame {
+public class PlayGameAux extends javax.swing.JFrame
+{
+
+    String stringPosition;
+    private int size=80;
+    String tokens[]=SelectToken.tokens;
 
     /**
      * Creates new form PlayGameAux
      */
-    public PlayGameAux() {
+    public PlayGameAux()
+    {
         initComponents();
+       
+        setContentPane(pane);
+        pane.setLayout(null);
+         Tokens tk = new Tokens("src/pk/codeapp/tools/tokens/bluecrown.png","nada",this);
+        tk.setLocation(10, 10);
+        jPanel1.add(tk);
+
     }
 
     /**
@@ -31,13 +47,45 @@ public class PlayGameAux extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         pane = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pane.setLayout(null);
+
+        jPanel1.setOpaque(false);
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
+        {
+            public void mouseDragged(java.awt.event.MouseEvent evt)
+            {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 990, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pane.add(jPanel1);
+        jPanel1.setBounds(0, 0, 990, 560);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,10 +101,23 @@ public class PlayGameAux extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel1MouseClicked
+    {//GEN-HEADEREND:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel1MouseDragged
+    {//GEN-HEADEREND:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+          
+    }//GEN-LAST:event_jPanel1MouseDragged
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -81,36 +142,67 @@ public class PlayGameAux extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new PlayGameAux().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pane;
     // End of variables declaration//GEN-END:variables
-    public void paint(Graphics g,Board frame){
-        Dupla dupla=calculatePosition(new Dupla(frame.getPosX(), frame.getPosY()));
+    public  void paint(Graphics g)
+    {
+        Board reco = MainApp.methods.getMapSelected();
         super.paint(g);
-        g.setColor(java.awt.Color.blue);
-        g.fillRect((int)dupla.getPosX(), (int)dupla.getPosY(), 80, 80);
-    }
-    public Dupla calculatePosition(Dupla pos){
-        int x=(int)(pos.getPosX()*80+0.0);
-        int y=(int)(pos.getPosY()*80+0.0);
-        return new Dupla(x,y);
-    }
-    public void runForPaint(){
-        Board reco= MainApp.methods.getMapSelected();
-        while(reco!=null){
-            paint(pane.getGraphics(), reco);
-            reco=reco.getSig();
+        while (reco != null) {
+            g = pane.getGraphics();
+           
+            
+
+            if (reco.getNumPosicion() == -1) {
+                stringPosition = "Start";
+            } else if (reco.getNumPosicion() == -2) {
+                stringPosition = "End";
+            } else {
+                stringPosition = "" + reco.getNumPosicion();
+            }
+            java.awt.Color color = MainApp.methods.getColor(reco.getFunction().getColor());
+            System.out.println("Entro en el peric ");
+            g.setColor(color);
+            Dupla pos = new Dupla(reco.getPosX(), reco.getPosY());
+            g.fillRect((int) calculatePosition(pos).getPosX(), (int) calculatePosition(pos).getPosY(), size, size);
+            g.setColor(java.awt.Color.BLACK);
+            g.drawRect((int)calculatePosition(pos).getPosX(),(int)calculatePosition(pos).getPosY(), size, size);
+            g.setFont(new Font("Vendara", Font.PLAIN, 15));
+            g.drawString(stringPosition + "", (int) calculatePosition(pos).getPosX()+ 3, (int) calculatePosition(pos).getPosY() + 12);
+
+            reco = reco.getSig();
         }
+//       
+
     }
-    public void open(SelectToken select){
+
+    public Dupla calculatePosition(Dupla pos)
+    {
+        int x = (int) (pos.getPosX() * 80 + 0.0);
+        int y = (int) (pos.getPosY() * 80 + 0.0);
+        return new Dupla(x, y);
+    }
+
+    public void runForPaint()
+    {
+
+    }
+
+    public void open(SelectToken select)
+    {
         this.setVisible(true);
         select.setVisible(false);
+        runForPaint();
     }
 }

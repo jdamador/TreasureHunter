@@ -15,22 +15,25 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import pk.codeapp.screen.PlayGameAux;
 
 /**
  *
  * @author amador
  */
-public class Token extends JLabel implements MouseListener, MouseMotionListener {
+public class Tokens extends JLabel implements MouseListener, MouseMotionListener {
 
     private String key = "";
     private Point posicition = new Point(0,0);
-    private Dimension d = new Dimension(124,150);
+    private Dimension d = new Dimension(70,70);
     private Point startLoc;
     private Point starDrag;
     private Point offset;
     private int newY=1;
     private int newX=1;
-    public void Token(String icon, String key){
+    private PlayGameAux aux;
+    
+    public Tokens(String icon, String key,PlayGameAux aux){
         this.key=key;
         this.setToolTipText(key);
         this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -41,6 +44,7 @@ public class Token extends JLabel implements MouseListener, MouseMotionListener 
         this.setLocation(posicition);
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
+        this.aux=aux;
         
     }
     @Override
@@ -52,12 +56,14 @@ public class Token extends JLabel implements MouseListener, MouseMotionListener 
     public void mousePressed(MouseEvent e) {
         this.starDrag = getScreenLocation(e);
         this.startLoc= this.getLocation();
+        aux.paint(this.getGraphics());
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         newX= (this.getLocation().x);
          newY= (this.getLocation().y);
+         
          this.setLocation(newX, newY);
     }
 
@@ -76,7 +82,10 @@ public class Token extends JLabel implements MouseListener, MouseMotionListener 
         Point current = this.getScreenLocation(e);
         offset= new Point((int)current.getX()-(int)starDrag.getX(), (int)current.getY()-(int)starDrag.getY());
         Point newLocation = new Point((int)(this.startLoc.getX()+offset.getX()),(int)(this.startLoc.getY()+offset.getY()));
-        this.setLocation(newLocation);
+       
+        
+         this.setLocation(newLocation);
+        
     }
 
     @Override

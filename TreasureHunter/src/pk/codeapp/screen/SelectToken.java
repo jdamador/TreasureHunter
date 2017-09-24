@@ -435,4 +435,15 @@ public void updateTokens()
     this.dispose();
   
     }
+
+    public static String[] getTokens()
+    {
+        return tokens;
+    }
+
+    public static void setTokens(String[] tokens)
+    {
+        SelectToken.tokens = tokens;
+    }
+    
 }
