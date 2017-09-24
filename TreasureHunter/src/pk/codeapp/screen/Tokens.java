@@ -112,13 +112,17 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
         Board reco = board;
         System.out.println("Posicion Mouse X: "+posX);
         System.out.println("Posicion Mouse Y: "+posY);
-        column = ((posX - xOffset) / 80); // get Column
-        row = ((posY - (yOffset-14)) / 80); // get Row
+        column = ((posX - xOffset-14) / 80)-4; // get Column
+        row = ((posY - (yOffset-14)) / 80)-2; // get Row
         System.out.println("Columna: "+column);
         System.out.println("Fila: "+row);
         while(reco!=null){
-            if(reco.getPosX()==column && reco.getPosY()==row)
-                JOptionPane.showMessageDialog(null,reco.getFunction().getFuction(),"Function",JOptionPane.INFORMATION_MESSAGE);
+            if(reco.getPosX()==column && reco.getPosY()==row){
+                if(reco.getFunction().getFuction().equals("End"))
+                    JOptionPane.showMessageDialog(null,reco.getFunction().getFuction(),"!!! YOU WIN !!!",JOptionPane.INFORMATION_MESSAGE);
+                else if(!reco.getFunction().getFuction().equals("Start"))
+                    JOptionPane.showMessageDialog(null,reco.getFunction().getFuction(),"Function",JOptionPane.INFORMATION_MESSAGE);
+            }
             reco=reco.getSig();
           }
     }
