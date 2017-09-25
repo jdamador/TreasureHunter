@@ -1,1 +1,2 @@
 src/pk/codeapp/tools/tokens/bluemushroom.png
+src/pk/codeapp/tools/tokens/redmushroom.png

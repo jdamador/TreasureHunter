@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -27,6 +29,14 @@ public class SelectToken extends javax.swing.JFrame
     {
         initComponents();
         updateTokens();
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+
+               MainApp. methods.writeUser();
+               MainApp. methods.writeInTextFile(MainApp.methods.getTokenFile(), MainApp.methods.getTokens());
+                System.exit(0);
+            }
+        });
     }
 
     /**

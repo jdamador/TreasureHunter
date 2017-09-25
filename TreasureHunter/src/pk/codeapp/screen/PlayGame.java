@@ -7,10 +7,20 @@ package pk.codeapp.screen;
 
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Label;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import pk.codeapp.methods.Dupla;
 import pk.codeapp.model.Board;
@@ -21,6 +31,7 @@ import pk.codeapp.model.Board;
  */
 public class PlayGame extends javax.swing.JFrame
 {
+
     private JFrame beforeFrame;
     private DrawSurfaceAux drawSurface;
     //Variables of Dice
@@ -35,6 +46,19 @@ public class PlayGame extends javax.swing.JFrame
     };
     private final int[] faces = {1, 2, 3, 4, 5, 6};
     private boolean changeOptionDice = true;
+    private Point starDrag;
+    private Point posicition = new Point(0, 0);
+    private Dimension d = new Dimension(70, 70);
+    private Point startLoc;
+    private Board board = MainApp.methods.getMapSelected();
+    private int COLUMNS = 10, ROW = 10, SIDE = 80;
+    private int xOffset = (800 - (COLUMNS * SIDE)) / 2;
+    private int yOffset = (800 - (ROW * SIDE)) / 2;
+    private int column;
+    private int row;
+    private Point offset;
+    private int newY;
+    private int newX;
 
     /**
      * Creates new form PlayGameAux
@@ -46,7 +70,15 @@ public class PlayGame extends javax.swing.JFrame
         this.add(drawSurface);
         chargeImage();
         this.setLocationRelativeTo(null);
-       
+         this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+
+               MainApp. methods.writeUser();
+               MainApp. methods.writeInTextFile(MainApp.methods.getTokenFile(), MainApp.methods.getTokens());
+                System.exit(0);
+            }
+        });
+
     }
 
     /**
@@ -56,9 +88,14 @@ public class PlayGame extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         paneMarkeup = new javax.swing.JPanel();
+        lblToken2 = new javax.swing.JLabel();
+        lblToken4 = new javax.swing.JLabel();
+        lblToken1 = new javax.swing.JLabel();
+        lblToken3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         Dice = new javax.swing.JLabel();
         lblNameDice = new javax.swing.JLabel();
@@ -68,11 +105,63 @@ public class PlayGame extends javax.swing.JFrame
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         paneMarkeup.setOpaque(false);
         paneMarkeup.setPreferredSize(new java.awt.Dimension(800, 800));
         paneMarkeup.setLayout(null);
+
+        lblToken2.setBorder(new javax.swing.border.MatteBorder(null));
+        lblToken2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
+        {
+            public void mouseDragged(java.awt.event.MouseEvent evt)
+            {
+                lblToken2MouseDragged(evt);
+            }
+        });
+        lblToken2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                lblToken2MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt)
+            {
+                lblToken2MouseReleased(evt);
+            }
+        });
+        paneMarkeup.add(lblToken2);
+        lblToken2.setBounds(140, 710, 70, 70);
+
+        lblToken4.setBorder(new javax.swing.border.MatteBorder(null));
+        paneMarkeup.add(lblToken4);
+        lblToken4.setBounds(310, 710, 70, 70);
+
+        lblToken1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/tokens/bluecrown.png"))); // NOI18N
+        lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
+        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
+        {
+            public void mouseDragged(java.awt.event.MouseEvent evt)
+            {
+                lblToken1MouseDragged(evt);
+            }
+        });
+        lblToken1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                lblToken1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt)
+            {
+                lblToken1MouseReleased(evt);
+            }
+        });
+        paneMarkeup.add(lblToken1);
+        lblToken1.setBounds(60, 710, 70, 70);
+
+        lblToken3.setBorder(new javax.swing.border.MatteBorder(null));
+        paneMarkeup.add(lblToken3);
+        lblToken3.setBounds(220, 710, 70, 70);
 
         jPanel1.setBackground(new java.awt.Color(0, 191, 165));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -97,16 +186,21 @@ public class PlayGame extends javax.swing.JFrame
         btnRoll.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRoll.setForeground(new java.awt.Color(255, 255, 255));
         btnRoll.setText("Roll !!");
-        btnRoll.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        btnRoll.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 btnRollMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 btnRollMouseExited(evt);
             }
         });
-        btnRoll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRoll.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnRollActionPerformed(evt);
             }
         });
@@ -116,8 +210,10 @@ public class PlayGame extends javax.swing.JFrame
         btnBack.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBackActionPerformed(evt);
             }
         });
@@ -166,6 +262,44 @@ public class PlayGame extends javax.swing.JFrame
         this.dispose();
         beforeFrame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void lblToken1MouseDragged(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblToken1MouseDragged
+    {//GEN-HEADEREND:event_lblToken1MouseDragged
+        this.pointMouse(lblToken1);
+
+    }//GEN-LAST:event_lblToken1MouseDragged
+
+    private void lblToken1MouseReleased(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblToken1MouseReleased
+    {//GEN-HEADEREND:event_lblToken1MouseReleased
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        checkFunction(point.x, point.y);
+
+    }//GEN-LAST:event_lblToken1MouseReleased
+
+    private void lblToken1MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblToken1MousePressed
+    {//GEN-HEADEREND:event_lblToken1MousePressed
+        this.eventMouse(evt);
+    }//GEN-LAST:event_lblToken1MousePressed
+
+    private void lblToken2MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblToken2MousePressed
+    {//GEN-HEADEREND:event_lblToken2MousePressed
+        // TODO add your handling code here:
+
+        this.eventMouse(evt);
+    }//GEN-LAST:event_lblToken2MousePressed
+
+    private void lblToken2MouseReleased(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblToken2MouseReleased
+    {//GEN-HEADEREND:event_lblToken2MouseReleased
+        // TODO add your handling code here:
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        checkFunction(point.x, point.y);
+    }//GEN-LAST:event_lblToken2MouseReleased
+
+    private void lblToken2MouseDragged(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblToken2MouseDragged
+    {//GEN-HEADEREND:event_lblToken2MouseDragged
+        // TODO add your handling code here:
+        this.pointMouse(lblToken2);
+    }//GEN-LAST:event_lblToken2MouseDragged
     public void spin()
     { // View the animation of dice
         //Stting spin animation
@@ -227,36 +361,77 @@ public class PlayGame extends javax.swing.JFrame
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblActualPlayer;
     private javax.swing.JLabel lblNameDice;
+    private javax.swing.JLabel lblToken1;
+    private javax.swing.JLabel lblToken2;
+    private javax.swing.JLabel lblToken3;
+    private javax.swing.JLabel lblToken4;
     private javax.swing.JLabel lblTurn;
     private javax.swing.JPanel paneMarkeup;
     // End of variables declaration//GEN-END:variables
 
-    public void runForPaint()
-    {
-
-    }
-
     public void open(SelectToken select)
     {
-        this.beforeFrame=select;
+        this.beforeFrame = select;
         this.setVisible(true);
         select.setVisible(false);
-        runForPaint();
-        
+
     }
 
     public void chargeImage()
     {
-        
+
         String tokens[] = SelectToken.getTokens();
-        for (int i = 0; i < tokens.length; i++) {
-            if(tokens[i]!=null){
-                Tokens tk = new Tokens(tokens[i], "nada", this,paneMarkeup);
-                tk.setLocation(i*80+10, 700);
-               
-            }
+
+        if (tokens[0] != null) {
+            lblToken1.setIcon(new ImageIcon(tokens[0]));
         }
-        
-        
+        if (tokens[1] != null) {
+            lblToken2.setIcon(new ImageIcon(tokens[1]));
+        }
+        if (tokens[2] != null) {
+            lblToken3.setIcon(new ImageIcon(tokens[2]));
+        }
+        if (tokens[3] != null) {
+            lblToken4.setIcon(new ImageIcon(tokens[3]));
+        }
+
     }
+
+    private void checkFunction(int posX, int posY)
+    {
+        Board reco = board;
+
+        System.out.println("Posicion Mouse X: " + posX);
+        System.out.println("Posicion Mouse Y: " + posY);
+        column = ((posX - xOffset) / 80); // get Column
+        row = ((posY - (yOffset)) / 80); // get Row
+
+        System.out.println("Columna: " + column);
+        System.out.println("Fila: " + row);
+        while (reco != null) {
+            if (reco.getPosX() == column && reco.getPosY() == row) {
+                if (reco.getFunction().getFuction().equals("End")) {
+                    JOptionPane.showMessageDialog(null, reco.getFunction().getFuction(), "!!! YOU WIN !!!", JOptionPane.INFORMATION_MESSAGE);
+                } else if (!reco.getFunction().getFuction().equals("Start")) {
+                    JOptionPane.showMessageDialog(null, reco.getFunction().getFuction(), "Function", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            reco = reco.getSig();
+        }
+    }
+
+    public void pointMouse(JLabel label)
+    {
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        System.out.println(point);
+        label.setLocation(point.x - newX, point.y - newY);
+
+    }
+
+    public void eventMouse(MouseEvent e)
+    {
+        newX = e.getX();
+        newY = e.getY();
+    }
+
 }

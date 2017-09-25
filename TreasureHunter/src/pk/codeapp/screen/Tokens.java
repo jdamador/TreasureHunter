@@ -66,7 +66,7 @@ public class Tokens extends JLabel implements MouseListener, MouseMotionListener
     public void mousePressed(MouseEvent e) {
         this.starDrag = new Point(e.getX(),e.getY());
         this.startLoc= this.getLocation();
-        aux.paint(this.getGraphics());
+    
     }
 
     @Override

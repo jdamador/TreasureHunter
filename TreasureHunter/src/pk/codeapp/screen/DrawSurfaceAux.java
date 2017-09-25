@@ -51,7 +51,7 @@ public class DrawSurfaceAux extends JPanel
                 stringPosition = "" + reco.getNumPosicion();
             }
             java.awt.Color color = MainApp.methods.getColor(reco.getFunction().getColor());
-            System.out.println("Entro en el peric ");
+          
             g.setColor(color);
             Dupla pos = new Dupla(reco.getPosX(), reco.getPosY());
             g.fillRect((int) calculatePosition(pos).getPosX(), (int) calculatePosition(pos).getPosY(), size, size);
