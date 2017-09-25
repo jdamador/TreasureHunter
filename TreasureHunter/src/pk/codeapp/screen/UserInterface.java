@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -41,6 +43,12 @@ public class UserInterface extends javax.swing.JFrame
         });
 
     }
+    @Override
+    public Image getIconImage()
+    {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
+        return retValue;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,10 +78,15 @@ public class UserInterface extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jListGames.setBackground(new java.awt.Color(0, 51, 51));
+        jListGames.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        jListGames.setForeground(new java.awt.Color(255, 255, 255));
+        jListGames.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jListGames);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 250, 390, 290));

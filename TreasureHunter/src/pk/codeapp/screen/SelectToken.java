@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
@@ -37,6 +39,12 @@ public class SelectToken extends javax.swing.JFrame
                 System.exit(0);
             }
         });
+    }
+    @Override
+    public Image getIconImage()
+    {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
+        return retValue;
     }
 
     /**
@@ -72,6 +80,7 @@ public class SelectToken extends javax.swing.JFrame
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
 
         jPanel1.setBackground(new java.awt.Color(0, 191, 165));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

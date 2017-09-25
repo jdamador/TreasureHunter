@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import pk.codeapp.methods.Methods;
@@ -32,7 +34,12 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         initComponents();
         loadFunctions(); // Load All fuctions before to start windows
     }
-
+@Override
+    public Image getIconImage()
+    {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
+        return retValue;
+    }
 
 
     /**
@@ -42,7 +49,8 @@ public class windowsAuxConsult extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -51,6 +59,7 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
@@ -66,8 +75,10 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         btnAddFunction.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnAddFunction.setForeground(new java.awt.Color(255, 255, 255));
         btnAddFunction.setText("Add Function");
-        btnAddFunction.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAddFunction.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAddFunctionActionPerformed(evt);
             }
         });
@@ -75,8 +86,10 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         btnExit.setBackground(new java.awt.Color(0, 0, 0));
         btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("X");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExitActionPerformed(evt);
             }
         });

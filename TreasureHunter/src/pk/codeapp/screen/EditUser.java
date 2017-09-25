@@ -5,6 +5,8 @@
  */
 package pk.codeapp.screen;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -30,6 +32,12 @@ public class EditUser extends javax.swing.JFrame {
         this.setLocationRelativeTo(afterWindows);
 
     }
+    @Override
+    public Image getIconImage()
+    {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
+        return retValue;
+    }
 
     public void openWindows(JFrame frame, Methods editUser,User user) {
         this.afterWindows = frame;
@@ -53,7 +61,8 @@ public class EditUser extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -70,6 +79,7 @@ public class EditUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
+        setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -101,8 +111,10 @@ public class EditUser extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cancel");
         jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -123,8 +135,10 @@ public class EditUser extends javax.swing.JFrame {
         btnMakeChanges.setForeground(new java.awt.Color(255, 255, 255));
         btnMakeChanges.setText("make changes");
         btnMakeChanges.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        btnMakeChanges.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMakeChanges.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnMakeChangesActionPerformed(evt);
             }
         });

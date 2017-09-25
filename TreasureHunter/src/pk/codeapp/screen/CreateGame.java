@@ -7,6 +7,8 @@ package pk.codeapp.screen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.logging.Level;
@@ -59,6 +61,12 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         this.setVisible(true);
         start();
     }
+    @Override
+    public Image getIconImage()
+    {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("pk/codeapp/tools/treasurehunter.png"));
+        return retValue;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,7 +75,8 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -78,6 +87,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setSize(new java.awt.Dimension(1280, 800));
 
         jPanel1.setBackground(new java.awt.Color(92, 107, 192));
@@ -94,8 +104,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         btnDraw.setForeground(new java.awt.Color(0, 0, 0));
         btnDraw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/paint.png"))); // NOI18N
         btnDraw.setToolTipText("Click to create pictures in the matrix ");
-        btnDraw.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnDraw.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnDrawMouseClicked(evt);
             }
         });
@@ -106,8 +118,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
 
         btnDeleteFrame.setBackground(new java.awt.Color(0, 0, 0));
         btnDeleteFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/delete.png"))); // NOI18N
-        btnDeleteFrame.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnDeleteFrame.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnDeleteFrameMouseClicked(evt);
             }
         });
@@ -116,8 +130,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         btnBack.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBackActionPerformed(evt);
             }
         });

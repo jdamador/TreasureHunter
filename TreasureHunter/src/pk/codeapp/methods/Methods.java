@@ -5,10 +5,10 @@
  */
 package pk.codeapp.methods;
 
-import com.sun.xml.internal.ws.api.message.saaj.SAAJFactory;
+
 import java.awt.Color;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
+
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
