@@ -97,8 +97,7 @@ public class PlayGame extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         paneMarkeup = new javax.swing.JPanel();
         lblToken2 = new javax.swing.JLabel();
@@ -117,93 +116,90 @@ public class PlayGame extends javax.swing.JFrame
         setIconImage(getIconImage());
         setUndecorated(true);
 
+        paneMarkeup.setForeground(new java.awt.Color(255, 255, 255));
+        paneMarkeup.setToolTipText("");
         paneMarkeup.setOpaque(false);
         paneMarkeup.setPreferredSize(new java.awt.Dimension(800, 800));
         paneMarkeup.setLayout(null);
 
+        lblToken2.setForeground(new java.awt.Color(255, 255, 255));
+        lblToken2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblToken2.setText("Player2");
+        lblToken2.setToolTipText("Player2");
         lblToken2.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
-        {
-            public void mouseDragged(java.awt.event.MouseEvent evt)
-            {
+        lblToken2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
                 lblToken2MouseDragged(evt);
             }
         });
-        lblToken2.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mousePressed(java.awt.event.MouseEvent evt)
-            {
+        lblToken2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblToken2MousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt)
-            {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
                 lblToken2MouseReleased(evt);
             }
         });
         paneMarkeup.add(lblToken2);
         lblToken2.setBounds(140, 710, 70, 70);
 
+        lblToken4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblToken4.setText("Player4");
+        lblToken4.setToolTipText("Player4");
         lblToken4.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
-        {
-            public void mouseDragged(java.awt.event.MouseEvent evt)
-            {
+        lblToken4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
                 lblToken4MouseDragged(evt);
             }
         });
-        lblToken4.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mousePressed(java.awt.event.MouseEvent evt)
-            {
+        lblToken4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblToken4MousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt)
-            {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
                 lblToken4MouseReleased(evt);
             }
         });
         paneMarkeup.add(lblToken4);
         lblToken4.setBounds(310, 710, 70, 70);
 
+        lblToken1.setForeground(new java.awt.Color(255, 255, 255));
         lblToken1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/tokens/bluecrown.png"))); // NOI18N
+        lblToken1.setText("Player1");
+        lblToken1.setToolTipText("Player");
         lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
-        {
-            public void mouseDragged(java.awt.event.MouseEvent evt)
-            {
+        lblToken1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
                 lblToken1MouseDragged(evt);
             }
         });
-        lblToken1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mousePressed(java.awt.event.MouseEvent evt)
-            {
+        lblToken1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblToken1MousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt)
-            {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
                 lblToken1MouseReleased(evt);
             }
         });
         paneMarkeup.add(lblToken1);
-        lblToken1.setBounds(60, 710, 70, 70);
+        lblToken1.setBounds(40, 690, 70, 70);
 
+        lblToken3.setForeground(new java.awt.Color(255, 255, 255));
+        lblToken3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblToken3.setText("Player3");
+        lblToken3.setToolTipText("Player3");
         lblToken3.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
-        {
-            public void mouseDragged(java.awt.event.MouseEvent evt)
-            {
+        lblToken3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
                 lblToken3MouseDragged(evt);
             }
         });
-        lblToken3.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mousePressed(java.awt.event.MouseEvent evt)
-            {
+        lblToken3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblToken3MousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt)
-            {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
                 lblToken3MouseReleased(evt);
             }
         });
@@ -233,21 +229,16 @@ public class PlayGame extends javax.swing.JFrame
         btnRoll.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRoll.setForeground(new java.awt.Color(255, 255, 255));
         btnRoll.setText("Roll !!");
-        btnRoll.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        btnRoll.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRollMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnRollMouseExited(evt);
             }
         });
-        btnRoll.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRollActionPerformed(evt);
             }
         });
@@ -257,10 +248,8 @@ public class PlayGame extends javax.swing.JFrame
         btnBack.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
