@@ -48,7 +48,6 @@ public class Methods
     String tokens[] = new String[4];
     private Board mapSelected;
     DefaultListModel<String> showUser = new DefaultListModel();
-
     User showActual;
 
     ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");

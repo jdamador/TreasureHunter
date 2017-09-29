@@ -273,6 +273,7 @@ public class UserInterface extends javax.swing.JFrame
 
     private void btnCreateWorldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWorldActionPerformed
         this.setVisible(false);
+        MainApp.methods.setRootBoard(null);
         ControlCreateTable aux = new ControlCreateTable();
         aux.beforeWindows(this);
         ControlCreateTable.main(new String[0]);

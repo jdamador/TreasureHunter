@@ -18,6 +18,7 @@ import pk.codeapp.methods.DrawSurface;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.Board;
 import pk.codeapp.model.Function;
+import pk.codeapp.model.User;
 
 /**
  *
@@ -75,8 +76,7 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -104,10 +104,8 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         btnDraw.setForeground(new java.awt.Color(0, 0, 0));
         btnDraw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/paint.png"))); // NOI18N
         btnDraw.setToolTipText("Click to create pictures in the matrix ");
-        btnDraw.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnDraw.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDrawMouseClicked(evt);
             }
         });
@@ -118,10 +116,8 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
 
         btnDeleteFrame.setBackground(new java.awt.Color(0, 0, 0));
         btnDeleteFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/delete.png"))); // NOI18N
-        btnDeleteFrame.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnDeleteFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDeleteFrameMouseClicked(evt);
             }
         });
@@ -130,10 +126,8 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         btnBack.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
@@ -282,24 +276,25 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     }
     //Falta Corregir
     private void deleteLinkening(int column,int row){ // Delete Linkening to blocks
-        Board reco = MainApp.methods.getRootBoard();
-        Board aux = reco.getSig(); // aux is the next to reco 
-        if(reco.getPosX()==column && reco.getPosY()==row){ // Check the first position
+        User actual = MainApp.methods.getActualUser();
+        Board aux =actual.getGameSig(); // aux is the next to reco
+        if(aux.getPosX()==column && aux.getPosY()==row){ // Checks first position
             if(aux==null)
-                MainApp.methods.setRootBoard(null); // Move the rootBoard
-            else{
-                MainApp.methods.setRootBoard(aux); // Move the rootBoard
-                reco = null;}
+                actual.setGameSig(null);
+            else
+                actual.setGameSig(aux);
         }
-        while(reco.getSig()!=null){    
-            if(reco.getPosX()==column && reco.getPosY()==row){ // if is the position move the sig and ant
-                reco.getAnt().setSig(aux);
-                aux.setAnt(reco.getAnt());
-                reco=null; // Actual is delete
-            } // else move reco to the next position, same to aux
-            reco = reco.getSig(); 
-            aux = aux.getSig();
+        while(aux!=null){
+            if(aux.getPosX()==column && aux.getPosY()==row){
+                if(aux.getSig()==null){ //Delete last position
+                    aux.getAnt().setSig(null);
+                }else{
+                    aux.getAnt().setSig(aux.getSig());
+                    aux.getSig().setAnt(aux.getAnt());
+                }
+            }aux = aux.getSig();
         }
+        
     }
     public void UpdatePaintFrame() { //
          
