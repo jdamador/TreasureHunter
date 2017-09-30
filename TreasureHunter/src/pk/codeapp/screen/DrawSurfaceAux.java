@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pk.codeapp.screen;
 
 import java.awt.Color;
@@ -13,17 +9,15 @@ import pk.codeapp.methods.Dupla;
 import pk.codeapp.model.Board;
 import pk.codeapp.screen.MainApp;
 import pk.codeapp.screen.SelectToken;
-
 /**
- *
- * @author Daniel Amador
+ * Draw Surface to View Blocks in the Play Game
  */
 public class DrawSurfaceAux extends JPanel
 {
-
-    String stringPosition;
+    
+    String stringPosition; 
     private int size = 80;
-    String tokens[] = SelectToken.getTokens();
+    String tokens[] = SelectToken.getTokens(); //List of all tokens
     
     public DrawSurfaceAux()
     {
@@ -35,7 +29,10 @@ public class DrawSurfaceAux extends JPanel
     
     
     
-    
+    /**
+     * Principal methods to Paint blocks
+     * @param g 
+     */
     public void paint(Graphics g)
     {
         
@@ -61,11 +58,13 @@ public class DrawSurfaceAux extends JPanel
             g.drawString(stringPosition + "", (int) calculatePosition(pos).getPosX() + 3, (int) calculatePosition(pos).getPosY() + 12);
 
             reco = reco.getSig();
-        }
-//       
-
+        }  
     }
-
+    /**
+     * Calculate dupla to change number of matrix in x and y
+     * @param pos
+     * @return Dupla
+     */
     public Dupla calculatePosition(Dupla pos)
     {
         int x = (int) (pos.getPosX() * 80 + 0.0);

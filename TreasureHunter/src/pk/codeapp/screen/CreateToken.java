@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pk.codeapp.screen;
 
 import java.awt.Image;
@@ -14,10 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
-/**
- *
- * @author amador
- */
 public class CreateToken extends javax.swing.JFrame
 {
 
@@ -264,7 +256,9 @@ public class CreateToken extends javax.swing.JFrame
     private javax.swing.JRadioButton rbnRed;
     private javax.swing.JRadioButton rbnYellow;
     // End of variables declaration//GEN-END:variables
-
+/**
+ * Methods to Creation of tokens with respective color and figure
+ */
     public void createToken()
     {
         //joins the two values and creates a path

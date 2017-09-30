@@ -1,2 +1,2 @@
-src/pk/codeapp/tools/tokens/bluecrown.png
-src/pk/codeapp/tools/tokens/yellowmushroom.png
+src/pk/codeapp/tools/tokens/bluemushroom.png
+src/pk/codeapp/tools/tokens/yellowcrown.png

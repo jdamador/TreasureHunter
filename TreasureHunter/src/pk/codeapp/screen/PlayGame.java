@@ -5,12 +5,10 @@
  */
 package pk.codeapp.screen;
 
-import java.awt.Graphics;
+
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Image;
-import java.awt.Label;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -22,15 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import pk.codeapp.methods.Dupla;
 import pk.codeapp.model.Board;
-
-
-/**
- *
- * @author amador
- */
 public class PlayGame extends javax.swing.JFrame
 {
      String tokens[] = SelectToken.getTokens();
@@ -69,9 +59,9 @@ public class PlayGame extends javax.swing.JFrame
     public PlayGame()
     {
         initComponents();
-        drawSurface = new DrawSurfaceAux();
+        drawSurface = new DrawSurfaceAux(); //Draw Surface to Play
         this.add(drawSurface);
-        chargeImage();
+        chargeImage(); //Charge Tokens
        
          this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
@@ -390,12 +380,17 @@ public class PlayGame extends javax.swing.JFrame
         // TODO add your handling code here:
          this.pointMouse(lblToken4);
     }//GEN-LAST:event_lblToken4MouseDragged
+    /**
+     * Methods to Spin Dice
+     */
     public void spin()
     { // View the animation of dice
         //Stting spin animation
         Dice.setIcon(new ImageIcon(animationPath));
     }
-
+    /**
+     * Obtain Result of Spin Dice
+     */
     private void obtainResult()
     { // Obtain result of spin
         Random r = new Random();
@@ -458,7 +453,10 @@ public class PlayGame extends javax.swing.JFrame
     private javax.swing.JLabel lblTurn;
     private javax.swing.JPanel paneMarkeup;
     // End of variables declaration//GEN-END:variables
-
+    /**
+     * Give the before Windows
+     * @param select 
+     */
     public void open(SelectToken select)
     {
         this.beforeFrame = select;
@@ -466,7 +464,9 @@ public class PlayGame extends javax.swing.JFrame
         select.setVisible(false);
 
     }
-
+    /**
+     * Charge Image Tokens in Game
+     */
     public void chargeImage()
     {
 
@@ -486,7 +486,11 @@ public class PlayGame extends javax.swing.JFrame
         }
 
     }
-
+    /**
+     * Checks the Functions in the Block
+     * @param posX
+     * @param posY 
+     */
     private void checkFunction(int posX, int posY)
     {
         Board reco = board;
@@ -509,7 +513,10 @@ public class PlayGame extends javax.swing.JFrame
             reco = reco.getSig();
         }
     }
-
+    /**
+     * Obtain Point of Mouse in the Screen
+     * @param label 
+     */
     public void pointMouse(JLabel label)
     {
         Point point = MouseInfo.getPointerInfo().getLocation();
@@ -517,7 +524,10 @@ public class PlayGame extends javax.swing.JFrame
         label.setLocation(point.x -newX, point.y-newY);
 
     }
-
+    /**
+     * Obtain X and Y of Mouse
+     * @param e 
+     */
     public void eventMouse(MouseEvent e)
     {
         newX = e.getX();
