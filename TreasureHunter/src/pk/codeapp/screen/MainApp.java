@@ -6,9 +6,7 @@
 package pk.codeapp.screen;
 
 import java.applet.Applet;
-import static java.applet.Applet.newAudioClip;
 import java.applet.AudioClip;
-
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -19,24 +17,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import pk.codeapp.methods.Methods;
 import pk.codeapp.model.User;
 
-/**
- *
- * @author Jose Pablo Brenes
- */
 public class MainApp extends javax.swing.JFrame
 {
-
+    /**
+     * Audio of Game
+     */
     AudioClip sound;
     File audio = new File("src/pk/codeapp/tools/auido theme.wav");
     static Methods methods = new Methods();
-    boolean play;
+    boolean play; //Play Audio
 
     /**
      * Creates new form TH_Main
@@ -360,7 +354,10 @@ public class MainApp extends javax.swing.JFrame
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
-public void login()
+    /**
+     * Methods to Login User
+     */
+    public void login()
     {
 
         String userName = txtUserName.getText();

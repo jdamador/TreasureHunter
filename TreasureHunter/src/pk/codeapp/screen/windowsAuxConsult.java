@@ -152,6 +152,9 @@ public class windowsAuxConsult extends javax.swing.JFrame {
         dispose();
          
     }//GEN-LAST:event_btnExitActionPerformed
+    /**
+     * Load functions in the combo box
+     */
     private void loadFunctions(){
         aux = MainApp.methods.getRootFunction();
         while(aux!=null){
@@ -161,7 +164,11 @@ public class windowsAuxConsult extends javax.swing.JFrame {
             aux= aux.getSig();   
         }cmbFunctions.setModel(cmbModel);
     }
-   
+   /**
+    * Get Pointer of functions through String of name Functios selected
+    * @param nameFuction
+    * @return 
+    */
     private Function getPointerFunction(String nameFuction){ //Get Pointer of Function
         aux = MainApp.methods.getRootFunction(); // Pointer to Fuctions       
         while(aux!=null){

@@ -21,7 +21,7 @@ public class DrawSurface extends Canvas {
     Picture picture;
     Picture auxPicture;
     Table table;
-
+    
     public DrawSurface(int widht, int height) {
         this.widht = widht;
         this.height = height;
@@ -32,7 +32,10 @@ public class DrawSurface extends Canvas {
         picture = new Picture(this);
 
     }
-
+    /**
+     * Create and charge graphics in buffers
+     * Used to paint table game
+     */
     public void paint() {
         buffer = getBufferStrategy();
 
@@ -48,7 +51,13 @@ public class DrawSurface extends Canvas {
         g.dispose();
         buffer.show();
     }
-
+    /**
+     * Create and charge buffer to paint frame
+     * @param column
+     * @param row
+     * @param color
+     * @param numPosition 
+     */
     public void paintFrame(int column, int row, Color color, int numPosition) { // Start Buffer to paint in the PlayGame
         buffertToCreateMap = getBufferStrategy();
         if (buffer == null) {
@@ -65,6 +74,9 @@ public class DrawSurface extends Canvas {
         buffer.show();
 
     }
+    /**
+     * Paint blocks to play game
+     */
     public void paintToPlay(){
         buffertToCreateMap = getBufferStrategy();
         if (buffer == null) {
@@ -72,6 +84,13 @@ public class DrawSurface extends Canvas {
             return;
         }
     }
+    /**
+     * Paint blocks to play game
+     * @param column
+     * @param row
+     * @param color
+     * @param numPosition 
+     */
     public void paintToPLay(int column, int row, Color color, int numPosition){
         buffertToCreateMap = getBufferStrategy();
         if (buffer == null) {
@@ -88,7 +107,11 @@ public class DrawSurface extends Canvas {
         buffer.show();
 
     }
-    
+    /**
+     * Delete paint block
+     * @param column
+     * @param row 
+     */
     public void deleteFrame(int column, int row) {
         buffertToCreateMap = getBufferStrategy();
         if (buffer == null) {

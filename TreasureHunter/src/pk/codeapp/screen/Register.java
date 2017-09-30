@@ -25,7 +25,7 @@ public class Register extends javax.swing.JFrame
 {
 
     Methods methods;
-    JFrame afterWindows;
+    JFrame beforeWindows; //Before Windows
       ImageIcon icon = new ImageIcon("src/pk/codeapp/tools/alert.png");
     /**
      * Creates new form TH_register
@@ -58,7 +58,7 @@ public class Register extends javax.swing.JFrame
     {
         this.methods = methods;
         this.setVisible(true);
-        this.afterWindows=afterWindows;
+        this.beforeWindows=afterWindows;
         afterWindows.setVisible(false);
         this.setLocationRelativeTo(afterWindows);
 
@@ -212,7 +212,7 @@ public class Register extends javax.swing.JFrame
            
             if(methods.addUser(name, userName, email, password, rol)){
              JOptionPane.showMessageDialog(rootPane,"Register was successful","Warning",INFORMATION_MESSAGE  );
-             afterWindows.setVisible(true);
+             beforeWindows.setVisible(true);
             dispose();}
             else{
                  JOptionPane.showMessageDialog(rootPane,"Error adding user","Warning",WARNING_MESSAGE,this.icon  );
@@ -224,7 +224,7 @@ public class Register extends javax.swing.JFrame
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        afterWindows.setVisible(true);
+        beforeWindows.setVisible(true);
             dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
