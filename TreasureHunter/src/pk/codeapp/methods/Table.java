@@ -9,7 +9,7 @@ public class Table {
     String[][] table;
     DrawSurface drawSurface;
     Dupla position;
-    int widthDS,heightDS;
+    int widthDS,heightDS; //Width and Height Draw Surface
 
     public Table(DrawSurface drawSurface)
     {
@@ -17,8 +17,12 @@ public class Table {
         
         calculatePosition();
         table= new String[COLUMNS][ROW];
-        emptyBox();
+        
     }
+    /**
+     * Paint Matrix to guide User to Paint  
+     * @param g 
+     */
     public void paint(Graphics g){
          for (int Y = 0; Y < ROW; Y++) {
             for (int X = 0; X < COLUMNS; X++) {
@@ -29,13 +33,9 @@ public class Table {
             }
         }
     }
-    public void emptyBox(){
-        for (int Y = 0; Y < ROW; Y++) {
-            for (int X = 0; X < COLUMNS; X++) {
-                table[X][Y]="";
-            }
-        }
-    }
+    /**
+     * Methods to convert X and Y to position in Matrix
+     */
     public void calculatePosition(){
         widthDS=drawSurface.getWidth();
         heightDS= drawSurface.getHeight();
