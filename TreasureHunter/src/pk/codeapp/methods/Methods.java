@@ -58,7 +58,15 @@ public class Methods
         rootFunction = null;
 
     }
-
+    /**
+     * Add user 
+     * @param name
+     * @param userName
+     * @param email
+     * @param password
+     * @param rol
+     * @return 
+     */
     public boolean addUser(String name, String userName, String email, String password, String rol)
     { //Cheack border sig
         //this method return true or false when the operation is successful or fail.
@@ -92,7 +100,11 @@ public class Methods
 
     }
 
-    //method that verify if email format is valid
+    /**
+     * Method that verify if email format is valid
+     * @param email
+     * @return 
+     */
     public boolean isValidEmailAddress(String email) // email format checker
     {
         //Return true or false when email is valid or wrong
@@ -244,7 +256,10 @@ public class Methods
     }
 
 //</editor-fold>
-    public void chargeUsers() // method that chage user from binary file
+    /**
+     *  method that chage user from binary file
+     */
+    public void chargeUsers() 
     {
         //Read user from binary file
         try {
@@ -266,7 +281,11 @@ public class Methods
         }
 
     }
-
+    /**
+     * Methods to search user with name
+     * @param userName
+     * @return User
+     */
     public User searchUser(String userName)
     {
         //Search a user in the binary file
@@ -410,7 +429,11 @@ public class Methods
             System.out.println("fail to read");
         }
     }
-
+/**
+ * Methods to know Color
+ * @param color
+ * @return Color
+ */
     public Color getColor(String color)
     { // Methods to get Color through String 
         switch (color) {
@@ -439,7 +462,11 @@ public class Methods
     {
         this.tokens = tokens;
     }
-
+   /**
+    * Print User
+    * @param type
+    * @return 
+    */
     public DefaultListModel printUser(int type)
     {
         showUser.clear();

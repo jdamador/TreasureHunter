@@ -12,7 +12,6 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pk.codeapp.methods.Methods;
-import static pk.codeapp.screen.MainApp.methods;
 
 /**
  *
@@ -270,7 +269,7 @@ public class UserInterface extends javax.swing.JFrame
         // TODO add your handling code here:
         goBack();
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
     private void btnCreateWorldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWorldActionPerformed
         this.setVisible(false);
         MainApp.methods.setRootBoard(null);
@@ -358,7 +357,11 @@ public class UserInterface extends javax.swing.JFrame
         afterWindows.setVisible(true);
         dispose();
     }
-
+    /**
+     * Methods to Open this windows and save the bofere windows
+     * @param afterWindows
+     * @param methods 
+     */
     public void openWindows(JFrame afterWindows, Methods methods)
     {
         this.methods = methods;
@@ -370,7 +373,9 @@ public class UserInterface extends javax.swing.JFrame
         chargeData();
 
     }
-
+    /**
+     * Charge information of actual user
+     */
     public void chargeData()
     {
         this.lblEmail.setText("Email: " + methods.getActualUser().getEmail());
@@ -395,7 +400,10 @@ public class UserInterface extends javax.swing.JFrame
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblUsername;
     // End of variables declaration//GEN-END:variables
-public void play()
+/**
+ * Go to Play
+ */
+    public void play()
     {
         SelectToken select = new SelectToken();
         select.openWindow(this);
