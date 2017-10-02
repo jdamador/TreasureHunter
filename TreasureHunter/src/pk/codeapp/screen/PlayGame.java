@@ -131,8 +131,9 @@ public class PlayGame extends javax.swing.JFrame
             }
         });
         paneMarkeup.add(lblToken2);
-        lblToken2.setBounds(140, 710, 70, 70);
+        lblToken2.setBounds(120, 630, 70, 70);
 
+        lblToken4.setForeground(new java.awt.Color(255, 255, 255));
         lblToken4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblToken4.setText("Player4");
         lblToken4.setToolTipText("Player4");
@@ -151,7 +152,7 @@ public class PlayGame extends javax.swing.JFrame
             }
         });
         paneMarkeup.add(lblToken4);
-        lblToken4.setBounds(310, 710, 70, 70);
+        lblToken4.setBounds(280, 630, 70, 70);
 
         lblToken1.setForeground(new java.awt.Color(255, 255, 255));
         lblToken1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/tokens/bluecrown.png"))); // NOI18N
@@ -173,7 +174,7 @@ public class PlayGame extends javax.swing.JFrame
             }
         });
         paneMarkeup.add(lblToken1);
-        lblToken1.setBounds(40, 690, 70, 70);
+        lblToken1.setBounds(30, 630, 70, 70);
 
         lblToken3.setForeground(new java.awt.Color(255, 255, 255));
         lblToken3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -194,7 +195,7 @@ public class PlayGame extends javax.swing.JFrame
             }
         });
         paneMarkeup.add(lblToken3);
-        lblToken3.setBounds(220, 710, 70, 70);
+        lblToken3.setBounds(200, 630, 70, 70);
 
         jPanel1.setBackground(new java.awt.Color(0, 191, 165));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
