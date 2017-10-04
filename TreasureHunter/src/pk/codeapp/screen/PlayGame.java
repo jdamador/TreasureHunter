@@ -94,11 +94,6 @@ public class PlayGame extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        paneMarkeup = new javax.swing.JPanel();
-        lblToken2 = new javax.swing.JLabel();
-        lblToken4 = new javax.swing.JLabel();
-        lblToken1 = new javax.swing.JLabel();
-        lblToken3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         Dice = new javax.swing.JLabel();
         lblNameDice = new javax.swing.JLabel();
@@ -106,11 +101,66 @@ public class PlayGame extends javax.swing.JFrame
         lblActualPlayer = new javax.swing.JLabel();
         btnRoll = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        paneMarkeup = new javax.swing.JPanel();
+        lblToken2 = new javax.swing.JLabel();
+        lblToken4 = new javax.swing.JLabel();
+        lblToken1 = new javax.swing.JLabel();
+        lblToken3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
 
+        jPanel1.setBackground(new java.awt.Color(0, 191, 165));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Dice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/1c.png"))); // NOI18N
+        jPanel1.add(Dice, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 425, -1, -1));
+
+        lblNameDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/Dicepjc.png"))); // NOI18N
+        jPanel1.add(lblNameDice, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 363, -1, -1));
+
+        lblTurn.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lblTurn.setForeground(new java.awt.Color(255, 255, 255));
+        lblTurn.setText("Turn :");
+        jPanel1.add(lblTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        lblActualPlayer.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lblActualPlayer.setForeground(new java.awt.Color(255, 255, 255));
+        lblActualPlayer.setText("Player 1");
+        jPanel1.add(lblActualPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+
+        btnRoll.setBackground(new java.awt.Color(0, 0, 0));
+        btnRoll.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnRoll.setForeground(new java.awt.Color(255, 255, 255));
+        btnRoll.setText("Roll !!");
+        btnRoll.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRollMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRollMouseExited(evt);
+            }
+        });
+        btnRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRollActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRoll, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 626, 147, 60));
+
+        btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 50));
+
+        paneMarkeup.setBackground(new java.awt.Color(102, 255, 204));
         paneMarkeup.setForeground(new java.awt.Color(255, 255, 255));
         paneMarkeup.setToolTipText("");
         paneMarkeup.setOpaque(false);
@@ -202,68 +252,20 @@ public class PlayGame extends javax.swing.JFrame
         paneMarkeup.add(lblToken3);
         lblToken3.setBounds(200, 630, 70, 70);
 
-        jPanel1.setBackground(new java.awt.Color(0, 191, 165));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Dice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/1c.png"))); // NOI18N
-        jPanel1.add(Dice, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 425, -1, -1));
-
-        lblNameDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/Dice/Dicepjc.png"))); // NOI18N
-        jPanel1.add(lblNameDice, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 363, -1, -1));
-
-        lblTurn.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        lblTurn.setForeground(new java.awt.Color(255, 255, 255));
-        lblTurn.setText("Turn :");
-        jPanel1.add(lblTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
-
-        lblActualPlayer.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        lblActualPlayer.setForeground(new java.awt.Color(255, 255, 255));
-        lblActualPlayer.setText("Player 1");
-        jPanel1.add(lblActualPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
-
-        btnRoll.setBackground(new java.awt.Color(0, 0, 0));
-        btnRoll.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnRoll.setForeground(new java.awt.Color(255, 255, 255));
-        btnRoll.setText("Roll !!");
-        btnRoll.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnRollMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnRollMouseExited(evt);
-            }
-        });
-        btnRoll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRollActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRoll, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 626, 147, 60));
-
-        btnBack.setBackground(new java.awt.Color(0, 0, 0));
-        btnBack.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnBack.setForeground(new java.awt.Color(255, 255, 255));
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 50));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(paneMarkeup, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(paneMarkeup, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(paneMarkeup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

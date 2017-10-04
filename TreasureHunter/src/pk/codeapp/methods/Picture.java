@@ -9,10 +9,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-/**
- *
- * @author Daniel Amador
- */
 public class Picture
 {
     DrawSurface drawSurface;
