@@ -24,52 +24,56 @@ import pk.codeapp.model.User;
  *
  * @author Jose Pablo Brenes
  */
-public class CreateGame extends javax.swing.JFrame implements MouseListener, Runnable { 
+public class CreateGame extends javax.swing.JFrame implements MouseListener, Runnable
+{
 
     /**
      * Creates new form Pantalla
      */
     private boolean running; // Running the loop
     private Thread thread; //Main thread
-    private  DrawSurface drawSurface;
-    private  int posXMouse; // Position to mouse in x
-    private  int posYMouse; // Position to mouse in y
-    private  int xOffset; // Size to out DS in x
-    private  int yOffset; // Size to out DS in x
-    private  int widhtDS = 800; // Widht draw surface
-    private  int heightSD = 800; // Height draw surface
-    private  int COLUMNS = 10, ROW = 10, SIDE = 80;
-    private  int column;
-    private  int row;
+    private DrawSurface drawSurface;
+    private int posXMouse; // Position to mouse in x
+    private int posYMouse; // Position to mouse in y
+    private int xOffset; // Size to out DS in x
+    private int yOffset; // Size to out DS in x
+    private int widhtDS = 800; // Widht draw surface
+    private int heightSD = 800; // Height draw surface
+    private int COLUMNS = 10, ROW = 10, SIDE = 80;
+    private int column;
+    private int row;
     private int columnAux = -1;// Before Column
     private int rowAux = -1; //  Before Row
     private boolean activateMouse; // Boolean to know mouse actived
-    private  String nameMethod; // Save the nameMethods to know action to perform 
+    private String nameMethod; // Save the nameMethods to know action to perform 
     private Methods methods = MainApp.methods;// Get methods
-    private int numPosition=0; // Num position of Block or Frame
+    private int numPosition = 0; // Num position of Block or Frame
     private Function function;
     private windowsAuxConsult winAuxConsult;
-    private JFrame beforeWindows; 
-    
+    private JFrame beforeWindows;
+
     /**
      * Constructor of Game
+     *
      * @param nombre
-     * @param afterWindows 
+     * @param afterWindows
      */
-    
-    public CreateGame(String nombre,JFrame afterWindows) { 
+    public CreateGame(String nombre, JFrame afterWindows)
+    {
         initComponents();
-        this.beforeWindows=afterWindows;
+        this.beforeWindows = afterWindows;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle(nombre); 
+        this.setTitle(nombre);
         this.setResizable(false);
         this.setLayout(new BorderLayout());
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         start();
     }
+
     /**
      * Image of Game
+     *
      * @return Image
      */
     @Override
@@ -79,10 +83,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         return retValue;
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -110,9 +114,18 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         btnDraw.setForeground(new java.awt.Color(0, 0, 0));
         btnDraw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/paint.png"))); // NOI18N
         btnDraw.setToolTipText("Click to create pictures in the matrix ");
-        btnDraw.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnDraw.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnDrawMouseClicked(evt);
+            }
+        });
+        btnDraw.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnDrawActionPerformed(evt);
             }
         });
 
@@ -122,9 +135,18 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
 
         btnDeleteFrame.setBackground(new java.awt.Color(0, 0, 0));
         btnDeleteFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/delete.png"))); // NOI18N
-        btnDeleteFrame.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnDeleteFrame.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnDeleteFrameMouseClicked(evt);
+            }
+        });
+        btnDeleteFrame.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnDeleteFrameActionPerformed(evt);
             }
         });
 
@@ -132,8 +154,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         btnBack.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBackActionPerformed(evt);
             }
         });
@@ -195,9 +219,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     }// </editor-fold>//GEN-END:initComponents
     /**
      * Diferents methods of mouse
-     * @param evt 
+     *
+     * @param evt
      */
-    
+
     private void btnDrawMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDrawMouseClicked
         // Button to draw maps
         activateMouse = true;
@@ -210,168 +235,216 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         activateMouse = true;
         nameMethod = "delete";
     }//GEN-LAST:event_btnDeleteFrameMouseClicked
-    
+
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-       // Back 
-        running=false;
+        // Back 
+        running = false;
         this.dispose(); // Delete actual windows    
-        beforeWindows.setVisible(true); 
-        
+        beforeWindows.setVisible(true);
+
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnDeleteFrameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnDeleteFrameActionPerformed
+    {//GEN-HEADEREND:event_btnDeleteFrameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteFrameActionPerformed
+
+    private void btnDrawActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnDrawActionPerformed
+    {//GEN-HEADEREND:event_btnDrawActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDrawActionPerformed
 
     /**
      * @param args the command line arguments
      */
     @Override
-    public void mouseClicked(MouseEvent e) { // Mouse clicked in the drawSurface
+    public void mouseClicked(MouseEvent e)
+    { // Mouse clicked in the drawSurface
         if (activateMouse) {
             //Register Position of mouse
             this.posXMouse = e.getX();
             this.posYMouse = e.getY();
             if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) { // verify that the mouse is inside the superficie
                 //Checks name of Method to perform action 
-                if (nameMethod.equals("paint")) { 
-                    paintFrame(); 
-                }else if(nameMethod.equals("delete")){
+                if (nameMethod.equals("paint")) {
+
+                    paintFrame();
+                } else if (nameMethod.equalsIgnoreCase("delete")) {
                     deleteFrame();
                 }
             }
         }
     }
 //<editor-fold defaultstate="collapsed" desc="Abstract methods of Mouse">
+
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent e)
+    {
 
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(MouseEvent e)
+    {
 
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
+    public void mouseEntered(MouseEvent e)
+    {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent e) {
+    public void mouseExited(MouseEvent e)
+    {
 
     }
 //</editor-fold>
-    
+
     /**
      * Update to Paint
      */
-    public void update() { 
+    public void update()
+    {
         drawSurface.paint();
     }
+
     /**
-     *  Paint block with  position of mouse
+     * Paint block with position of mouse
      */
-    public void paintFrame() { 
+    public void paintFrame()
+    {
         if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) { //Check that the mouse is in the range to DS
             column = (posXMouse - xOffset) / SIDE; // get Column
             row = (posYMouse - yOffset) / SIDE; // get Row
-            if (column >= 0 && row >= 0) { 
+
+            if (column >= 0 && row >= 0) {
+                  deletePaintFrame(column, row);
                 jumpAuxConsult(); // Methods to Consult windows to fuctions
             }
         }
     }
+
     /**
-     * Delete block with position of mouse 
+     * Delete block with position of mouse
      */
-    public void deleteFrame(){ 
-         if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) { //Check that the mouse is in the range to DS
+    public void deleteFrame()
+    {
+        if (posXMouse <= (drawSurface.getWidht()) - 20 && posYMouse <= (drawSurface.getHeight()) && posXMouse >= 0 && posYMouse >= 0) { //Check that the mouse is in the range to DS
             column = (posXMouse - xOffset) / SIDE;// get Column
             row = (posYMouse - yOffset) / SIDE;// get Row
             if (column >= 0 && row >= 0) {
-                  deletePaintFrame(column,row);// Methods delete block
+                deletePaintFrame(column, row);// Methods delete block
             }
-         }
+        }
     }
+
     /**
-     *  Methods to delete block with the column and row
+     * Methods to delete block with the column and row
+     *
      * @param column
-     * @param row 
+     * @param row
      */
-    public void deletePaintFrame(int column,int row){ 
-       drawSurface.deleteFrame(column, row);// call methods to clear paint to block
-       deleteLinkening(column,row);// Delete linkening to next and before block
+    public void deletePaintFrame(int column, int row)
+    {
+        drawSurface.deleteFrame(column, row);// call methods to clear paint to block
+        deleteLinkening(column, row);// Delete linkening to next and before block
     }
+
     /**
      * Delete Linkening to blocks
+     *
      * @param column
-     * @param row 
+     * @param row
      */
-    private void deleteLinkening(int column,int row){ 
+    private void deleteLinkening(int column, int row)
+    {
         User actual = MainApp.methods.getActualUser();
-        Board aux =actual.getGameSig(); // aux is the next to reco
-        if(aux.getPosX()==column && aux.getPosY()==row){ // Checks first position
-            if(aux==null)
-                actual.setGameSig(null);
-            else
-                actual.setGameSig(aux);
-        }
-        while(aux!=null){
-            if(aux.getPosX()==column && aux.getPosY()==row){
-                if(aux.getSig()==null){ //Delete last position
-                    aux.getAnt().setSig(null);
-                }else{
-                    aux.getAnt().setSig(aux.getSig());
-                    aux.getSig().setAnt(aux.getAnt());
+        Board aux = actual.getGameSig(); // aux is the next to reco
+
+        if (aux != null) {
+            if (aux.getPosX() == column && aux.getPosY() == row) { // Checks first position
+                MainApp.methods.getActualUser().setGameSig(aux.getSig());
+            } else {
+                while (aux != null) {
+                    if (aux.getPosX() == column && aux.getPosY() == row) {
+                        aux.getAnt().setSig(aux.getSig());
+                        aux.getSig().setAnt(aux.getAnt());
+                    }
+                    aux = aux.getSig();
                 }
-            }aux = aux.getSig();
-        }     
+
+            }
+        }
+
     }
+
     /**
      * Methods to Paint block with respective color
      */
-    public void UpdatePaintFrame() { 
-         
-        if (MainApp.methods.getActivePaint()){ // Check to mouse is actived
-            function=winAuxConsult.getPointerFunction();
+    public void UpdatePaintFrame()
+    {
+
+        if (MainApp.methods.getActivePaint()) { // Check to mouse is actived
+            function = winAuxConsult.getPointerFunction();
             paintSpecialFunction(); // Checks to name of functions is Start or End 
-            
-            if( paintSpecialFunction()==false){
-                numPosition+=1;
-                MainApp.methods.addBoard(column, row,numPosition, function);
+
+            if (paintSpecialFunction() == false) {
+                numPosition += 1;
+                MainApp.methods.addBoard(column, row, numPosition, function);
                 columnAux = column;
                 rowAux = row;
                 Color color = MainApp.methods.getColor(function.getColor());
-                drawSurface.paintFrame(column, row, color,numPosition);
+                drawSurface.paintFrame(column, row, color, numPosition);
                 MainApp.methods.setActivePaint(false);
             }
-        }MainApp.methods.setSpecialFunction("");
+        }
+        MainApp.methods.setSpecialFunction("");
     }
+
     /**
-     * Methods to check Special Function 
+     * Methods to check Special Function
+     *
      * @return true if this
      */
-    private boolean paintSpecialFunction(){ 
-        switch(function.getFuction()){
-            case "Start": MainApp.methods.addBoard(column, row,-1,function); UpdateSpecialFrame(-1);return true;
-            case "End": MainApp.methods.addBoard(column, row,-2, function);UpdateSpecialFrame(-2); return true;
-        }return false;
+    private boolean paintSpecialFunction()
+    {
+        switch (function.getFuction()) {
+            case "Start":
+                MainApp.methods.addBoard(column, row, -1, function);
+                UpdateSpecialFrame(-1);
+                return true;
+            case "End":
+                MainApp.methods.addBoard(column, row, -2, function);
+                UpdateSpecialFrame(-2);
+                return true;
+        }
+        return false;
     }
+
     /**
      * Checks num of the function to complete action of paint
-     * @param num 
+     *
+     * @param num
      */
-    private void UpdateSpecialFrame(int num){
+    private void UpdateSpecialFrame(int num)
+    {
         columnAux = column;
         rowAux = row;
         Color color = MainApp.methods.getColor(function.getColor());
-        drawSurface.paintFrame(column, row, color,num);
-         
-         MainApp.methods.setActivePaint(false);
+        drawSurface.paintFrame(column, row, color, num);
+
+        MainApp.methods.setActivePaint(false);
     }
+
     /**
      * Methods to open the auxiliary windows to know the fuctions of block
      */
-    private void jumpAuxConsult() {
+    private void jumpAuxConsult()
+    {
         this.enable(false);
-         winAuxConsult = new windowsAuxConsult();
+        winAuxConsult = new windowsAuxConsult();
         winAuxConsult.beforeWindows(this);
         winAuxConsult.setLocationRelativeTo(null);
         winAuxConsult.setVisible(true);
@@ -389,7 +462,8 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     /**
      * Inicialization of variables to Thread
      */
-    private void init() {
+    private void init()
+    {
         drawSurface = new DrawSurface(widhtDS, heightSD);
         this.drawSurface = drawSurface;
         this.add(drawSurface);
@@ -397,27 +471,33 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         addMouseListener(this);
         xOffset = (widhtDS - (COLUMNS * SIDE)) / 2;
         yOffset = (heightSD - (ROW * SIDE)) / 2;
-        
+
     }
+
     /**
      * Updates Variables
      */
-    private void tick() { 
+    private void tick()
+    {
 
     }
+
     /**
      * Updates Graphics
      */
-    private void render() { 
+    private void render()
+    {
 
         update();
         UpdatePaintFrame();
     }
+
     /**
      * Principal Loop
      */
     @Override
-    public void run() {
+    public void run()
+    {
 
         init();
         while (running) { // Main Loop
@@ -427,10 +507,12 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         }
         stop();
     }
+
     /**
      * Inicialization of Thread
      */
-    public synchronized void start() {
+    public synchronized void start()
+    {
         System.out.println("Entro al start");
         if (running) {
             return;
@@ -439,10 +521,12 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
         thread = new Thread(this);
         thread.start();
     }
+
     /**
      * Methods to stop Thread
      */
-    public synchronized void stop() {
+    public synchronized void stop()
+    {
         if (!running) {
             return;
         }

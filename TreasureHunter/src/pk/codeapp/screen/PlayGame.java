@@ -92,7 +92,8 @@ public class PlayGame extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         Dice = new javax.swing.JLabel();
@@ -134,16 +135,21 @@ public class PlayGame extends javax.swing.JFrame
         btnRoll.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRoll.setForeground(new java.awt.Color(255, 255, 255));
         btnRoll.setText("Roll !!");
-        btnRoll.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        btnRoll.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 btnRollMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 btnRollMouseExited(evt);
             }
         });
-        btnRoll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRoll.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnRollActionPerformed(evt);
             }
         });
@@ -153,8 +159,10 @@ public class PlayGame extends javax.swing.JFrame
         btnBack.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBackActionPerformed(evt);
             }
         });
@@ -172,16 +180,22 @@ public class PlayGame extends javax.swing.JFrame
         lblToken2.setText("Player2");
         lblToken2.setToolTipText("Player2");
         lblToken2.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
+        lblToken2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblToken2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
+        {
+            public void mouseDragged(java.awt.event.MouseEvent evt)
+            {
                 lblToken2MouseDragged(evt);
             }
         });
-        lblToken2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        lblToken2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
                 lblToken2MousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
+            public void mouseReleased(java.awt.event.MouseEvent evt)
+            {
                 lblToken2MouseReleased(evt);
             }
         });
@@ -193,16 +207,22 @@ public class PlayGame extends javax.swing.JFrame
         lblToken4.setText("Player4");
         lblToken4.setToolTipText("Player4");
         lblToken4.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
+        lblToken4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblToken4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
+        {
+            public void mouseDragged(java.awt.event.MouseEvent evt)
+            {
                 lblToken4MouseDragged(evt);
             }
         });
-        lblToken4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        lblToken4.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
                 lblToken4MousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
+            public void mouseReleased(java.awt.event.MouseEvent evt)
+            {
                 lblToken4MouseReleased(evt);
             }
         });
@@ -215,16 +235,21 @@ public class PlayGame extends javax.swing.JFrame
         lblToken1.setToolTipText("Player");
         lblToken1.setBorder(new javax.swing.border.MatteBorder(null));
         lblToken1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
+        lblToken1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
+        {
+            public void mouseDragged(java.awt.event.MouseEvent evt)
+            {
                 lblToken1MouseDragged(evt);
             }
         });
-        lblToken1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        lblToken1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
                 lblToken1MousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
+            public void mouseReleased(java.awt.event.MouseEvent evt)
+            {
                 lblToken1MouseReleased(evt);
             }
         });
@@ -236,16 +261,22 @@ public class PlayGame extends javax.swing.JFrame
         lblToken3.setText("Player3");
         lblToken3.setToolTipText("Player3");
         lblToken3.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
+        lblToken3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblToken3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
+        {
+            public void mouseDragged(java.awt.event.MouseEvent evt)
+            {
                 lblToken3MouseDragged(evt);
             }
         });
-        lblToken3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+        lblToken3.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
                 lblToken3MousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
+            public void mouseReleased(java.awt.event.MouseEvent evt)
+            {
                 lblToken3MouseReleased(evt);
             }
         });
@@ -521,13 +552,11 @@ public class PlayGame extends javax.swing.JFrame
     {
         Board reco = board;
 
-        System.out.println("Posicion Mouse X: " + posX);
-        System.out.println("Posicion Mouse Y: " + posY);
+        
         column = ((posX - xOffset) / 80); // get Column
         row = ((posY - (yOffset)) / 80); // get Row
 
-        System.out.println("Columna: " + column);
-        System.out.println("Fila: " + row);
+
         while (reco != null) {
             if (reco.getPosX() == column && reco.getPosY() == row) {
                 if (reco.getFunction().getFuction().equals("End")) {
@@ -548,7 +577,7 @@ public class PlayGame extends javax.swing.JFrame
     public void pointMouse(JLabel label)
     {
         Point point = MouseInfo.getPointerInfo().getLocation();
-        System.out.println(point);
+     
         label.setLocation(point.x - newX, point.y - newY);
 
     }

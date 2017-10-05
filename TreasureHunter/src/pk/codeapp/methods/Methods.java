@@ -318,8 +318,8 @@ public class Methods
     public boolean addBoard(int column, int row, int numPosition, Function function)
     {
         Board newblock = new Board(column, row, numPosition, function);
+        newblock.setSig(null);
         if (actualUser.getGameSig() == null) {
-            newblock.setSig(null);
             actualUser.setGameSig(newblock);
             return true;
         } else {

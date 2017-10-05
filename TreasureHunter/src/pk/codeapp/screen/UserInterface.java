@@ -146,7 +146,7 @@ public class UserInterface extends javax.swing.JFrame
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/User.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 260, 250));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 260, 250));
 
         btnCreateWorld.setBackground(new java.awt.Color(0, 0, 0));
         btnCreateWorld.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
@@ -166,7 +166,7 @@ public class UserInterface extends javax.swing.JFrame
                 btnCreateWorldActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCreateWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 250, 60));
+        jPanel1.add(btnCreateWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 250, 60));
 
         btnPlay.setBackground(new java.awt.Color(0, 0, 0));
         btnPlay.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
@@ -179,7 +179,7 @@ public class UserInterface extends javax.swing.JFrame
                 btnPlayActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 250, 60));
+        jPanel1.add(btnPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 250, 60));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
@@ -192,22 +192,22 @@ public class UserInterface extends javax.swing.JFrame
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 210, 30));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 210, 30));
 
         lblEmail.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("Email:");
-        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
 
         lblName.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         lblName.setForeground(new java.awt.Color(255, 255, 255));
         lblName.setText("Nombre:");
-        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
         lblUsername.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("Username:");
-        jPanel1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jPanel1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
