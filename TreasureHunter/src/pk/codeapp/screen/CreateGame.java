@@ -213,9 +213,10 @@ public class CreateGame extends javax.swing.JFrame implements MouseListener, Run
     
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
        // Back 
-        stop();
-        this.dispose(); // Delete actual windows
+        running=false;
+        this.dispose(); // Delete actual windows    
         beforeWindows.setVisible(true); 
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**
