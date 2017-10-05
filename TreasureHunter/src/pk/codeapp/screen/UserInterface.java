@@ -42,6 +42,7 @@ public class UserInterface extends javax.swing.JFrame
         });
 
     }
+
     @Override
     public Image getIconImage()
     {
@@ -59,36 +60,27 @@ public class UserInterface extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListGames = new javax.swing.JList<>();
         btnBack = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btnAhead = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        lblUsername = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
-        lblEmail = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        btnPlay = new javax.swing.JToggleButton();
-        btnCreateWorld = new javax.swing.JButton();
-        btnEnd = new javax.swing.JButton();
         btnStart = new javax.swing.JButton();
+        btnAhead = new javax.swing.JButton();
+        btnEnd = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnCreateWorld = new javax.swing.JButton();
+        btnPlay = new javax.swing.JToggleButton();
+        jButton4 = new javax.swing.JButton();
+        lblEmail = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(0, 0));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jListGames.setBackground(new java.awt.Color(0, 51, 51));
-        jListGames.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
-        jListGames.setForeground(new java.awt.Color(255, 255, 255));
-        jListGames.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(jListGames);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 250, 390, 290));
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
         btnBack.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
@@ -101,7 +93,6 @@ public class UserInterface extends javax.swing.JFrame
                 btnBackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 560, 50, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
@@ -114,7 +105,18 @@ public class UserInterface extends javax.swing.JFrame
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 560, 83, -1));
+
+        btnStart.setBackground(new java.awt.Color(0, 0, 0));
+        btnStart.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        btnStart.setForeground(java.awt.Color.white);
+        btnStart.setText("Start");
+        btnStart.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnStartActionPerformed(evt);
+            }
+        });
 
         btnAhead.setBackground(new java.awt.Color(0, 0, 0));
         btnAhead.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
@@ -127,64 +129,24 @@ public class UserInterface extends javax.swing.JFrame
                 btnAheadActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAhead, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 560, 50, -1));
+
+        btnEnd.setBackground(new java.awt.Color(0, 0, 0));
+        btnEnd.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        btnEnd.setForeground(java.awt.Color.white);
+        btnEnd.setText("End");
+        btnEnd.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnEndActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/User.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 250));
-
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Editar Perfil");
-        jButton4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 210, 30));
-
-        lblUsername.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
-        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsername.setText("Username:");
-        getContentPane().add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
-
-        lblName.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
-        lblName.setForeground(new java.awt.Color(255, 255, 255));
-        lblName.setText("Nombre:");
-        getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
-
-        lblEmail.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
-        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
-        lblEmail.setText("Email:");
-        getContentPane().add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
-
-        jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
-        jButton5.setForeground(java.awt.Color.white);
-        jButton5.setText("Back");
-        jButton5.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, -1, -1));
-
-        btnPlay.setBackground(new java.awt.Color(0, 0, 0));
-        btnPlay.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
-        btnPlay.setForeground(new java.awt.Color(255, 255, 255));
-        btnPlay.setText("Play");
-        btnPlay.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnPlayActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 250, 60));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 260, 250));
 
         btnCreateWorld.setBackground(new java.awt.Color(0, 0, 0));
         btnCreateWorld.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
@@ -204,54 +166,128 @@ public class UserInterface extends javax.swing.JFrame
                 btnCreateWorldActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCreateWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 250, 60));
+        jPanel1.add(btnCreateWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 250, 60));
 
-        btnEnd.setBackground(new java.awt.Color(0, 0, 0));
-        btnEnd.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
-        btnEnd.setForeground(java.awt.Color.white);
-        btnEnd.setText("End");
-        btnEnd.addActionListener(new java.awt.event.ActionListener()
+        btnPlay.setBackground(new java.awt.Color(0, 0, 0));
+        btnPlay.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        btnPlay.setForeground(new java.awt.Color(255, 255, 255));
+        btnPlay.setText("Play");
+        btnPlay.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                btnEndActionPerformed(evt);
+                btnPlayActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEnd, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 560, 80, -1));
+        jPanel1.add(btnPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 250, 60));
 
-        btnStart.setBackground(new java.awt.Color(0, 0, 0));
-        btnStart.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
-        btnStart.setForeground(java.awt.Color.white);
-        btnStart.setText("Start");
-        btnStart.addActionListener(new java.awt.event.ActionListener()
+        jButton4.setBackground(new java.awt.Color(0, 0, 0));
+        jButton4.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Editar Perfil");
+        jButton4.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                btnStartActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 560, 80, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 210, 30));
+
+        lblEmail.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("Email:");
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+
+        lblName.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setText("Nombre:");
+        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+
+        lblUsername.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsername.setText("Username:");
+        jPanel1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pk/codeapp/tools/map#1.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 720));
+
+        jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jButton5.setBackground(new java.awt.Color(0, 0, 0));
+        jButton5.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jButton5.setForeground(java.awt.Color.white);
+        jButton5.setText("Back");
+        jButton5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnStart)
+                        .addGap(134, 134, 134)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAhead)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEnd)
+                        .addGap(75, 75, 75))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnAhead)
+                                .addComponent(btnEnd)
+                                .addComponent(jButton2)
+                                .addComponent(btnStart)))))
+                .addGap(5, 5, 5))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-            // TODO add your handling code here:
-        System.out.println(jListGames.getModel());
-        if(jListGames.getModel().getSize()!=0){
-                methods.setMapSelected(methods.getShowActual().getGameSig());
-              play();
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Select one map!!","Alert",JOptionPane.WARNING_MESSAGE);
-        }
-      
+        // TODO add your handling code here:
+
+        methods.setMapSelected(methods.getShowActual().getGameSig());
+        play();
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
@@ -269,7 +305,7 @@ public class UserInterface extends javax.swing.JFrame
         // TODO add your handling code here:
         goBack();
     }//GEN-LAST:event_jButton5ActionPerformed
-    
+
     private void btnCreateWorldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWorldActionPerformed
         this.setVisible(false);
         MainApp.methods.setRootBoard(null);
@@ -285,32 +321,40 @@ public class UserInterface extends javax.swing.JFrame
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPlayActionPerformed
     {//GEN-HEADEREND:event_btnPlayActionPerformed
         // TODO add your handling code here:
-         methods.setMapSelected(methods.getActualUser().getGameSig());
+        methods.setMapSelected(methods.getActualUser().getGameSig());
         play();
     }//GEN-LAST:event_btnPlayActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBackActionPerformed
     {//GEN-HEADEREND:event_btnBackActionPerformed
         // TODO add your handling code here:
-        jListGames.setModel(methods.printUser(3));
+        methods.printUser(3);
+//        jLabel1.setText(methods.getShowActual().getUserName());
+        paint();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAheadActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAheadActionPerformed
     {//GEN-HEADEREND:event_btnAheadActionPerformed
         // TODO add your handling code here:
-        jListGames.setModel(methods.printUser(4));
+        methods.printUser(4);
+//        jLabel1.setText(methods.getShowActual().getUserName());
+        paint();
     }//GEN-LAST:event_btnAheadActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStartActionPerformed
     {//GEN-HEADEREND:event_btnStartActionPerformed
         // TODO add your handling code here:
-        jListGames.setModel(methods.printUser(1));
+        methods.printUser(1);
+//        jLabel1.setText(methods.getShowActual().getUserName());
+        paint();
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnEndActionPerformed
     {//GEN-HEADEREND:event_btnEndActionPerformed
         // TODO add your handling code here:
-        jListGames.setModel(methods.printUser(2));
+        methods.printUser(2);
+//        jLabel1.setText(methods.getShowActual().getUserName());
+        paint();
     }//GEN-LAST:event_btnEndActionPerformed
 
     /**
@@ -357,10 +401,12 @@ public class UserInterface extends javax.swing.JFrame
         afterWindows.setVisible(true);
         dispose();
     }
+
     /**
      * Methods to Open this windows and save the bofere windows
+     *
      * @param afterWindows
-     * @param methods 
+     * @param methods
      */
     public void openWindows(JFrame afterWindows, Methods methods)
     {
@@ -373,6 +419,7 @@ public class UserInterface extends javax.swing.JFrame
         chargeData();
 
     }
+
     /**
      * Charge information of actual user
      */
@@ -392,20 +439,29 @@ public class UserInterface extends javax.swing.JFrame
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jListGames;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblUsername;
     // End of variables declaration//GEN-END:variables
 /**
- * Go to Play
- */
+     * Go to Play
+     */
     public void play()
     {
         SelectToken select = new SelectToken();
         select.openWindow(this);
+    }
+
+    private void paint()
+    {
+        jLabel1.setText("Creative User: "+methods.getShowActual().getUserName());
+       repaint();
+        methods.setMapSelected(methods.getShowActual().getGameSig());
+        DrawSurfaceAux draw = new DrawSurfaceAux(50);
+        this.add(draw);
     }
 }

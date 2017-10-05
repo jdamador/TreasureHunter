@@ -26,7 +26,13 @@ public class DrawSurfaceAux extends JPanel
         this.setBackground(Color.LIGHT_GRAY);
        
     }
-    
+    public DrawSurfaceAux(int size){
+        this.size=size;
+      
+         this.setBounds(0, 40,643, 643);
+        this.setVisible(true);
+        this.setBackground(Color.LIGHT_GRAY);
+    }
     
     
     /**
@@ -67,8 +73,8 @@ public class DrawSurfaceAux extends JPanel
      */
     public Dupla calculatePosition(Dupla pos)
     {
-        int x = (int) (pos.getPosX() * 80 + 0.0);
-        int y = (int) (pos.getPosY() * 80 + 0.0);
+        int x = (int) (pos.getPosX() * size + 0.0);
+        int y = (int) (pos.getPosY() * size + 0.0);
         return new Dupla(x, y);
     }
 }
