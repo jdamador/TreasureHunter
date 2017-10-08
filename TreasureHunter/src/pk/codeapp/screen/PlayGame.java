@@ -180,7 +180,6 @@ public class PlayGame extends javax.swing.JFrame
         lblToken2.setText("Player2");
         lblToken2.setToolTipText("Player2");
         lblToken2.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblToken2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
             public void mouseDragged(java.awt.event.MouseEvent evt)
@@ -207,7 +206,6 @@ public class PlayGame extends javax.swing.JFrame
         lblToken4.setText("Player4");
         lblToken4.setToolTipText("Player4");
         lblToken4.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblToken4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
             public void mouseDragged(java.awt.event.MouseEvent evt)
@@ -261,7 +259,6 @@ public class PlayGame extends javax.swing.JFrame
         lblToken3.setText("Player3");
         lblToken3.setToolTipText("Player3");
         lblToken3.setBorder(new javax.swing.border.MatteBorder(null));
-        lblToken3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblToken3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
             public void mouseDragged(java.awt.event.MouseEvent evt)

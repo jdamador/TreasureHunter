@@ -190,7 +190,6 @@
                 <MatteColorBorder/>
               </Border>
             </Property>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
             <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="lblToken2MouseDragged"/>
@@ -216,7 +215,6 @@
                 <MatteColorBorder/>
               </Border>
             </Property>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
             <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="lblToken4MouseDragged"/>
@@ -270,7 +268,6 @@
                 <MatteColorBorder/>
               </Border>
             </Property>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
             <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="lblToken3MouseDragged"/>
